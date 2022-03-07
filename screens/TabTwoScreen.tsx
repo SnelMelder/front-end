@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function TabTwoScreen() {
+const TabTwoScreen = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Tab Two</Text>
@@ -33,4 +33,6 @@ export default function TabTwoScreen() {
             <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
         </View>
     );
-}
+};
+
+export default TabTwoScreen;
