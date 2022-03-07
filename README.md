@@ -55,4 +55,17 @@ npm install
 npm start
 ```
 
+## Live preview on iPhone
+1. [Create an Expo account](https://expo.dev/) on your desktop.
+2. Add a project, make sure the slug is: `SnelMelder`.
+3. [Download the Expo app](https://apps.apple.com/nl/app/expo-go/id982107779) and log in.
+4. Run the `expo login` command in project terminal to sync up your account.
+5. Start the project with `npm start`.
+6. Select connection mode `Tunnel` (see screenshot down below).
+7. Look up the URL that is generated on your iPhone device and `open with Expo app` (see example URL in the screenshot below).
+
+<br>
+
+![image](https://user-images.githubusercontent.com/57891326/157050507-d76bfc9d-76ae-4128-bce0-da1277b326d1.png)
+
 
