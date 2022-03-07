@@ -63,6 +63,7 @@ npm start
 5. Start the project with `npm start`.
 6. Select connection mode `Tunnel` (see screenshot down below).
 7. Look up the URL that is generated on your iPhone device and `open with Expo app` (see example URL in the screenshot below).
+8. Your project is now accessable via the Expo app while it's running. :partying_face:
 
 <br>
 
