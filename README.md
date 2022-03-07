@@ -40,13 +40,11 @@
   </a>
 </p>
   
----
+<br />
 
-Deze app is gebouwd in React Native met behulp van de Expo CLI.
+This app is built in React Native using the Expo CLI.
 
 ## Getting started
-
-
 
 ```bash
 git clone https://github.com/SnelMelder/front-end.git
@@ -65,8 +63,6 @@ npm start
 7. Look up the URL that is generated on your iPhone device and `open with Expo app` (see example URL in the screenshot below).
 8. Your project is now accessable via the Expo app while it's running. :partying_face:
 
-<br>
+<br />
 
 ![image](https://user-images.githubusercontent.com/57891326/157050507-d76bfc9d-76ae-4128-bce0-da1277b326d1.png)
-
-
