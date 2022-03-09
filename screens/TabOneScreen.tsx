@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
+import Header from '../components/Header';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -8,7 +9,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        // justifyContent: 'center',
     },
     title: {
         fontSize: 20,
@@ -24,7 +25,10 @@ const styles = StyleSheet.create({
 const TabOneScreen = () => {
     return (
         <View style={styles.container}>
+            <Header />
+
             <Text style={styles.title}>Tab One</Text>
+
             <View
                 style={styles.separator}
                 lightColor="#eee"
