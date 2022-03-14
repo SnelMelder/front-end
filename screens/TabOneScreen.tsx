@@ -3,7 +3,7 @@ import { Button } from 'react-native';
 import styles from './shared.scss';
 
 import Header from '../components/Header/Header';
-import ProgressBar from '../components/ProgressBar';
+import ProgressBar from '../components/ProgressBar/ProgressBar';
 import { Text, View } from '../components/Themed';
 import EditScreenInfo from '../components/EditScreenInfo/EditScreenInfo';
 

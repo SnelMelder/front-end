@@ -1,11 +1,8 @@
-import * as Progress from 'react-native-progress';
 import React from 'react';
 import { View } from 'react-native';
+import * as Progress from 'react-native-progress';
 
-export default function ProgressBar(props: {
-    maxSteps: number;
-    currentStep: number;
-}) {
+const ProgressBar = (props: { maxSteps: number; currentStep: number }) => {
     return (
         <View>
             <Progress.Bar
@@ -18,4 +15,6 @@ export default function ProgressBar(props: {
             />
         </View>
     );
-}
+};
+
+export default ProgressBar;
