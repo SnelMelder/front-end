@@ -61,7 +61,7 @@ const Header = () => {
             <View style={styles.container}>
                 <Image
                     style={styles.logo}
-                    source={require('../assets/images/goevaers_logo.png')}
+                    source={require('../../assets/images/goevaers_logo.png')}
                 />
                 <Text style={styles.text}>NIEUWE MELDING</Text>
             </View>
