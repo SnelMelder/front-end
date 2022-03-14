@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './shared.scss';
 
-import EditScreenInfo from '../components/EditScreenInfo';
+import EditScreenInfo from '../components/EditScreenInfo/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
 const TabOneScreen = () => {
