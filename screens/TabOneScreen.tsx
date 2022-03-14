@@ -1,25 +1,9 @@
 import React, { useRef, useState } from 'react';
-import { Button, StyleSheet } from 'react-native';
-import ProgressBar from '../components/ProgressBar';
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { Button } from 'react-native';
+import styles from './shared.scss';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%',
-    },
-});
+import ProgressBar from '../components/ProgressBar';
+import { Text, View } from '../components/Themed';
 
 const TabOneScreen = () => {
     const [currentStep, setNextStep] = useState(0);
