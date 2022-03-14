@@ -1,9 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-native';
 import styles from './shared.scss';
 
+import Header from '../components/Header/Header';
 import ProgressBar from '../components/ProgressBar';
 import { Text, View } from '../components/Themed';
+import EditScreenInfo from '../components/EditScreenInfo/EditScreenInfo';
 
 const TabOneScreen = () => {
     const [currentStep, setNextStep] = useState(0);
@@ -23,11 +25,15 @@ const TabOneScreen = () => {
     }
 
     return (
-        <View style={styles.container}>
-            <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />
-            <Button onPress={handleStepNext} title="Next" />
-            <Button onPress={handleStepPrevious} title="Previous" />
-        </View>
+        <>
+            <Header />
+
+            <View style={styles.container}>
+                <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />
+                <Button onPress={handleStepNext} title="Next" />
+                <Button onPress={handleStepPrevious} title="Previous" />
+            </View>
+        </>
     );
 };
 
