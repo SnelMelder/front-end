@@ -13,6 +13,7 @@ const App = () => {
     if (!isLoadingComplete) {
         return null;
     }
+
     return (
         <SafeAreaProvider>
             <Navigation colorScheme={colorScheme} />
