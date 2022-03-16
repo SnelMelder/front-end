@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+
+.getStartedContainer {
+    align-items: center;
+    margin: 0 50px;
+}
+
+.homeScreenFilename {
+    margin: 7px 0;
+}
+
+.codeHighlightContainer {
+    border-radius: 3px;
+    padding: 0 4px;
+}
+
+.getStartedText {
+    font-size: 17px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.helpContainer {
+    margin: 15px 20px 0 20px;
+    align-items: center;
+}
+
+.helpLink {
+    padding: 15px 0;
+}
+
+.helpLinkText {
+    text-align: center;
+}
