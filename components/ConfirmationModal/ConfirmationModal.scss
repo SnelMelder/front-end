@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+
+.centeredView {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+}
+
+.modalView {
+    background-color: white;
+    margin: 10px;
+    border-radius: 20px;
+    padding: 20px;
+    align-items: center;
+}
+
+.modalText {
+    margin: 15px;
+    font-size: 25;
+    text-align: center;
+}
+
+.closeButton {
+    background-color: #D6D6D6;
+    border-radius: 15px;
+    padding: 20px;
+}
