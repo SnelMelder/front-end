@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 const ModalScreen = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Modal</Text>
+            <Text style={styles.title}>Informatie</Text>
             <View
                 style={styles.separator}
                 lightColor="#eee"
