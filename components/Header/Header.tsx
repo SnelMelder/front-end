@@ -3,13 +3,21 @@ import { View, Text, Image, Pressable } from 'react-native';
 import styles from './Header.scss';
 
 const Header = () => {
+    function handleBack() {}
+
+    function handleClose() {}
+
     return (
         <View style={styles.header}>
             <Pressable
+                onPress={handleBack}
                 style={[styles.buttonLeft, styles.button]}
-                accessibilityLabel="Learn more about this purple button"
+                accessibilityLabel="Back button"
             >
-                <Text>Left</Text>
+                <Image
+                    style={styles.icon}
+                    source={require('../../assets/images/chevron-left-solid.png')}
+                />
             </Pressable>
 
             <View style={styles.container}>
@@ -21,10 +29,14 @@ const Header = () => {
             </View>
 
             <Pressable
+                onPress={handleClose}
                 style={[styles.buttonRight, styles.button]}
-                accessibilityLabel="Learn more about this purple button"
+                accessibilityLabel="Close button"
             >
-                <Text>X</Text>
+                <Image
+                    style={styles.icon}
+                    source={require('../../assets/images/xmark-solid.png')}
+                />
             </Pressable>
         </View>
     );
