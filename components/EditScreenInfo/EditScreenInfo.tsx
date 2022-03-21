@@ -1,24 +1,22 @@
 import React from 'react';
-import * as WebBrowser from 'expo-web-browser';
-import { TouchableOpacity } from 'react-native';
+import { ScrollView } from 'react-native';
 import styles from './EditScreenInfo.scss';
 
-import Colors from '../../constants/Colors';
-import { MonoText } from '../StyledText';
 import { Text, View } from '../Themed';
-
-function handleHelpPress() {
-    WebBrowser.openBrowserAsync(
-        'https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet'
-    );
-}
 
 const EditScreenInfo = () => {
     return (
-        <View>
+        <ScrollView>
             <View style={styles.getStartedContainer}>
                 <Text
-                    style={styles.getStartedText}
+                    style={styles.bigtitle}
+                    lightColor="rgba(0,0,0,0.8)"
+                    darkColor="rgba(255,255,255,0.8)"
+                >
+                    Informatie
+                </Text>
+                <Text
+                    style={styles.title}
                     lightColor="rgba(0,0,0,0.8)"
                     darkColor="rgba(255,255,255,0.8)"
                 >
@@ -38,7 +36,7 @@ const EditScreenInfo = () => {
                 <Text />
                 <Text />
                 <Text
-                    style={styles.getStartedText}
+                    style={styles.title}
                     lightColor="rgba(0,0,0,0.8)"
                     darkColor="rgba(255,255,255,0.8)"
                 >
@@ -58,7 +56,7 @@ const EditScreenInfo = () => {
                 <Text />
                 <Text />
                 <Text
-                    style={styles.getStartedText}
+                    style={styles.title}
                     lightColor="rgba(0,0,0,0.8)"
                     darkColor="rgba(255,255,255,0.8)"
                 >
@@ -78,7 +76,7 @@ const EditScreenInfo = () => {
                 <Text />
                 <Text />
                 <Text
-                    style={styles.getStartedText}
+                    style={styles.title}
                     lightColor="rgba(0,0,0,0.8)"
                     darkColor="rgba(255,255,255,0.8)"
                 >
@@ -95,8 +93,12 @@ const EditScreenInfo = () => {
                     Melden (VIM) of het Melding Incidenten Cliënten
                     (MIC)-systeem.
                 </Text>
+                <Text />
+                <Text />
+                <Text />
+                <Text />
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
