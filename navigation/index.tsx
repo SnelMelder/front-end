@@ -124,7 +124,6 @@ const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
             linking={LinkingConfiguration}
             theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
         >
-            <Text>Test</Text>
             <RootNavigator />
         </NavigationContainer>
     );
