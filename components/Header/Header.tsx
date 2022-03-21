@@ -1,11 +1,19 @@
 import React from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faChevronLeft, faXmark } from '@fortawesome/free-solid-svg-icons';
+// Documentation:
+// https://www.npmjs.com/package/@fortawesome/react-native-fontawesome#size
 import styles from './Header.scss';
 
 const Header = () => {
-    function handleBack() {}
+    function handleBack() {
+        // Navigate 1 step back
+    }
 
-    function handleClose() {}
+    function handleClose() {
+        // Navigate to main menu
+    }
 
     return (
         <View style={styles.header}>
@@ -14,10 +22,7 @@ const Header = () => {
                 style={[styles.buttonLeft, styles.button]}
                 accessibilityLabel="Back button"
             >
-                <Image
-                    style={styles.icon}
-                    source={require('../../assets/images/chevron-left-solid.png')}
-                />
+                <FontAwesomeIcon icon={faChevronLeft} size={26} />
             </Pressable>
 
             <View style={styles.container}>
@@ -33,10 +38,7 @@ const Header = () => {
                 style={[styles.buttonRight, styles.button]}
                 accessibilityLabel="Close button"
             >
-                <Image
-                    style={styles.icon}
-                    source={require('../../assets/images/xmark-solid.png')}
-                />
+                <FontAwesomeIcon icon={faXmark} size={28} />
             </Pressable>
         </View>
     );
