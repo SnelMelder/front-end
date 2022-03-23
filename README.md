@@ -54,6 +54,7 @@ npm start
 ```
 
 ## Live preview on iPhone
+
 1. [Create an Expo account](https://expo.dev/) on your desktop.
 2. Add a project, make sure the slug is: `SnelMelder`.
 3. [Download the Expo app](https://apps.apple.com/nl/app/expo-go/id982107779) and log in.
