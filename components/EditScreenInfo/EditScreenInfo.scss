@@ -1,8 +1,7 @@
 @import '../../styles/variables';
 
 .getStartedContainer {
-    align-items: center;
-    margin: 0 50px;
+    margin: 0 30px;
 }
 
 .homeScreenFilename {
@@ -17,7 +16,6 @@
 .getStartedText {
     font-size: 17px;
     line-height: 24px;
-    text-align: center;
 }
 
 .helpContainer {
@@ -31,4 +29,18 @@
 
 .helpLinkText {
     text-align: center;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 29px;
+    margin-bottom: 10px;
+}
+
+.bigtitle {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 35px;
+    margin-bottom: 30px;
 }
