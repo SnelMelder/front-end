@@ -4,8 +4,8 @@ import styles from './shared.scss';
 
 import Header from '../components/Header/Header';
 import ProgressBar from '../components/ProgressBar/ProgressBar';
-import { Text, View } from '../components/Themed';
-import EditScreenInfo from '../components/EditScreenInfo/EditScreenInfo';
+import { View } from '../components/Themed';
+import AfrondenButton from '../components/AfrondenButton/AfrondenButton';
 
 const TabOneScreen = () => {
     const [currentStep, setNextStep] = useState(0);
@@ -27,6 +27,8 @@ const TabOneScreen = () => {
     return (
         <>
             <Header />
+
+            <AfrondenButton />
 
             <View style={styles.container}>
                 <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />
