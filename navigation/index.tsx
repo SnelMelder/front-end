@@ -18,14 +18,16 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import ReportScreen from '../screens/ReportScreen';
 import {
     RootStackParamList,
     RootTabParamList,
     RootTabScreenProps,
 } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import HomeScreen from '../screens/HomeScreen';
+import NotificationScreen from '../screens/NotificationScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
@@ -42,18 +44,28 @@ const BottomTabNavigator = () => {
 
     return (
         <BottomTab.Navigator
-            initialRouteName="TabOne"
+            initialRouteName="TabHome"
             screenOptions={{
                 tabBarActiveTintColor: Colors[colorScheme].tint,
             }}
         >
             <BottomTab.Screen
-                name="TabOne"
-                component={TabOneScreen}
-                options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-                    title: 'Tab One',
+                name="TabHome"
+                component={HomeScreen}
+                options={{
+                    title: 'Home',
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="code" color={color} />
+                        <TabBarIcon name="home" color={color} />
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="TabReport"
+                component={ReportScreen}
+                options={({ navigation }: RootTabScreenProps<'TabReport'>) => ({
+                    title: 'Add report',
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="plus" color={color} />
                     ),
                     headerRight: () => (
                         <Pressable
@@ -73,12 +85,22 @@ const BottomTabNavigator = () => {
                 })}
             />
             <BottomTab.Screen
-                name="TabTwo"
-                component={TabTwoScreen}
+                name="TabNotification"
+                component={NotificationScreen}
                 options={{
-                    title: 'Tab Two',
+                    title: 'Notifications',
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="code" color={color} />
+                        <TabBarIcon name="bell" color={color} />
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="TabSettings"
+                component={SettingsScreen}
+                options={{
+                    title: 'Settings',
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="gear" color={color} />
                     ),
                 }}
             />

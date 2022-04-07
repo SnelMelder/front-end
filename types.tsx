@@ -20,8 +20,10 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
     NativeStackScreenProps<RootStackParamList, Screen>;
 
 export type RootTabParamList = {
-    TabOne: undefined;
-    TabTwo: undefined;
+    TabHome: undefined;
+    TabReport: undefined;
+    TabNotification: undefined;
+    TabSettings: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
@@ -29,3 +31,14 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
         BottomTabScreenProps<RootTabParamList, Screen>,
         NativeStackScreenProps<RootStackParamList>
     >;
+
+export type ButtonIncidentProps = {
+    title: string;
+    method: () => void;
+    style?: React.CSSProperties;
+};
+
+export type HeaderProps = {
+    handleBack: () => void;
+    handleClose: () => void;
+};
