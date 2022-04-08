@@ -47,13 +47,14 @@ const BottomTabNavigator = () => {
             initialRouteName="TabHome"
             screenOptions={{
                 tabBarActiveTintColor: Colors[colorScheme].tint,
+                tabBarShowLabel: false,
             }}
         >
             <BottomTab.Screen
                 name="TabHome"
                 component={HomeScreen}
                 options={{
-                    title: 'Home',
+                    title: 'Hoofdscherm',
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="home" color={color} />
                     ),
@@ -63,13 +64,18 @@ const BottomTabNavigator = () => {
                 name="TabReport"
                 component={ReportScreen}
                 options={({ navigation }: RootTabScreenProps<'TabReport'>) => ({
-                    title: 'Add report',
+                    title: 'Melding',
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="plus" color={color} />
                     ),
                     headerRight: () => (
                         <Pressable
-                            onPress={() => navigation.navigate('Modal')}
+                            // onPress={() => navigation.navigate('Modal')}
+                            onPress={() =>
+                                navigation.navigate('Root', {
+                                    screen: 'TabSettings',
+                                })
+                            }
                             style={({ pressed }) => ({
                                 opacity: pressed ? 0.5 : 1,
                             })}
@@ -88,7 +94,7 @@ const BottomTabNavigator = () => {
                 name="TabNotification"
                 component={NotificationScreen}
                 options={{
-                    title: 'Notifications',
+                    title: 'Notificaties',
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="bell" color={color} />
                     ),
@@ -98,7 +104,7 @@ const BottomTabNavigator = () => {
                 name="TabSettings"
                 component={SettingsScreen}
                 options={{
-                    title: 'Settings',
+                    title: 'Instellingen',
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="gear" color={color} />
                     ),

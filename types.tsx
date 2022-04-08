@@ -38,7 +38,13 @@ export type ButtonIncidentProps = {
     style?: React.CSSProperties;
 };
 
+// export type ButtonInformationProps = {};
+
 export type HeaderProps = {
     handleBack: () => void;
     handleClose: () => void;
+};
+
+export type ButtonPlusProps = {
+    handle: () => void;
 };
