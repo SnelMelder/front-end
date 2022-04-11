@@ -6,7 +6,7 @@ const AfrondenButton = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.modalText}>Uw melding</Text>
-            <View style={styles.closeButton}>Afronden</View>
+            <Text style={styles.closeButton}>Afronden</Text>
         </View>
     );
 };
