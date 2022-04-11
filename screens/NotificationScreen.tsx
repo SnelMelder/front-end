@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Pressable, Button } from 'react-native';
 import styles from './shared.scss';
 
-import EditScreenInfo from '../components/EditScreenInfo/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import ConfirmationModal from '../components/ConfirmationModal/ConfirmationModal';
 
