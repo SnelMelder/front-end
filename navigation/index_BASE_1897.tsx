@@ -12,22 +12,20 @@ import {
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { ColorSchemeName, Pressable, Text } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import ReportScreen from '../screens/ReportScreen';
+import TabOneScreen from '../screens/TabOneScreen';
+import TabTwoScreen from '../screens/TabTwoScreen';
 import {
     RootStackParamList,
     RootTabParamList,
     RootTabScreenProps,
 } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
-import HomeScreen from '../screens/HomeScreen';
-import NotificationScreen from '../screens/NotificationScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
@@ -44,38 +42,22 @@ const BottomTabNavigator = () => {
 
     return (
         <BottomTab.Navigator
-            initialRouteName="TabHome"
+            initialRouteName="TabOne"
             screenOptions={{
                 tabBarActiveTintColor: Colors[colorScheme].tint,
-                tabBarShowLabel: false,
             }}
         >
             <BottomTab.Screen
-                name="TabHome"
-                component={HomeScreen}
-                options={{
-                    title: 'Hoofdscherm',
+                name="TabOne"
+                component={TabOneScreen}
+                options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
+                    title: 'Tab One',
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="home" color={color} />
-                    ),
-                }}
-            />
-            <BottomTab.Screen
-                name="TabReport"
-                component={ReportScreen}
-                options={({ navigation }: RootTabScreenProps<'TabReport'>) => ({
-                    title: 'Melding',
-                    tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="plus" color={color} />
+                        <TabBarIcon name="code" color={color} />
                     ),
                     headerRight: () => (
                         <Pressable
-                            // onPress={() => navigation.navigate('Modal')}
-                            onPress={() =>
-                                navigation.navigate('Root', {
-                                    screen: 'TabSettings',
-                                })
-                            }
+                            onPress={() => navigation.navigate('Modal')}
                             style={({ pressed }) => ({
                                 opacity: pressed ? 0.5 : 1,
                             })}
@@ -91,32 +73,12 @@ const BottomTabNavigator = () => {
                 })}
             />
             <BottomTab.Screen
-                name="TabNotification"
-                component={NotificationScreen}
+                name="TabTwo"
+                component={TabTwoScreen}
                 options={{
-                    title: 'Notificaties',
+                    title: 'Tab Two',
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="bell" color={color} />
-                    ),
-                }}
-            />
-            <BottomTab.Screen
-                name="TabSettings"
-                component={SettingsScreen}
-                options={{
-                    title: 'Instellingen',
-                    tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="gear" color={color} />
-                    ),
-                }}
-            />
-            <BottomTab.Screen
-                name="TabThree"
-                component={TabThreeScreen}
-                options={{
-                    title: 'Date-time',
-                    tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="calendar" color={color} />
+                        <TabBarIcon name="code" color={color} />
                     ),
                 }}
             />

@@ -20,10 +20,16 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
     NativeStackScreenProps<RootStackParamList, Screen>;
 
 export type RootTabParamList = {
+<<<<<<< HEAD
+    TabOne: undefined;
+    TabTwo: undefined;
+    TabThree: undefined;
+=======
     TabHome: undefined;
     TabReport: undefined;
     TabNotification: undefined;
     TabSettings: undefined;
+>>>>>>> development
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

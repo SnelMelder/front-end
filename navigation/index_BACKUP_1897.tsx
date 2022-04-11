@@ -18,7 +18,13 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
+<<<<<<< HEAD
+import TabOneScreen from '../screens/TabOneScreen';
+import TabTwoScreen from '../screens/TabTwoScreen';
+import TabThreeScreen from '../screens/TabThreeScreen';
+=======
 import ReportScreen from '../screens/ReportScreen';
+>>>>>>> development
 import {
     RootStackParamList,
     RootTabParamList,
