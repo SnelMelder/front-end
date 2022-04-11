@@ -6,15 +6,13 @@ import EditScreenInfo from '../components/EditScreenInfo/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import ConfirmationModal from '../components/ConfirmationModal/ConfirmationModal';
 
-const TabTwoScreen = () => {
+const NotificationScreen = () => {
     const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Tab Two</Text>
-
             {/* For the confirmation button (Conformation popup) */}
-            <View style={styles.container}>
+            {/* <View style={styles.container}>
                 <ConfirmationModal visible={modalVisible}>
                     <Pressable
                         style={styles.button}
@@ -36,9 +34,9 @@ const TabTwoScreen = () => {
                 lightColor="#eee"
                 darkColor="rgba(255,255,255,0.1)"
             />
-            <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+            <EditScreenInfo path="/screens/NotificationScreen.tsx" /> */}
         </View>
     );
 };
 
-export default TabTwoScreen;
+export default NotificationScreen;
