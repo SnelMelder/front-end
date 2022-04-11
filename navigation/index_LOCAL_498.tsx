@@ -110,6 +110,16 @@ const BottomTabNavigator = () => {
                     ),
                 }}
             />
+            <BottomTab.Screen
+                name="TabThree"
+                component={TabThreeScreen}
+                options={{
+                    title: 'Date-time',
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="calendar" color={color} />
+                    ),
+                }}
+            />
         </BottomTab.Navigator>
     );
 };

@@ -55,6 +55,7 @@ const BottomTabNavigator = () => {
                 component={HomeScreen}
                 options={{
                     title: 'Hoofdscherm',
+<<<<<<< HEAD
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="home" color={color} />
                     ),
@@ -66,6 +67,19 @@ const BottomTabNavigator = () => {
                 options={({ navigation }: RootTabScreenProps<'TabReport'>) => ({
                     title: 'Melding',
                     tabBarIcon: ({ color }) => (
+=======
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="home" color={color} />
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="TabReport"
+                component={ReportScreen}
+                options={({ navigation }: RootTabScreenProps<'TabReport'>) => ({
+                    title: 'Melding',
+                    tabBarIcon: ({ color }) => (
+>>>>>>> development
                         <TabBarIcon name="plus" color={color} />
                     ),
                     headerRight: () => (
@@ -103,10 +117,27 @@ const BottomTabNavigator = () => {
             <BottomTab.Screen
                 name="TabSettings"
                 component={SettingsScreen}
+<<<<<<< HEAD
                 options={{
                     title: 'Instellingen',
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="gear" color={color} />
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="TabThree"
+                component={TabThreeScreen}
+                options={{
+                    title: 'Date-time',
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="calendar" color={color} />
+=======
+                options={{
+                    title: 'Instellingen',
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="gear" color={color} />
+>>>>>>> development
                     ),
                 }}
             />
