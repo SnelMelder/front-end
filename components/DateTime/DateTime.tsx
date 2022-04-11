@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { ScrollView } from 'react-native';
 import { View, Text } from '../Themed';
 
 import styles from './DateTime.scss';
@@ -9,7 +10,7 @@ const DateTime = () => {
     const [time, setTime] = useState(new Date());
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Text style={styles.title}>
                 Wanneer heeft het incident plaatsgevonden?
             </Text>
@@ -36,7 +37,7 @@ const DateTime = () => {
                     style={styles.time_picker}
                 />
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
