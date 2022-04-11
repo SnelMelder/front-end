@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Button } from 'react-native';
+import { Pressable, Button } from 'react-native';
 import styles from './shared.scss';
 
 import Header from '../components/Header/Header';
 import ProgressBar from '../components/ProgressBar/ProgressBar';
-import { View } from '../components/Themed';
+import { Text, View } from '../components/Themed';
 import AfrondenButton from '../components/AfrondenButton/AfrondenButton';
 
 const TabOneScreen = () => {
@@ -28,7 +28,16 @@ const TabOneScreen = () => {
         <>
             <Header />
 
-            <AfrondenButton />
+            <AfrondenButton>
+                <Pressable
+                    style={styles.button}
+                    onPress={() => setModalVisible(false)}
+                >
+                    <Text style={[styles.modalText, { fontSize: 20 }]}>
+                        Afronden
+                    </Text>
+                </Pressable>
+            </AfrondenButton>
 
             <View style={styles.container}>
                 <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />
