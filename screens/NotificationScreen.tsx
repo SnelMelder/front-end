@@ -6,6 +6,8 @@ import { Text, View } from '../components/Themed';
 import Notifications from '../components/Notifications/Notifications';
 
 const NotificationScreen = () => {
+    const [modalVisible, setModalVisible] = useState(false);
+    
     return (
         <>
             <Image
@@ -28,3 +30,4 @@ const NotificationScreen = () => {
 };
 
 export default NotificationScreen;
+   
