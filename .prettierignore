@@ -1,2 +1,4 @@
-/components/Themed.tsx
-/components/EditScreenInfo.tsx
+build
+coverage
+dist
+node_modules

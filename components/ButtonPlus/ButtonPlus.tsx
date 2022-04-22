@@ -7,21 +7,17 @@ import { ButtonPlusProps } from '../../types';
 import useColorScheme from '../../hooks/useColorScheme';
 
 const ButtonPlus = ({}: ButtonPlusProps) => {
-    const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme();
 
-    return (
-        <Pressable
-            style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-            })}
-        >
-            <AntDesign
-                name="pluscircle"
-                size={25}
-                color={Colors[colorScheme].text}
-            />
-        </Pressable>
-    );
+  return (
+    <Pressable
+      style={({ pressed }) => ({
+        opacity: pressed ? 0.5 : 1,
+      })}
+    >
+      <AntDesign name="pluscircle" size={25} color={Colors[colorScheme].text} />
+    </Pressable>
+  );
 };
 
 export default ButtonPlus;
