@@ -1,0 +1,37 @@
+@import '../../styles/variables';
+
+.container {
+  flex: 1;
+  align-items: center;
+}
+
+.title {
+  font-size: 25;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.notificationContainer {
+  background-color: #ededed;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.icon {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.subTitle {
+  padding-left: 25px;
+  font-size: 20;
+  color: black;
+}
+
+.text {
+  font-size: 18;
+  text-align: center;
+  color: #6e6e6e;
+}

@@ -6,16 +6,16 @@ import ButtonPlus from '../components/ButtonPlus/ButtonPlus';
 import { RootTabScreenProps } from '../types';
 
 const HomeScreen = ({ navigation }: RootTabScreenProps<'TabHome'>) => {
-    const navigate = () => navigation.navigate('Modal');
-    // const navigate = () => {
-    //     navigation.navigate('Root', { screen: 'TabReport' });
-    // };
+  const navigate = () => navigation.navigate('Modal');
+  // const navigate = () => {
+  //     navigation.navigate('Root', { screen: 'TabReport' });
+  // };
 
-    return (
-        <View style={styles.container}>
-            <ButtonPlus handle={navigate} />
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <ButtonPlus handle={navigate} />
+    </View>
+  );
 };
 
 export default HomeScreen;

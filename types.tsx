@@ -4,47 +4,45 @@
  */
 
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import {
-    CompositeScreenProps,
-    NavigatorScreenParams,
-} from '@react-navigation/native';
+import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
-    Root: NavigatorScreenParams<RootTabParamList> | undefined;
-    Modal: undefined;
-    NotFound: undefined;
+  Root: NavigatorScreenParams<RootTabParamList> | undefined;
+  Modal: undefined;
+  NotFound: undefined;
 };
 
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
-    NativeStackScreenProps<RootStackParamList, Screen>;
+export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
+  RootStackParamList,
+  Screen
+>;
 
 export type RootTabParamList = {
-    TabHome: undefined;
-    TabReport: undefined;
-    TabNotification: undefined;
-    TabSettings: undefined;
+  TabHome: undefined;
+  TabReport: undefined;
+  TabNotification: undefined;
+  TabSettings: undefined;
 };
 
-export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
-    CompositeScreenProps<
-        BottomTabScreenProps<RootTabParamList, Screen>,
-        NativeStackScreenProps<RootStackParamList>
-    >;
+export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
+  BottomTabScreenProps<RootTabParamList, Screen>,
+  NativeStackScreenProps<RootStackParamList>
+>;
 
 export type ButtonIncidentProps = {
-    title: string;
-    method: () => void;
-    style?: React.CSSProperties;
+  title: string;
+  method: () => void;
+  style?: React.CSSProperties;
 };
 
 // export type ButtonInformationProps = {};
 
 export type HeaderProps = {
-    handleBack: () => void;
-    handleClose: () => void;
+  handleBack: () => void;
+  handleClose: () => void;
 };
 
 export type ButtonPlusProps = {
-    handle: () => void;
+  handle: () => void;
 };
