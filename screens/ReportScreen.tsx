@@ -75,20 +75,16 @@ const ReportScreen = () => {
     <>
       <Header handleBack={handleStepPrevious} handleClose={resetCurrentStep} />
 
-            <View style={sharedStyles.container}>
-                <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />
-                {renderStepDisplay(currentStep)}
-                <View style={sharedStyles.report_screen_buttons}>
-                    <ButtonIncident title="Overslaan" method={handleStepNext} />
-                    <ButtonIncident
-                        title="Volgende"
-                        method={handleStepNext}
-                        style={{ marginLeft: 10 }}
-                    />
-                </View>
-            </View>
-        </>
-    );
+      <View style={sharedStyles.container}>
+        <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />
+        {renderStepDisplay(currentStep)}
+        <View style={sharedStyles.report_screen_buttons}>
+          <ButtonIncident title="Overslaan" method={handleStepNext} />
+          <ButtonIncident title="Volgende" method={handleStepNext} style={{ marginLeft: 10 }} />
+        </View>
+      </View>
+    </>
+  );
 };
 
 export default ReportScreen;

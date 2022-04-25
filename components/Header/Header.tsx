@@ -18,10 +18,7 @@ const Header = ({ handleBack, handleClose }: HeaderProps) => {
         <FontAwesomeIcon icon={faChevronLeft} size={26} />
       </TouchableOpacity>
 
-      <Image
-        style={styles.logo}
-        source={require('../../assets/images/header_nieuwe_melding.png')}
-      />
+      <Image style={styles.logo} source={require('../../assets/images/header_nieuwe_melding.png')} />
 
       <TouchableOpacity
         onPress={handleClose}
