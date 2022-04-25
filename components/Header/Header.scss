@@ -1,10 +1,9 @@
 @import '../../styles/variables';
 
 .header {
-    height: 130px;
+    height: 120px;
     align-self: stretch;
     padding: 0;
-    background-color: #555;
     top: 0;
     flex-direction: row;
     align-items: flex-start;
@@ -17,19 +16,10 @@
     text-align: center;
 }
 
-.container {
-    align-self: flex-end;
-    background-color: #fff;
-    padding: 10px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    bottom: 0;
-}
-
 .logo {
-    width: 70px;
-    height: 70px;
+    position: absolute;
     align-self: center;
+    z-index: -1;
 }
 
 .button {
