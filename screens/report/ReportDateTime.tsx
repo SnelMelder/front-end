@@ -5,11 +5,11 @@ import DateTime from '../../components/DateTime/DateTime';
 import { Text, View } from '../../components/Themed';
 
 const ReportDateTime = () => {
-    return (
-        <View style={styles.container}>
-            <DateTime />
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <DateTime />
+    </View>
+  );
 };
 
 export default ReportDateTime;
