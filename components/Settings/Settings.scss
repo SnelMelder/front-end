@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+
+.container {
+  flex: 1;
+  align-items: center;
+}
+
+.title {
+  font-size: 25;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.header {
+  font-size: 20;
+  vertical-align: top;
+  text-align: right;
+  color: black;
+}
