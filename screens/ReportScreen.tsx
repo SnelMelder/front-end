@@ -78,8 +78,10 @@ const ReportScreen = () => {
       <View style={sharedStyles.container}>
         <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />
         {renderStepDisplay(currentStep)}
-        <ButtonIncident title="Overslaan" method={handleStepNext} />
-        <ButtonIncident title="Volgende" method={handleStepNext} style={{ marginTop: 10 }} />
+        <View style={sharedStyles.report_screen_buttons}>
+          <ButtonIncident title="Overslaan" method={handleStepNext} />
+          <ButtonIncident title="Volgende" method={handleStepNext} style={{ marginLeft: 10 }} />
+        </View>
       </View>
     </>
   );
