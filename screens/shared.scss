@@ -6,6 +6,11 @@
   padding: 20px;
 }
 
+.report_screen_buttons {
+  display: flex;
+  flex-direction: row;
+}
+
 .title {
   font-size: 25px;
   font-weight: 300;
@@ -24,4 +29,8 @@
 .linkText {
   font-size: 14px;
   color: #2e78b7;
+}
+
+.logo {
+  width: 100%;
 }
