@@ -1,10 +1,19 @@
 import React from 'react';
+import { Image } from 'react-native';
 import styles from './shared.scss';
 
-import { Text, View } from '../components/Themed';
+import { View } from '../components/Themed';
+import Settings from '../components/Settings/Settings';
 
 const SettingsScreen = () => {
-  return <View style={styles.container}>{/* <Text style={styles.title}>Settings Screen</Text> */}</View>;
+  return (
+    <>
+      <Image style={styles.logo} source={require('../assets/images/SnelMelder_Home_Logo.png')} />
+      <View style={styles.container}>
+        <Settings />
+      </View>
+    </>
+  );
 };
 
 export default SettingsScreen;

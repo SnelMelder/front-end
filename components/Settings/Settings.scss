@@ -1,0 +1,58 @@
+@import '../../styles/variables';
+
+.container {
+  flex: 1;
+}
+
+.arrowIcon {
+  font-size: 25px;
+}
+
+.title {
+  font-size: 25;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.text {
+  padding-left: 20px;
+}
+
+.header {
+  font-size: 20;
+  vertical-align: top;
+  text-align: left;
+  font-weight: 600;
+  color: black;
+  padding-top: 25px;
+  padding-bottom: 15px;
+}
+
+.logoutButton {
+  padding: 20px;
+  background-color: #d8d8d8;
+  border-radius: 10px;
+  width: 170px;
+  align-items: center;
+}
+
+.subContainer {
+  padding: 30px;
+}
+
+.textButton {
+  font-weight: 600;
+}
+
+.buttonContainer {
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.notificationContainer {
+  flex-direction: 'row';
+}

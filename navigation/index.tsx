@@ -87,6 +87,7 @@ const BottomTabNavigator = () => {
         options={{
           title: 'Instellingen',
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="gear" color={color} />,
         }}
       />
