@@ -1,4 +1,5 @@
 import React from 'react';
+import { Image } from 'react-native';
 import styles from './shared.scss';
 
 import { Text, View } from '../components/Themed';
@@ -12,9 +13,12 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabHome'>) => {
   // };
 
   return (
-    <View style={styles.container}>
-      <ButtonPlus handle={navigate} />
-    </View>
+    <>
+      <Image style={styles.logo} source={require('../assets/images/SnelMelder_Home_Logo.png')} />
+      <View style={styles.container}>
+        <ButtonPlus handle={navigate} />
+      </View>
+    </>
   );
 };
 
