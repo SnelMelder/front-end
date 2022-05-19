@@ -16,10 +16,11 @@ import ReportTypeOfDamage from './report/ReportTypeOfDamage';
 import ReportLocationOfInjury from './report/ReportLocationOfInjury';
 import ReportAddPicture from './report/ReportAddPicture';
 import ReportAdditionalInformation from './report/ReportAdditionalInformation';
+import ReportSummary from './report/ReportSummary';
 
 const ReportScreen = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const maxSteps = 9;
+  const maxSteps = 10;
   const stepSize = 1 / maxSteps;
 
   function handleStepNext() {
@@ -40,33 +41,96 @@ const ReportScreen = () => {
 
   function renderStepDisplay(step: number) {
     const rStep = Math.round(step * 10) / 10;
+    const progressBar = <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />;
 
     if (rStep === 0.0) {
-      return <ReportCategory />;
+      return (
+        <>
+          {progressBar}
+          <ReportCategory />
+        </>
+      );
     }
     if (rStep === 0.1) {
-      return <ReportLocation />;
+      return (
+        <>
+          {progressBar}
+          <ReportLocation />
+        </>
+      );
     }
+
     if (rStep === 0.2) {
-      return <ReportDateTime />;
+      return (
+        <>
+          {progressBar}
+          <ReportDateTime />
+        </>
+      );
     }
+
     if (rStep === 0.3) {
-      return <ReportPersonInvolved />;
+      return (
+        <>
+          {progressBar}
+          <ReportPersonInvolved />
+        </>
+      );
     }
+
     if (rStep === 0.4) {
-      return <ReportAssistanceWitness />;
+      return (
+        <>
+          {progressBar}
+          <ReportAssistanceWitness />
+        </>
+      );
     }
+
+    if (rStep === 0.5) {
+      return (
+        <>
+          {progressBar}
+          <ReportAssistanceWitness />
+        </>
+      );
+    }
+
     if (rStep === 0.6) {
-      return <ReportTypeOfDamage />;
+      return (
+        <>
+          {progressBar}
+          <ReportTypeOfDamage />
+        </>
+      );
     }
+
     if (rStep === 0.7) {
-      return <ReportLocationOfInjury />;
+      return (
+        <>
+          {progressBar}
+          <ReportLocationOfInjury />
+        </>
+      );
     }
     if (rStep === 0.8) {
-      return <ReportAddPicture />;
+      return (
+        <>
+          {progressBar}
+          <ReportAddPicture />
+        </>
+      );
     }
     if (rStep === 0.9) {
-      return <ReportAdditionalInformation />;
+      return (
+        <>
+          {progressBar}
+          <ReportAdditionalInformation />
+        </>
+      );
+    }
+    if (rStep === 1.0) {
+      return <ReportSummary />;
     }
     return <Text>Please try again</Text>;
   }
@@ -76,7 +140,6 @@ const ReportScreen = () => {
       <Header handleBack={handleStepPrevious} handleClose={resetCurrentStep} />
 
       <View style={sharedStyles.container}>
-        <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />
         {renderStepDisplay(currentStep)}
         <View style={sharedStyles.report_screen_buttons}>
           <ButtonIncident title="Overslaan" method={handleStepNext} />
