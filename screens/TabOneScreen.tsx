@@ -27,13 +27,11 @@ const TabOneScreen = () => {
   return (
     <>
       <Header />
-
       <AfrondenButton>
         <Pressable style={styles.button} onPress={() => setModalVisible(false)}>
           <Text style={[styles.modalText, { fontSize: 20 }]}>Afronden</Text>
         </Pressable>
       </AfrondenButton>
-
       <View style={styles.container}>
         <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />
         <Button onPress={handleStepNext} title="Next" />
