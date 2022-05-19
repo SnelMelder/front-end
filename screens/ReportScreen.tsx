@@ -8,6 +8,7 @@ import ButtonIncident from '../components/ButtonIncident/ButtonIncident';
 import { Text, View } from '../components/Themed';
 
 import ReportCategory from './report/ReportCategory';
+import ReportIncidentOther from './report/ReportIncidentOther';
 import ReportLocation from './report/ReportLocation';
 import ReportDateTime from './report/ReportDateTime';
 import ReportPersonInvolved from './report/ReportPersonInvolved';
@@ -45,15 +46,18 @@ const ReportScreen = () => {
       return <ReportCategory />;
     }
     if (rStep === 0.1) {
-      return <ReportLocation />;
+      return <ReportIncidentOther />;
     }
     if (rStep === 0.2) {
-      return <ReportDateTime />;
+      return <ReportLocation />;
     }
     if (rStep === 0.3) {
-      return <ReportPersonInvolved />;
+      return <ReportDateTime />;
     }
     if (rStep === 0.4) {
+      return <ReportPersonInvolved />;
+    }
+    if (rStep === 0.5) {
       return <ReportAssistanceWitness />;
     }
     if (rStep === 0.6) {
