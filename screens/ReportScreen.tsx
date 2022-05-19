@@ -8,6 +8,7 @@ import ButtonIncident from '../components/ButtonIncident/ButtonIncident';
 import { Text, View } from '../components/Themed';
 
 import ReportCategory from './report/ReportCategory';
+import ReportIncidentOther from './report/ReportIncidentOther';
 import ReportLocation from './report/ReportLocation';
 import ReportDateTime from './report/ReportDateTime';
 import ReportPersonInvolved from './report/ReportPersonInvolved';
