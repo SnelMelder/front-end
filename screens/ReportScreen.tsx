@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { SafeAreaView } from 'react-native';
 import sharedStyles from './shared.scss';
 
 import Header from '../components/Header/Header';
@@ -17,8 +18,9 @@ import ReportTypeOfDamage from './report/ReportTypeOfDamage';
 import ReportLocationOfInjury from './report/ReportLocationOfInjury';
 import ReportAddPicture from './report/ReportAddPicture';
 import ReportAdditionalInformation from './report/ReportAdditionalInformation';
+import { RootTabScreenProps } from '../types';
 
-const ReportScreen = () => {
+const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
   const [currentStep, setCurrentStep] = useState(0);
   const maxSteps = 9;
   const stepSize = 1 / maxSteps;
@@ -35,8 +37,8 @@ const ReportScreen = () => {
     }
   }
 
-  function resetCurrentStep() {
-    setCurrentStep(0);
+  function closeReport() {
+    navigation.navigate('Root', { screen: 'TabHome' });
   }
 
   function renderStepDisplay(step: number) {
@@ -77,14 +79,15 @@ const ReportScreen = () => {
 
   return (
     <>
-      <Header handleBack={handleStepPrevious} handleClose={resetCurrentStep} />
-
+      <SafeAreaView>
+        <Header handleBack={handleStepPrevious} handleClose={closeReport} />
+      </SafeAreaView>
       <View style={sharedStyles.container}>
         <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />
         {renderStepDisplay(currentStep)}
         <View style={sharedStyles.report_screen_buttons}>
-          <ButtonIncident title="Overslaan" method={handleStepNext} />
-          <ButtonIncident title="Volgende" method={handleStepNext} style={{ marginLeft: 10 }} />
+          <ButtonIncident title="Volgende" method={handleStepNext} />
+          <ButtonIncident title="Overslaan" style={{ marginTop: 10 }} method={handleStepNext} />
         </View>
       </View>
     </>
