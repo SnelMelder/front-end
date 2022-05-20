@@ -3,18 +3,18 @@ import { StyleSheet, Text, View, Pressable, Image, ImageBackground, TouchableOpa
 
 //const Vinkje = require("./assets/GSM_Vinkje.png");
 //const OngevalImg = require("./assets/soort_incident_ongeval.png");
-const Vinkje = require("../../assets/images/soort-incident/GSM_Vinkje");
+const Vinkje = require('../../assets/images/soort-incident/GSM_Vinkje');
 
-const OngevalImg = require("../../assets/images/soort-incident/soort_incident_ongeval");
-const BijnaOngImg = require("../../assets/images/soort-incident/soort_incident_bijna_ongeval");
-const GevSitImg = require("../../assets/images/soort-incident/gev_sit_ongeval");
-const GevHanImg = require("../../assets/images/soort-incident/gev_han_ongeval");
-const OverigImg = require("../../assets/images/soort-incident/overig");
+const OngevalImg = require('../../assets/images/soort-incident/soort_incident_ongeval');
+const BijnaOngImg = require('../../assets/images/soort-incident/soort_incident_bijna_ongeval');
+const GevSitImg = require('../../assets/images/soort-incident/gev_sit_ongeval');
+const GevHanImg = require('../../assets/images/soort-incident/gev_han_ongeval');
+const OverigImg = require('../../assets/images/soort-incident/overig');
 
+import styles from './SoortIncident.scss';
 
-import styles from "./SoortIncident.scss";
-
-{/*
+{
+  /*
     https://docs.expo.dev/versions/latest/sdk/checkbox/
     terminal: yarn start
 
@@ -26,44 +26,24 @@ import styles from "./SoortIncident.scss";
     - #C691D6 / rgba(198, 145, 214, 0.65) (purple)
 
     - #52BB1D (check green)
-*/}
+*/
+}
 
-function MyCheckbox({
-  checked,
-  onChange,
-  buttonStyle = {},
-  activeButtonStyle = {},
-  inactiveButtonStyle = {},
-
-}) 
-{
-
+function MyCheckbox({ checked, onChange, buttonStyle = {}, activeButtonStyle = {}, inactiveButtonStyle = {} }) {
   function onCheckmarkPress() {
     onChange(!checked);
   }
 
   return (
-    <Pressable
-      style={[
-        buttonStyle,
-        checked
-          ? activeButtonStyle
-          : inactiveButtonStyle,
-        ]}
-      onPress={onCheckmarkPress}>
-      {checked && (
-        <Image
-          source={Vinkje}  
-          style= {styles.vinkje} 
-        />
-      )}
+    <Pressable style={[buttonStyle, checked ? activeButtonStyle : inactiveButtonStyle]} onPress={onCheckmarkPress}>
+      {checked && <Image source={Vinkje} style={styles.vinkje} />}
     </Pressable>
   );
 }
 
 export default function App() {
   MyCheckbox;
-  
+
   const [oneChecked, onOneChange] = useState(false);
   const [twoChecked, onTwoChange] = useState(false);
   const [threeChecked, onThreeChange] = useState(false);
@@ -72,12 +52,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-
       <Text style={styles.appTitle}>Soort incident</Text>
 
       <View style={styles.checkboxContainer}>
-
-        <View style={ styles.checkboxWrapper }>
+        <View style={styles.checkboxWrapper}>
           <ImageBackground source={OngevalImg} style={styles.ongevalBackImg} />
           <MyCheckbox
             checked={oneChecked}
@@ -88,7 +66,7 @@ export default function App() {
           <Text style={styles.paragraph}>Checkbox one</Text>
         </View>
 
-        <View style={ styles.checkboxWrapper }>
+        <View style={styles.checkboxWrapper}>
           <ImageBackground source={OngevalImg} style={styles.ongevalBackImg} />
           <MyCheckbox
             checked={twoChecked}
@@ -99,7 +77,7 @@ export default function App() {
           <Text style={styles.paragraph}>Checkbox two</Text>
         </View>
 
-        <View style={ styles.checkboxWrapper }>
+        <View style={styles.checkboxWrapper}>
           <ImageBackground source={OngevalImg} style={styles.ongevalBackImg} />
           <MyCheckbox
             checked={threeChecked}
@@ -110,7 +88,7 @@ export default function App() {
           <Text style={styles.paragraph}>Checkbox three</Text>
         </View>
 
-        <View style={ styles.checkboxWrapper }>
+        <View style={styles.checkboxWrapper}>
           <ImageBackground source={OngevalImg} style={styles.ongevalBackImg} />
           <MyCheckbox
             checked={fourChecked}
@@ -121,7 +99,7 @@ export default function App() {
           <Text style={styles.paragraph}>Checkbox four</Text>
         </View>
 
-        <View style={ styles.checkboxWrapper }>
+        <View style={styles.checkboxWrapper}>
           <ImageBackground source={OngevalImg} style={styles.ongevalBackImg} />
           <MyCheckbox
             checked={fiveChecked}
@@ -131,10 +109,7 @@ export default function App() {
           />
           <Text style={styles.paragraph}>Checkbox five</Text>
         </View>
-
       </View>
-
     </View>
   );
 }
-
