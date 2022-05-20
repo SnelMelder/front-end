@@ -1,0 +1,63 @@
+.summaryContainer {
+  background-color: lightgrey;
+  margin-top: 20px;
+  flex-direction: row;
+  padding: 10px;
+  min-width: 100%;
+  justify-content: space-between;
+}
+
+.submitSummaryButton {
+  padding: 15px;
+  background-color: #8acd67;
+  border-radius: 10px;
+  width: 170px;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.summaryTitleContainer {
+  font-weight: 600;
+  font-size: 20;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+.summaryTextUnderline {
+  text-decoration: underline;
+  padding-left: 35px;
+}
+
+.summaryHeader {
+  font-size: 16;
+  text-align: left;
+  padding-left: 35px;
+  font-weight: 600;
+  color: black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.summaryBigPicture {
+  align-self: center;
+  width: 80%;
+  border-radius: 15px;
+  padding-bottom: 10px;
+}
+
+.summarySmallPicture {
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.summaryItem {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.summaryScrollView {
+  justify-content: stretch;
+}
