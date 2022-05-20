@@ -1,57 +1,58 @@
 @import '../../styles/variables';
 
 .header {
-    height: 130px;
-    align-self: stretch;
-    padding: 0;
-    background-color: #555;
-    top: 0;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
+  height: 120px;
+  align-self: stretch;
+  padding: 0;
+  top: 0;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .text {
-    color: #000;
-    font-size: 23px;
-    text-align: center;
+  color: #000;
+  font-size: 23px;
+  text-align: center;
 }
 
 .container {
-    align-self: flex-end;
-    background-color: #fff;
-    padding: 10px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    bottom: 0;
+  align-self: flex-end;
+  background-color: #fff;
+  padding: 10px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  bottom: 0;
 }
 
 .logo {
-    width: 70px;
-    height: 70px;
-    align-self: center;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  position: absolute;
 }
 
 .button {
-    background-color: #fff;
-    width: 70px;
-    height: 50px;
-    align-self: center;
-    align-items: center;
-    justify-content: center;
+  background-color: #fff;
+  width: 70px;
+  height: 50px;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
 .buttonLeft {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .buttonRight {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .icon {
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
 }

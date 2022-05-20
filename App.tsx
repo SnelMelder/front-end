@@ -7,19 +7,19 @@ import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
 const App = () => {
-    const isLoadingComplete = useCachedResources();
-    const colorScheme = useColorScheme();
+  const isLoadingComplete = useCachedResources();
+  const colorScheme = useColorScheme();
 
-    if (!isLoadingComplete) {
-        return null;
-    }
+  if (!isLoadingComplete) {
+    return null;
+  }
 
-    return (
-        <SafeAreaProvider>
-            <Navigation colorScheme={colorScheme} />
-            <StatusBar />
-        </SafeAreaProvider>
-    );
+  return (
+    <SafeAreaProvider>
+      <Navigation colorScheme={colorScheme} />
+      <StatusBar />
+    </SafeAreaProvider>
+  );
 };
 
 export default App;
