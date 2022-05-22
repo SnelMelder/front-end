@@ -46,6 +46,7 @@ const BottomTabNavigator = () => {
         options={{
           title: 'Hoofdscherm',
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
       />
@@ -55,6 +56,8 @@ const BottomTabNavigator = () => {
         options={({ navigation }: RootTabScreenProps<'TabReport'>) => ({
           title: 'Melding',
           tabBarIcon: ({ color }) => <TabBarIcon name="plus" color={color} />,
+          headerShown: false,
+          tabBarStyle: { display: 'none' },
           headerRight: () => (
             <Pressable
               // onPress={() => navigation.navigate('Modal')}
@@ -78,6 +81,7 @@ const BottomTabNavigator = () => {
         options={{
           title: 'Notificaties',
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="bell" color={color} />,
         }}
       />
@@ -87,6 +91,7 @@ const BottomTabNavigator = () => {
         options={{
           title: 'Instellingen',
           tabBarShowLabel: false,
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="gear" color={color} />,
         }}
       />
