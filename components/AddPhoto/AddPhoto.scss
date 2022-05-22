@@ -1,0 +1,54 @@
+@import '../../styles/variables';
+
+.container {
+    flex: 1;
+}
+
+.mainImageContainer {
+    border-width: 2px;
+    border-color: black;
+    position: relative;
+    align-self: center;
+    border-radius: 10px;
+    width: 80%;
+    height: 180px;
+    margin-top: 20px;
+}
+
+.mainImage{
+    height: 176px;
+    width: 200px;
+    border-radius: 10px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.smallPressables{
+    flex-direction: row;
+    
+}
+
+.deleteButton{
+    background-color: #e1616188;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    margin-right: 5px;
+    align-self: flex-end;
+    position: absolute;
+}
+
+.addButton{
+    background-color: #6AC580;
+    border-radius: 10px;
+    margin: 4px;
+    padding: 7px;
+}
+
+.restartButton{
+    background-color: #E16161;
+    border-radius: 10px;
+    margin: 4px;
+    padding: 7px;
+}
