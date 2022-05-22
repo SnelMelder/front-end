@@ -1,13 +1,6 @@
-<<<<<<< Updated upstream
 build
 coverage
 dist
 node_modules
-=======
 /components/Themed.tsx
 /components/EditScreenInfo.tsx
-node_modules
-build
-dist
-coverage
->>>>>>> Stashed changes
