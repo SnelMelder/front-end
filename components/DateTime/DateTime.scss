@@ -19,11 +19,16 @@
 .time_container {
   display: flex;
   height: 100%;
+  margin-left: 25px;
+  margin-right: 25px;
   flex: 1;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
+  align-items:center;
+  justify-content:space-between;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-bottom: 10px;
+  margin-top: 25px;
   border-bottom-color: rgb(62, 62, 62);
   border-bottom-width: 1px;
 }
@@ -36,3 +41,4 @@
 .time_picker {
   width: 75px;
 }
+
