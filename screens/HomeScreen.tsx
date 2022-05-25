@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import styles from './homescreen.scss';
 import sharedStyles from './shared.scss';
 
-
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import ButtonPlusBigGreen from '../components/ButtonPlusBigGreen/ButtonPlus';
