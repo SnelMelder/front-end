@@ -49,26 +49,23 @@ const ReportSummary = () => {
         <View style={styles.summaryItem}>
           <Text style={styles.summaryHeader}>Foto('s):</Text>
           <View style={{ flexDirection: 'column' }}>
-            <Image
-              style={styles.summaryBigPicture}
-              source={require('/Users/koen/Workspace/front-end/assets/images/SnelMelder_Home_Logo.png')}
-            />
+            <Image style={styles.summaryBigPicture} source={require('../../assets/images/SnelMelder_Home_Logo.png')} />
             <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
               <Image
                 style={styles.summarySmallPicture}
-                source={require('/Users/koen/Workspace/front-end/assets/images/SnelMelder_Home_Logo.png')}
+                source={require('../../assets/images/SnelMelder_Home_Logo.png')}
               />
               <Image
                 style={styles.summarySmallPicture}
-                source={require('/Users/koen/Workspace/front-end/assets/images/SnelMelder_Home_Logo.png')}
+                source={require('../../assets/images/SnelMelder_Home_Logo.png')}
               />
               <Image
                 style={styles.summarySmallPicture}
-                source={require('/Users/koen/Workspace/front-end/assets/images/SnelMelder_Home_Logo.png')}
+                source={require('../../assets/images/SnelMelder_Home_Logo.png')}
               />
               <Image
                 style={styles.summarySmallPicture}
-                source={require('/Users/koen/Workspace/front-end/assets/images/SnelMelder_Home_Logo.png')}
+                source={require('../../assets/images/SnelMelder_Home_Logo.png')}
               />
             </View>
           </View>
