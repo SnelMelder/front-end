@@ -9,6 +9,8 @@ import { faPlus, faRefresh, faTrashCan } from '@fortawesome/free-solid-svg-icons
 import { useMediaLibraryPermissions } from 'expo-image-picker';
 import * as ExpoImagePicker from 'expo-image-picker';
 const ReportAddPicture = () => {
+    function DeleteImage() {
+    }
     const openGallery = async() => {
     }
     function Restart() {
