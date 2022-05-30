@@ -45,6 +45,7 @@ const BottomTabNavigator = () => {
         component={HomeScreen}
         options={{
           title: 'Hoofdscherm',
+          headerShown: false,
           tabBarShowLabel: false,
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
