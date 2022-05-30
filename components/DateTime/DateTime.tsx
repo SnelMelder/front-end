@@ -38,6 +38,7 @@ export default class DateTime extends Component {
   };
 
   renderIos() {
+    const { show, date, mode } = this.state;
     return (
       <View>
         <DateTimePicker
@@ -51,11 +52,13 @@ export default class DateTime extends Component {
           maximumDate={moment().toDate()}
         />
         <View style={styles.time_container}>
-          <Text style={styles.time_title}>Tijd</Text>
+          <View style={styles.time_container_title}>
+            <Text style={styles.time_title}>Tijd</Text>
+          </View>
           <DateTimePicker
             testID="timePicker"
             display="compact"
-            value={time}
+            value={date}
             mode="time"
             is24Hour={true}
             style={styles.time_picker}
@@ -69,13 +72,13 @@ export default class DateTime extends Component {
     return (
       <View>
         <TouchableOpacity onPress={this.datepicker} style={{ alignSelf: 'stretch', flex: 1, flexDirection: 'column' }}>
-          <View style={styles.time_container}>
+          <View style={styles.time_container_a}>
             <Text style={styles.time_title}>Datum</Text>
             <Text style={styles.time_picker}>{moment(this.state.date).format('DD-MM-YYYY')}</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={this.timepicker} style={{ alignSelf: 'stretch', flex: 1, flexDirection: 'column' }}>
-          <View style={styles.time_container}>
+          <View style={styles.time_container_a}>
             <Text style={styles.time_title}>Tijd</Text>
             <Text style={styles.time_picker}>{moment(this.state.date).format('HH:mm')}</Text>
           </View>
@@ -88,10 +91,7 @@ export default class DateTime extends Component {
     const { show, date, mode } = this.state;
 
     return (
-      <ScrollView style={{ paddingTop: 25 }}>
-        <Text style={styles.title}>Wanneer heeft het incident plaatsgevonden?</Text>
-        <Text style={styles.sub_title}>Vul de datum en het tijdstip van het incident in.</Text>
-
+      <ScrollView style={styles.container}>
         {Platform.OS == 'ios' ? this.renderIos() : this.renderAndroid()}
 
         {show && (
