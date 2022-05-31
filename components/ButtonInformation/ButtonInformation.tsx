@@ -1,20 +1,17 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 
-import { AntDesign } from '@expo/vector-icons';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import useColorScheme from '../../hooks/useColorScheme';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ButtonInformation = () => {
-  const colorScheme = useColorScheme();
-
   return (
     <Pressable
       style={({ pressed }) => ({
         opacity: pressed ? 0.5 : 1,
       })}
     >
-      <AntDesign name="infocirlceo" size={25} color={Colors[colorScheme].text} />
+      <FontAwesomeIcon icon={faInfoCircle} size={26} />
     </Pressable>
   );
 };

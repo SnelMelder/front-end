@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 
+import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
 import { View, Text, Image, Pressable, Platform } from 'react-native';
 import styles from './ReportAddPicture.scss';
 import * as ImagePicker from 'react-native-image-picker';
