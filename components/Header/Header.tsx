@@ -16,7 +16,7 @@ const Header = ({ handleBack, handleClose }: HeaderProps) => {
         accessibilityLabel="Back button"
       >
         <FontAwesomeIcon icon={faChevronLeft} size={26} />
-      </TouchableOpacity>
+      </TouchableOpacity> 
 
       <Image style={styles.logo} source={require('../../assets/images/header_nieuwe_melding.png')} />
 

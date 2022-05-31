@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 
 .header {
-  height: 120px;
+  height: 110px;
   align-self: stretch;
   padding: 0;
   top: 0;
@@ -10,25 +10,20 @@
   justify-content: space-between;
 }
 
-.text {
-  color: #000;
-  font-size: 23px;
-  text-align: center;
-}
-
 .container {
-  align-self: flex-end;
+  /*align-self: flex-end;*/
   background-color: #fff;
-  padding: 10px;
+  /*padding: 10px;*/
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   bottom: 0;
 }
 
 .logo {
-  width: 100px;
-  height: 100px;
-  align-self: center;
+  width: 100%;
+  height: 110px;
+  position: absolute;
+  /*align-self: center;*/
 }
 
 .button {
@@ -38,6 +33,7 @@
   align-self: center;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .buttonLeft {
