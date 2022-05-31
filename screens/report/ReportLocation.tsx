@@ -17,8 +17,8 @@ const ReportLocation = () => {
     
     <View style={sharedStyles.container}>
       <View style={{ flexDirection: 'row' }}>
-        <Text style={styles.title}>Report Location</Text>
-        <ButtonInformation style={styles.buttonInformation} />
+        <Text style={styles.title}>Locatie</Text>
+        <ButtonInformation />
       </View>
       <Picker
         selectedValue={selectedLocation}
