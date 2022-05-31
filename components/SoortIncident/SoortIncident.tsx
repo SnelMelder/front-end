@@ -1,18 +1,18 @@
+import React from 'react'; 
 import { useState } from 'react';
 import { StyleSheet, Text, View, Pressable, Image, ImageBackground, TouchableOpacity } from 'react-native';
 
-//const Vinkje = require("./assets/GSM_Vinkje.png");
-//const OngevalImg = require("./assets/soort_incident_ongeval.png");
-const Vinkje = require('../../assets/images/soort-incident/GSM_Vinkje');
 
-const OngevalImg = require('../../assets/images/soort-incident/soort_incident_ongeval');
-const BijnaOngImg = require('../../assets/images/soort-incident/soort_incident_bijna_ongeval');
-const GevSitImg = require('../../assets/images/soort-incident/gev_sit_ongeval');
-const GevHanImg = require('../../assets/images/soort-incident/gev_han_ongeval');
-const OverigImg = require('../../assets/images/soort-incident/overig');
+const Vinkje = require('../../assets/images/soort-incident/GSM_Vinkje.png');
 
-import styles from './SoortIncident.scss';
+const OngevalImg = require('../../assets/images/soort-incident/soort_incident_ongeval.png');
+const BijnaOngImg = require('../../assets/images/soort-incident/soort_incident_bijna_ongeval.png');
+const GevSitImg = require('../../assets/images/soort-incident/soort_incident_gev_sit.png');
+const GevHanImg = require('../../assets/images/soort-incident/soort_incident_gev_han.png');
+const OverigImg = require('../../assets/images/soort-incident/soort_incident_overig.png');
 
+import styles from '../SoortIncident/SoortIncident.scss';
+ 
 {
   /*
     https://docs.expo.dev/versions/latest/sdk/checkbox/
@@ -41,7 +41,7 @@ function MyCheckbox({ checked, onChange, buttonStyle = {}, activeButtonStyle = {
   );
 }
 
-export default function App() {
+export default function SoortIncident() {
   MyCheckbox;
 
   const [oneChecked, onOneChange] = useState(false);
@@ -52,7 +52,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.appTitle}>Soort incident</Text>
 
       <View style={styles.checkboxContainer}>
         <View style={styles.checkboxWrapper}>
@@ -63,51 +62,51 @@ export default function App() {
             buttonStyle={styles.checkboxOneBase}
             activeButtonStyle={styles.checkboxOneChecked}
           />
-          <Text style={styles.paragraph}>Checkbox one</Text>
+          <Text style={styles.paragraph}>Ongeval</Text>
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={OngevalImg} style={styles.ongevalBackImg} />
+          <ImageBackground source={BijnaOngImg} style={styles.ongevalBackImg} />
           <MyCheckbox
             checked={twoChecked}
             onChange={onTwoChange}
             buttonStyle={styles.checkboxTwoBase}
             activeButtonStyle={styles.checkboxTwoChecked}
           />
-          <Text style={styles.paragraph}>Checkbox two</Text>
+          <Text style={styles.paragraph}>Bijna Ongeval</Text>
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={OngevalImg} style={styles.ongevalBackImg} />
+          <ImageBackground source={GevSitImg} style={styles.ongevalBackImg} />
           <MyCheckbox
             checked={threeChecked}
             onChange={onThreeChange}
             buttonStyle={styles.checkboxThreeBase}
             activeButtonStyle={styles.checkboxThreeChecked}
           />
-          <Text style={styles.paragraph}>Checkbox three</Text>
+          <Text style={styles.paragraph}>Gevaarlijke situatie</Text>
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={OngevalImg} style={styles.ongevalBackImg} />
+          <ImageBackground source={GevHanImg} style={styles.ongevalBackImg} />
           <MyCheckbox
             checked={fourChecked}
             onChange={onFourChange}
             buttonStyle={styles.checkboxFourBase}
             activeButtonStyle={styles.checkboxFourChecked}
           />
-          <Text style={styles.paragraph}>Checkbox four</Text>
+          <Text style={styles.paragraph}>Gevaarlijke handeling</Text>
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={OngevalImg} style={styles.ongevalBackImg} />
+          <ImageBackground source={OverigImg} style={styles.ongevalBackImg} />
           <MyCheckbox
             checked={fiveChecked}
             onChange={onFiveChange}
             buttonStyle={styles.checkboxFiveBase}
             activeButtonStyle={styles.checkboxFiveChecked}
           />
-          <Text style={styles.paragraph}>Checkbox five</Text>
+          <Text style={styles.paragraph}>Overig</Text>
         </View>
       </View>
     </View>
