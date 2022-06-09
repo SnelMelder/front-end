@@ -14,7 +14,7 @@
     position: relative;
     align-self: center;
     border-radius: 10px;
-    width: 80%;
+    width: 200px;
     height: 50%;
     margin-top: 20px;
 }
@@ -55,4 +55,18 @@
     border-radius: 10px;
     margin: 4px;
     padding: 7px;
+}
+
+.popupContainer{
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.modal{
+    margin: 20px;
+    background-color: rgba(177, 174, 174, 0.842);
+    border-radius: 20px;
+    padding: 35px;
+    align-items: "center";
 }
