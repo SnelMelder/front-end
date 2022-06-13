@@ -15,7 +15,7 @@ import ReportDateTime from './report/ReportDateTime';
 import ReportPersonInvolved from './report/ReportPersonInvolved';
 import ReportAssistanceWitness from './report/ReportAssistanceWitness';
 import ReportTypeOfDamage from './report/ReportTypeOfDamage';
-import ReportLocationOfInjury from './report/ReportLocationOfInjury';
+// import ReportLocationOfInjury from './report/ReportLocationOfInjury';
 import ReportAddPicture from './report/ReportAddPicture';
 import ReportAdditionalInformation from './report/ReportAdditionalInformation';
 import ReportSummary from './report/ReportSummary';
@@ -23,6 +23,7 @@ import { RootTabScreenProps } from '../types';
 
 const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [visibleHidden, setVisibleHidden] = useState(Boolean);
   const maxSteps = 10;
   const stepSize = 1 / maxSteps;
 
@@ -36,6 +37,17 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
     if (currentStep - stepSize >= 0) {
       setCurrentStep(currentStep - stepSize);
     }
+  }
+
+  function getVisibility() {
+    if (currentStep < 0.8) {
+      return {
+        display: 'initial',
+      };
+    }
+    return {
+      display: 'none',
+    };
   }
 
   function closeReport() {
@@ -107,16 +119,7 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
         </>
       );
     }
-
     if (rStep === 0.7) {
-      return (
-        <>
-          {progressBar}
-          <ReportLocationOfInjury />
-        </>
-      );
-    }
-    if (rStep === 0.8) {
       return (
         <>
           {progressBar}
@@ -124,7 +127,7 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
         </>
       );
     }
-    if (rStep === 0.9) {
+    if (rStep === 0.8) {
       return (
         <>
           {progressBar}
@@ -132,7 +135,7 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
         </>
       );
     }
-    if (rStep === 1.0) {
+    if (rStep === 0.9) {
       return <ReportSummary />;
     }
     return <Text>Please try again</Text>;
@@ -145,7 +148,7 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
       </SafeAreaView>
       <View style={sharedStyles.container}>
         {renderStepDisplay(currentStep)}
-        <View style={sharedStyles.report_screen_buttons}>
+        <View style={[sharedStyles.report_screen_buttons, getVisibility()]}>
           <ButtonIncident title="Volgende" method={handleStepNext} />
           <ButtonIncident title="Overslaan" style={{ marginTop: 10 }} method={handleStepNext} />
         </View>
