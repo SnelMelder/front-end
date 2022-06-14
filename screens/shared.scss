@@ -6,6 +6,14 @@
   padding: 20px;
 }
 
+.show {
+  display: initial;
+}
+
+.hide {
+  display: none;
+}
+
 .report_screen_buttons {
   display: flex;
   flex-direction: column;
