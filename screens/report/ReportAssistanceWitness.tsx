@@ -10,9 +10,8 @@ const ReportAssistanceWitness = () => {
     <View style={styles.container}>
       <View style={styles.title_container}>
         <Text style={styles.title}>Hulpverlening/Getuigen</Text>
-        <ButtonInformation />
+        <ButtonInformation title="Hulpverlening/Getuigen" text="De getuige waar u uw probleem heeft gevonden." />
       </View>
-      <Text style={styles.title}>Hulpverlening/Getuigen</Text>
       <InputBox placeholder="Typ hier naam van betreffende Hulpverlener/Getuigen" />
     </View>
   );

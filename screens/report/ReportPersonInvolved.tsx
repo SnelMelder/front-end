@@ -10,9 +10,8 @@ const ReportPersonInvolved = () => {
     <View style={styles.container}>
       <View style={styles.title_container}>
         <Text style={styles.title}>Naam betrokkene</Text>
-        <ButtonInformation />
+        <ButtonInformation title="Naam betrokkene" text="De naam van de persoon die uw probleem heeft gevonden." />
       </View>
-      <Text style={styles.title}>Naam betrokkene</Text>
       <InputBox placeholder="Typ hier naam betrokkene" />
     </View>
   );

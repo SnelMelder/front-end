@@ -46,3 +46,8 @@ export type HeaderProps = {
 export type ButtonPlusProps = {
   handle: () => void;
 };
+
+export type ButtonInformationProps = {
+  title: string;
+  text: string;
+};
