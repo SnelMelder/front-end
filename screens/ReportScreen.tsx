@@ -50,6 +50,23 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
     };
   }
 
+  function hideSkip() {
+    if (
+      currentStep === 0.3 ||
+      currentStep === 0.4 ||
+      currentStep === 0.5 ||
+      currentStep === 0.7 ||
+      currentStep === 0.8
+    ) {
+      return {
+        display: 'initial',
+      };
+    }
+    return {
+      display: 'none',
+    };
+  }
+
   function closeReport() {
     navigation.navigate('Root', { screen: 'TabHome' });
   }
@@ -150,7 +167,11 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
         {renderStepDisplay(currentStep)}
         <View style={[sharedStyles.report_screen_buttons, getVisibility()]}>
           <ButtonIncident title="Volgende" method={handleStepNext} />
-          <ButtonIncident title="Overslaan" style={{ marginTop: 10 }} method={handleStepNext} />
+          <ButtonIncident
+            style={[sharedStyles.report_screen_button_skip, hideSkip()]}
+            title="Overslaan"
+            method={handleStepNext}
+          />
         </View>
       </View>
     </>
