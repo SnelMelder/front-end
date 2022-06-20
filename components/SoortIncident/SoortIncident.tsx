@@ -1,7 +1,6 @@
-import React from 'react'; 
+import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View, Pressable, Image, ImageBackground, TouchableOpacity } from 'react-native';
-
 
 const Vinkje = require('../../assets/images/soort-incident/GSM_Vinkje.png');
 
@@ -12,7 +11,7 @@ const GevHanImg = require('../../assets/images/soort-incident/soort_incident_gev
 const OverigImg = require('../../assets/images/soort-incident/soort_incident_overig.png');
 
 import styles from '../SoortIncident/SoortIncident.scss';
- 
+
 {
   /*
     https://docs.expo.dev/versions/latest/sdk/checkbox/
@@ -52,7 +51,6 @@ export default function SoortIncident() {
 
   return (
     <View style={styles.container}>
-
       <View style={styles.checkboxContainer}>
         <View style={styles.checkboxWrapper}>
           <ImageBackground source={OngevalImg} style={styles.ongevalBackImg} />
