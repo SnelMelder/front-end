@@ -1,0 +1,133 @@
+.container {
+  flex: 1;
+  margin: 10px 30px;
+}
+
+.paragraph {
+  font-size: 15px;
+  width: 100px;
+  text-align: center;
+}
+
+.checkboxWrapper {
+  margin: 0px 0px 15px 0px;
+}
+
+.vinkje {
+  width: 35px;
+  height: 35px;
+  margin-top: 50px;
+  margin-left: 50px;
+  z-index: 3px;
+}
+
+.ongevalBackImg {
+  width: 80px;
+  height: 80px;
+  margin-left: 10px;
+  margin-top: 10px;
+  position: absolute;
+  z-index: 2px;
+}
+
+.checkboxOneBase {
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 5px solid rgba(255, 173, 138, 1);
+  background-color: rgba(255, 173, 138, 1);
+  z-index: 1px;
+}
+
+.checkboxOneChecked {
+  border-color: #52bb1d;
+  background-color: rgba(255, 173, 138, 0.65);
+}
+
+.checkboxTwoBase {
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border-width: 5px;
+  border-color: rgba(255, 212, 115, 1);
+  background-color: rgba(255, 212, 115, 1);
+  z-index: 1;
+}
+
+.checkboxTwoChecked {
+  border-color: #52bb1d;
+  background-color: rgba(255, 212, 115, 0.65);
+}
+.checkboxThreeBase {
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border-width: 5px;
+  border-color: rgba(131, 220, 218, 1);
+  background-color: rgba(131, 220, 218, 1);
+  z-index: 1;
+}
+
+.checkboxThreeChecked {
+  border-color: #52bb1d;
+  background-color: rgba(131, 220, 218, 0.65);
+}
+.checkboxFourBase {
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border-width: 5px;
+  border-color: rgba(184, 238, 191, 1);
+  background-color: rgba(184, 238, 191, 1);
+  z-index: 1;
+}
+
+.checkboxFourChecked {
+  border-color: #52bb1d;
+  background-color: rgba(184, 238, 191, 0.65);
+}
+
+.checkboxFiveBase {
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border-width: 5px;
+  border-color: rgba(198, 145, 214, 1);
+  background-color: rgba(198, 145, 214, 1);
+  z-index: 1;
+}
+
+.checkboxFiveChecked {
+  border-color: #52bb1d;
+  background-color: rgba(198, 145, 214, 0.65);
+}
+
+.appContainer {
+  flex: 1;
+  align-items: center;
+}
+
+.appTitle {
+  margin: 16px 0px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.checkboxContainer {
+  flex: 1;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}

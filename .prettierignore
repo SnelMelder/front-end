@@ -2,3 +2,5 @@ build
 coverage
 dist
 node_modules
+/components/Themed.tsx
+/components/EditScreenInfo.tsx

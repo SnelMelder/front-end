@@ -13,22 +13,24 @@ const ReportLocation = () => {
   };
 
   return (
-    <View style={sharedStyles.container}>
-      <View style={{ flexDirection: 'row' }}>
-        <Text style={styles.title}>Locatie</Text>
-        <ButtonInformation title="Locatie" text="De locatie waar u uw probleem heeft gevonden." />
+    <>
+      <View style={sharedStyles.container}>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={styles.title}>Locatie</Text>
+          <ButtonInformation />
+        </View>
+        <Picker
+          selectedValue={selectedLocation}
+          onValueChange={onValueChange}
+          style={{ height: 50, width: 350, marginTop: 100 }}
+        >
+          <Picker.Item label="Selecteer een locatie" value="" />
+          <Picker.Item label="Strijp TQ" value="strijp-tq" />
+          <Picker.Item label="Strijp S" value="strijp-s" />
+          <Picker.Item label="Rachelsmolen" value="rachelsmolen" />
+        </Picker>
       </View>
-      <Picker
-        selectedValue={selectedLocation}
-        onValueChange={onValueChange}
-        style={{ height: 50, width: 350, marginTop: 100 }}
-      >
-        <Picker.Item label="Selecteer een locatie" value="" />
-        <Picker.Item label="Strijp TQ" value="strijp-tq" />
-        <Picker.Item label="Strijp S" value="strijp-s" />
-        <Picker.Item label="Rachelsmolen" value="rachelsmolen" />
-      </Picker>
-    </View>
+    </>
   );
 };
 
