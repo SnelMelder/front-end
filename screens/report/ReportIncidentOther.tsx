@@ -11,7 +11,7 @@ const ReportIncidentOther = () => {
     <View style={sharedStyles.container}>
       <View style={styles.title_container}>
         <Text style={sharedStyles.title}>Soort incident: Overig</Text>
-        <ButtonInformation />
+        <ButtonInformation title="Soort incident: Overig" text="De soort incident waar u uw probleem heeft gevonden." />
       </View>
       <View style={styles.inputBox}>
         <InputBox placeholder="Typ hier uw omschrijving" />

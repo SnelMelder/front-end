@@ -83,8 +83,8 @@ const ReportAddPicture = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={sharedStyles.title}>Voeg een photo toe</Text>
-        <ButtonInformation/>
+        <Text style={sharedStyles.title}>Voeg een foto toe</Text>
+        <ButtonInformation title="Voeg een foto toe" text="De foto waar u uw probleem heeft gevonden." />
       </View>
       <View style={styles.mainImageContainer}>
         {selectedImage
@@ -159,59 +159,3 @@ const ReportAddPicture = () => {
 };
 
 export default ReportAddPicture;
-
-{/* List of small images? with pressable to select them */}
-        {/* {list.forEach(element => {
-          <Pressable onPress={() => chooseMainImage(0)} style={styles.smallImagePressable}>
-          <Image
-            source={{uri: `data:image/jpg;base64,${element.base64}`}}
-            style={styles.smallImage}
-            // styles={styles.mainImage}
-          />
-          </Pressable>
-        })} */}
-        {/* {list.map(() => {
-          <Text>index: {list[index]}, image: {list[index].base64}</Text>
-        })} */}
-
-        
-        {/* {list
-          ? <Pressable onPress={() => chooseMainImage(0)} style={styles.smallImagePressable}>
-            ? <Image
-              source={{uri: `data:image/jpg;base64,${list.at(0)?.base64}`}}
-              style={{width: 200, height: 200}}
-              // styles={styles.mainImage}
-            />
-          </Pressable>
-        : null} */}
-
-        {/* <Pressable onPress={() => chooseMainImage(0)} style={styles.smallImagePressable}>
-          <Image
-            source={require('../../assets/images/bulldozer.jpg')}
-            style={styles.smallImage}
-          />
-        </Pressable>
-        <Pressable onPress={() => chooseMainImage(0)} style={styles.smallImagePressable}>
-          <Image
-            source={require('../../assets/images/bulldozer.jpg')}
-            style={styles.smallImage}
-          />
-        </Pressable>
-        <Pressable onPress={() => chooseMainImage(0)} style={styles.smallImagePressable}>
-          <Image
-            source={require('../../assets/images/bulldozer.jpg')}
-            style={styles.smallImage}
-          />
-        </Pressable>
-        <Pressable onPress={() => chooseMainImage(0)} style={styles.smallImagePressable}>
-          <Image
-            source={require('../../assets/images/bulldozer.jpg')}
-            style={styles.smallImage}
-          />
-        </Pressable>
-        <Pressable onPress={() => chooseMainImage(0)} style={styles.smallImagePressable}>
-          <Image
-            source={require('../../assets/images/bulldozer.jpg')}
-            style={styles.smallImage}
-          />
-        </Pressable> */}
