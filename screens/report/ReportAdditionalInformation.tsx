@@ -10,9 +10,11 @@ const ReportAdditionalInformation = () => {
     <View style={styles.container}>
       <View style={styles.title_container}>
         <Text style={styles.title}>Aanvullende informatie</Text>
-        <ButtonInformation />
+        <ButtonInformation
+          title="Aanvullende informatie"
+          text="De aanvullende informatie omtrent het gevonden probleem."
+        />
       </View>
-      <Text style={styles.title}>Aanvullende informatie</Text>
       <InputBox placeholder="Typ hier uw aanvullende informatie" />
     </View>
   );

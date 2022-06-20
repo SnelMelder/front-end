@@ -10,7 +10,7 @@ const ReportTypeOfDamage = () => {
     <View style={styles.container}>
       <View style={styles.title_container}>
         <Text style={styles.title}>Soort schade</Text>
-        <ButtonInformation />
+        <ButtonInformation title="Soort schade" text="De soort schade waar u uw probleem heeft gevonden." />
       </View>
       <SoortSchade />
     </View>

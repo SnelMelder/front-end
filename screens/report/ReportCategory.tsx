@@ -10,7 +10,7 @@ const ReportCategory = () => {
     <View style={styles.container}>
       <View style={styles.title_container}>
         <Text style={styles.title}>Soort incident</Text>
-        <ButtonInformation />
+        <ButtonInformation title="Soort incident" text="De soort incident waar u uw probleem heeft gevonden." />
       </View>
       <SoortIncident />
     </View>
