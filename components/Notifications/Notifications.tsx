@@ -6,7 +6,7 @@ import { faBell } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Notifications.scss';
 
-const Notifications = (props: { children: any }) => {
+const Notifications = () => {
   //Need to get notifications and do if rendering
 
   return (
