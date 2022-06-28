@@ -53,7 +53,10 @@ export default function SoortSchade() {
     <View style={styles.container}>
       <View style={styles.checkboxContainer}>
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={MilieuImg} style={[styles.ongevalBackImg, {backgroundColor: "rgba(255, 173, 138, 1)"}]} />
+          <ImageBackground
+            source={MilieuImg}
+            style={[styles.ongevalBackImg, { backgroundColor: 'rgba(255, 173, 138, 1)' }]}
+          />
           <MyCheckbox
             checked={oneChecked}
             onChange={onOneChange}
@@ -64,7 +67,10 @@ export default function SoortSchade() {
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={MaterieleImg} style={[styles.ongevalBackImg, {backgroundColor: "rgba(255, 212, 115, 1)"}]} />
+          <ImageBackground
+            source={MaterieleImg}
+            style={[styles.ongevalBackImg, { backgroundColor: 'rgba(255, 212, 115, 1)' }]}
+          />
           <MyCheckbox
             checked={twoChecked}
             onChange={onTwoChange}
@@ -75,7 +81,10 @@ export default function SoortSchade() {
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={InwendigImg} style={[styles.ongevalBackImg, {backgroundColor: "rgba(131, 220, 218, 1)"}]} />
+          <ImageBackground
+            source={InwendigImg}
+            style={[styles.ongevalBackImg, { backgroundColor: 'rgba(131, 220, 218, 1)' }]}
+          />
           <MyCheckbox
             checked={threeChecked}
             onChange={onThreeChange}
@@ -86,7 +95,10 @@ export default function SoortSchade() {
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={UitwendigImg} style={[styles.ongevalBackImg, {backgroundColor: "rgba(184, 238, 191, 1)"}]} />
+          <ImageBackground
+            source={UitwendigImg}
+            style={[styles.ongevalBackImg, { backgroundColor: 'rgba(184, 238, 191, 1)' }]}
+          />
           <MyCheckbox
             checked={fourChecked}
             onChange={onFourChange}
@@ -97,7 +109,10 @@ export default function SoortSchade() {
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={GeenImg} style={[styles.ongevalBackImg, {backgroundColor: "rgba(198, 145, 214, 1)"}]} />
+          <ImageBackground
+            source={GeenImg}
+            style={[styles.ongevalBackImg, { backgroundColor: 'rgba(198, 145, 214, 1)' }]}
+          />
           <MyCheckbox
             checked={fiveChecked}
             onChange={onFiveChange}

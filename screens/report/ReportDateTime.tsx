@@ -12,7 +12,6 @@ const ReportDateTime = () => {
       <View style={{ flexDirection: 'row' }}>
         <Text style={styles.title}>Datum & tijd</Text>
         <ButtonInformation title="Datum & tijd" text="De datum en tijd waarop het ongeval plaats heeft gevonden." />
-
       </View>
       <DateTime />
     </View>

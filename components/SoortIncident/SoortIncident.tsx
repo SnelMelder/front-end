@@ -53,7 +53,10 @@ export default function SoortIncident() {
     <View style={styles.container}>
       <View style={styles.checkboxContainer}>
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={OngevalImg} style={[styles.ongevalBackImg, {backgroundColor: "rgba(255, 173, 138, 1)"}]} />
+          <ImageBackground
+            source={OngevalImg}
+            style={[styles.ongevalBackImg, { backgroundColor: 'rgba(255, 173, 138, 1)' }]}
+          />
           <MyCheckbox
             checked={oneChecked}
             onChange={onOneChange}
@@ -65,7 +68,10 @@ export default function SoortIncident() {
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={BijnaOngImg} style={[styles.ongevalBackImg, {backgroundColor: "rgba(255, 212, 115, 1)"}]} />
+          <ImageBackground
+            source={BijnaOngImg}
+            style={[styles.ongevalBackImg, { backgroundColor: 'rgba(255, 212, 115, 1)' }]}
+          />
           <MyCheckbox
             checked={twoChecked}
             onChange={onTwoChange}
@@ -76,7 +82,10 @@ export default function SoortIncident() {
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={GevSitImg} style={[styles.ongevalBackImg, {backgroundColor: "rgba(131, 220, 218, 1)"}]} />
+          <ImageBackground
+            source={GevSitImg}
+            style={[styles.ongevalBackImg, { backgroundColor: 'rgba(131, 220, 218, 1)' }]}
+          />
           <MyCheckbox
             checked={threeChecked}
             onChange={onThreeChange}
@@ -87,7 +96,10 @@ export default function SoortIncident() {
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={GevHanImg} style={[styles.ongevalBackImg, {backgroundColor: "rgba(184, 238, 191, 1)"}]} />
+          <ImageBackground
+            source={GevHanImg}
+            style={[styles.ongevalBackImg, { backgroundColor: 'rgba(184, 238, 191, 1)' }]}
+          />
           <MyCheckbox
             checked={fourChecked}
             onChange={onFourChange}
@@ -98,7 +110,10 @@ export default function SoortIncident() {
         </View>
 
         <View style={styles.checkboxWrapper}>
-          <ImageBackground source={OverigImg} style={[styles.ongevalBackImg, {backgroundColor: "rgba(198, 145, 214, 1)"}]} />
+          <ImageBackground
+            source={OverigImg}
+            style={[styles.ongevalBackImg, { backgroundColor: 'rgba(198, 145, 214, 1)' }]}
+          />
           <MyCheckbox
             checked={fiveChecked}
             onChange={onFiveChange}
