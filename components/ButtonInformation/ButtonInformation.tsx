@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Text, Pressable, View, Button } from 'react-native';
 import Modal from 'react-native-modal';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import styles from './ButtonInformation.scss';
 import { ButtonInformationProps } from '../../types';
+import { Ionicons } from "@expo/vector-icons";
 
 const ButtonInformation = ({ title, text }: ButtonInformationProps) => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -41,7 +40,7 @@ const ButtonInformation = ({ title, text }: ButtonInformationProps) => {
         })}
         onPress={toggleModal}
       >
-        <FontAwesomeIcon icon={faInfoCircle} size={26} />
+        <Ionicons name="information-circle" size={26} />
       </Pressable>
     </>
   );

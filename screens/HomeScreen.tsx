@@ -1,7 +1,6 @@
 import React from 'react';
 import { Image, ScrollView } from 'react-native';
-import { faLocation, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { Ionicons } from "@expo/vector-icons";
 import styles from './homescreen.scss';
 import sharedStyles from './shared.scss';
 
@@ -24,7 +23,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabHome'>) => {
       <View style={styles.container}>
         <Text style={styles.title}>Melding op uw locatie</Text>
         <View style={styles.locationContainer}>
-          <FontAwesomeIcon icon={faLocationDot} size={20} />
+          <Ionicons name="location" size={20} />
           <Text style={styles.subtitle}> Fontys hogescholen Strijp-t TQ4</Text>
         </View>
         <ScrollView>

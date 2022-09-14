@@ -3,9 +3,7 @@ import { View, Text, Image, Pressable, Platform, Modal, FlatList } from 'react-n
 import styles from './ReportAddPicture.scss';
 import sharedStyles from '../shared.scss';
 import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
-
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faPlus, faRefresh, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from 'expo-image-picker';
 
 const ReportAddPicture = () => {
@@ -91,7 +89,7 @@ const ReportAddPicture = () => {
         ) : null}
         {selectedImage ? (
           <Pressable onPress={() => DeleteImage()} style={styles.deleteButton}>
-            <FontAwesomeIcon icon={faTrashCan} size={32}></FontAwesomeIcon>
+            <Ionicons name="trash" size={32} />
           </Pressable>
         ) : null}
       </View>
@@ -113,11 +111,11 @@ const ReportAddPicture = () => {
         </View>
 
         <Pressable onPress={() => setModalVisible(true)} style={styles.addButton}>
-          <FontAwesomeIcon icon={faPlus} size={35} style={styles.icons}></FontAwesomeIcon>
+          <Ionicons name="add" size={35} />
         </Pressable>
         {list.length ? (
           <Pressable onPress={() => Restart()} style={styles.restartButton}>
-            <FontAwesomeIcon icon={faRefresh} size={35}></FontAwesomeIcon>
+            <Ionicons name="refresh" size={35} />
           </Pressable>
         ) : null}
       </View>

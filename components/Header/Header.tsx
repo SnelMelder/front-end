@@ -1,9 +1,6 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faChevronLeft, faXmark } from '@fortawesome/free-solid-svg-icons';
-// Documentation:
-// https://www.npmjs.com/package/@fortawesome/react-native-fontawesome#size
+import { Ionicons } from "@expo/vector-icons";
 import styles from './Header.scss';
 import { HeaderProps } from '../../types';
 
@@ -15,7 +12,7 @@ const Header = ({ handleBack, handleClose }: HeaderProps) => {
         style={[styles.buttonLeft, styles.button]}
         accessibilityLabel="Back button"
       >
-        <FontAwesomeIcon icon={faChevronLeft} size={26} />
+        <Ionicons name="chevron-back" size={26} />
       </TouchableOpacity>
 
       <Image style={styles.logo} source={require('../../assets/images/header_nieuwe_melding.png')} />
@@ -25,7 +22,7 @@ const Header = ({ handleBack, handleClose }: HeaderProps) => {
         style={[styles.buttonRight, styles.button]}
         accessibilityLabel="Close button"
       >
-        <FontAwesomeIcon icon={faXmark} size={28} />
+        <Ionicons name="close" size={28} />
       </TouchableOpacity>
     </View>
   );
