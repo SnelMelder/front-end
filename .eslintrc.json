@@ -34,6 +34,8 @@
       }
     ],
     "no-use-before-define": "off",
+    "@typescript-eslint/no-var-requires": 0,
+    "global-require": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "import/extensions": ["error", "never"],
     "react/prop-types": 0,
@@ -49,6 +51,7 @@
     "react/no-unstable-nested-components": "off",
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
-    "react/jsx-no-bind": "off"
+    "react/jsx-no-bind": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }

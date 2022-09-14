@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, ScrollView } from 'react-native';
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons } from '@expo/vector-icons';
 import styles from './homescreen.scss';
 import sharedStyles from './shared.scss';
 
@@ -9,7 +9,6 @@ import { RootTabScreenProps } from '../types';
 import ButtonPlusBigGreen from '../components/ButtonPlusBigGreen/ButtonPlus';
 
 import NotificationContainer from '../components/NotificationContainer/NotificationContainer';
-import Divider from '../components/Divider';
 
 const HomeScreen = ({ navigation }: RootTabScreenProps<'TabHome'>) => {
   const navigate = () => navigation.navigate('Modal');
@@ -33,7 +32,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabHome'>) => {
           />
 
           <View style={{ paddingBottom: 120 }}>
-            <ButtonPlusBigGreen handle={navigate} />
+            <ButtonPlusBigGreen />
           </View>
         </ScrollView>
       </View>

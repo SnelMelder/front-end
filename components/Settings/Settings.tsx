@@ -7,7 +7,7 @@ import styles from './Settings.scss';
 
 const Settings = () => {
   const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const logOut = () => {
     // pass
   };

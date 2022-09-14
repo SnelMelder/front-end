@@ -9,7 +9,6 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
-
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
@@ -20,14 +19,13 @@ import LinkingConfiguration from './LinkingConfiguration';
 import HomeScreen from '../screens/HomeScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import { FALSE } from 'sass';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
-const TabBarIcon = (props: { name: React.ComponentProps<typeof FontAwesome>['name']; color: string }) => {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
-};
+const TabBarIcon = (props: { name: React.ComponentProps<typeof FontAwesome>['name']; color: string }) => (
+  <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />
+);
 
 const BottomTabNavigator = () => {
   const colorScheme = useColorScheme();
@@ -47,7 +45,6 @@ const BottomTabNavigator = () => {
           title: 'Hoofdscherm',
           headerShown: false,
           tabBarShowLabel: false,
-          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
       />
@@ -100,24 +97,20 @@ const BottomTabNavigator = () => {
   );
 };
 
-const RootNavigator = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
-    </Stack.Navigator>
-  );
-};
+const RootNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+    <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+    <Stack.Group screenOptions={{ presentation: 'modal' }}>
+      <Stack.Screen name="Modal" component={ModalScreen} />
+    </Stack.Group>
+  </Stack.Navigator>
+);
 
-const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
-  return (
-    <NavigationContainer linking={LinkingConfiguration} theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <RootNavigator />
-    </NavigationContainer>
-  );
-};
+const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => (
+  <NavigationContainer linking={LinkingConfiguration} theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <RootNavigator />
+  </NavigationContainer>
+);
 
 export default Navigation;

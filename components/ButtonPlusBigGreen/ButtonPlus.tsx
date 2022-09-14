@@ -3,10 +3,9 @@ import { Pressable } from 'react-native';
 
 import { AntDesign } from '@expo/vector-icons';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { ButtonPlusProps } from '../../types';
 import useColorScheme from '../../hooks/useColorScheme';
 
-const ButtonPlusBigGreen = ({}: ButtonPlusProps) => {
+const ButtonPlusBigGreen = () => {
   const colorScheme = useColorScheme();
 
   return (

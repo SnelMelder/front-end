@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-const Divider = (props) => {
+const Divider = props => {
   const { colorDrawer, heightDrawer, widthDrawer } = props;
   return (
     <View style={{ flexDirection: 'row' }}>

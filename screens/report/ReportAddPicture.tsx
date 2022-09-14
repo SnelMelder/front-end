@@ -1,30 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, Pressable, Platform, Modal, FlatList } from 'react-native';
+import { View, Text, Image, Pressable, Platform, Modal, FlatList, Alert } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 import styles from './ReportAddPicture.scss';
 import sharedStyles from '../shared.scss';
 import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
-import { Ionicons } from "@expo/vector-icons";
-import * as ImagePicker from 'expo-image-picker';
 
 const ReportAddPicture = () => {
   const [selectedImage, setSelectedImage] = useState<{ id: number; image: ImagePicker.ImageInfo } | undefined>();
   const [modalVisible, setModalVisible] = useState(false);
-  const [list, setList] = useState<{ id: number; image: ImagePicker.ImageInfo }[]>([]);
+  const [list] = useState<{ id: number; image: ImagePicker.ImageInfo }[]>([]);
 
   useEffect(() => {
     (async () => {
       if (Platform.OS !== 'web') {
         const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (status !== 'granted') {
-          alert('Sorry, we need camera roll permissions to choose a photo.');
+          Alert.alert('Sorry, we need camera roll permissions to choose a photo.');
         }
       }
     })();
   }, []);
 
   const openGallery = async () => {
-    const status = ImagePicker.requestMediaLibraryPermissionsAsync();
-    console.log(status);
     const image = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -33,14 +31,13 @@ const ReportAddPicture = () => {
     });
 
     if (!image.cancelled) {
-      list.push({ id: list.length + 1, image: image });
-      setSelectedImage({ id: list.length + 1, image: image });
+      list.push({ id: list.length + 1, image });
+      setSelectedImage({ id: list.length + 1, image });
       setModalVisible(false);
     }
   };
 
   const takePicture = async () => {
-    const status = ImagePicker.requestCameraPermissionsAsync();
     const image = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
@@ -48,17 +45,17 @@ const ReportAddPicture = () => {
     });
 
     if (!image.cancelled) {
-      list.push({ id: list.length + 1, image: image });
-      setSelectedImage({ id: list.length + 1, image: image });
+      list.push({ id: list.length + 1, image });
+      setSelectedImage({ id: list.length + 1, image });
       setModalVisible(false);
     }
   };
 
   function DeleteImage() {
     if (typeof selectedImage?.id === 'number') {
-      let int = selectedImage?.id - 1;
+      const int = selectedImage.id - 1;
       list.splice(int, 1);
-      let imageBefore = list.at(int - 1);
+      const imageBefore = list.at(int - 1);
       if (typeof imageBefore !== 'undefined') {
         setSelectedImage({ id: imageBefore.id, image: imageBefore.image });
       }
@@ -104,7 +101,7 @@ const ReportAddPicture = () => {
                   <Image source={{ uri: `data:image/jpg;base64,${item.image.base64}` }} style={styles.smallImage} />
                 </Pressable>
               )}
-              horizontal={true}
+              horizontal
               contentContainerStyle={styles.flatListContainer}
             />
           ) : null}
@@ -123,7 +120,7 @@ const ReportAddPicture = () => {
       {/* Pop up modal when adding a new photo */}
       <Modal
         animationType="slide"
-        transparent={true}
+        transparent
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(!modalVisible);
