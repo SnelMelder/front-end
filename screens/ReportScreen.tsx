@@ -42,7 +42,7 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
   function getVisibility() {
     if (currentStep < 0.8) {
       return {
-        display: 'initial',
+        display: 'flex',
       };
     }
     return {
@@ -59,7 +59,7 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
       currentStep === 0.8
     ) {
       return {
-        display: 'initial',
+        display: 'flex',
       };
     }
     return {
