@@ -9,8 +9,6 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import ReportScreen from '../screens/ReportScreen';
@@ -28,13 +26,10 @@ const TabBarIcon = (props: { name: React.ComponentProps<typeof FontAwesome>['nam
 );
 
 const BottomTabNavigator = () => {
-  const colorScheme = useColorScheme();
-
   return (
     <BottomTab.Navigator
       initialRouteName="TabHome"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
         tabBarShowLabel: false,
       }}
     >
@@ -68,7 +63,7 @@ const BottomTabNavigator = () => {
                 opacity: pressed ? 0.5 : 1,
               })}
             >
-              <FontAwesome name="info-circle" size={25} color={Colors[colorScheme].text} style={{ marginRight: 15 }} />
+              <FontAwesome name="info-circle" size={25} style={{ marginRight: 15 }} />
             </Pressable>
           ),
         })}
