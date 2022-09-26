@@ -1,8 +1,7 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 import styles from './shared.scss';
 
-import { View } from '../components/Themed';
 import Settings from '../components/Settings/Settings';
 
 const SettingsScreen = () => (

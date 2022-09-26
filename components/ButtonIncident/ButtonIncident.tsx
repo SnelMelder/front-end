@@ -1,7 +1,6 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
 
-import { Text, View } from '../../components/Themed';
 import styles from './ButtonIncident.scss';
 import { ButtonIncidentProps } from '../../types';
 

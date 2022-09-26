@@ -5,18 +5,18 @@
  */
 import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
-import ModalScreen from '../screens/ModalScreen';
-import NotFoundScreen from '../screens/NotFoundScreen';
+import { Pressable } from 'react-native';
+import { useContext } from 'react';
+import { AuthContext } from '../store/AuthContext';
 import ReportScreen from '../screens/ReportScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
-import LinkingConfiguration from './LinkingConfiguration';
 import HomeScreen from '../screens/HomeScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import LoginScreen from '../screens/LoginScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
@@ -92,20 +92,22 @@ const BottomTabNavigator = () => {
   );
 };
 
-const RootNavigator = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-    <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-    <Stack.Group screenOptions={{ presentation: 'modal' }}>
-      <Stack.Screen name="Modal" component={ModalScreen} />
-    </Stack.Group>
-  </Stack.Navigator>
-);
+const Navigation = () => {
+  const { isAuthenticated } = useContext(AuthContext);
 
-const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => (
-  <NavigationContainer linking={LinkingConfiguration} theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-    <RootNavigator />
-  </NavigationContainer>
-);
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {isAuthenticated ? (
+          // User is signed in
+          <Stack.Screen name="Root" component={BottomTabNavigator} />
+        ) : (
+          // User is not signed in
+          <Stack.Screen name="Login" component={LoginScreen} />
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
 export default Navigation;

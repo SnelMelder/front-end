@@ -1,4 +1,7 @@
+import { useContext } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
+import { AuthContext } from '../../store/AuthContext';
+
 import PrimaryButton from '../ui/PrimaryButton';
 
 interface Props {
@@ -6,7 +9,9 @@ interface Props {
 }
 
 const LoginButton = ({ style }: Props) => {
-  return <PrimaryButton style={style} text="Inloggen" />;
+  const { login } = useContext(AuthContext);
+
+  return <PrimaryButton style={style} text="Inloggen" onPress={login} />;
 };
 
 export default LoginButton;

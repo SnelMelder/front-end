@@ -1,8 +1,7 @@
-import React from 'react';
+import { Text, View } from 'react-native';
+
 import styles from '../shared.scss';
 import SoortIncident from '../../components/SoortIncident/SoortIncident';
-
-import { Text, View } from '../../components/Themed';
 import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
 
 const ReportCategory = () => (

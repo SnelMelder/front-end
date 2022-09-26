@@ -1,21 +1,14 @@
 import React from 'react';
-import { Image, ScrollView } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from './homescreen.scss';
 import sharedStyles from './shared.scss';
 
-import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
 import ButtonPlusBigGreen from '../components/ButtonPlusBigGreen/ButtonPlus';
 
 import NotificationContainer from '../components/NotificationContainer/NotificationContainer';
 
-const HomeScreen = ({ navigation }: RootTabScreenProps<'TabHome'>) => {
-  const navigate = () => navigation.navigate('Modal');
-  // const navigate = () => {
-  //     navigation.navigate('Root', { screen: 'TabReport' });
-  // };
-
+const HomeScreen = () => {
   return (
     <>
       <Image style={sharedStyles.logo} source={require('../assets/images/SnelMelder_Home_Logo.png')} />

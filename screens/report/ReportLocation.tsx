@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Text, View } from 'react-native';
+
 import { Picker } from '@react-native-picker/picker';
 import sharedStyles from '../shared.scss';
 import styles from './ReportLocation.scss';
-import { Text, View } from '../../components/Themed';
 import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
 
 const ReportLocation = () => {

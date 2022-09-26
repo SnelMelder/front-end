@@ -1,7 +1,6 @@
-import React from 'react';
-import sharedStyles from '../shared.scss';
+import { Text, View } from 'react-native';
 
-import { Text, View } from '../../components/Themed';
+import sharedStyles from '../shared.scss';
 import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
 
 const ReportDateTime = () => (

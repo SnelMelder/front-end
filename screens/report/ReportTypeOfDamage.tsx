@@ -1,8 +1,6 @@
-import React from 'react';
+import { Text, View } from 'react-native';
 import styles from '../shared.scss';
 import SoortSchade from '../../components/SoortSchade/SoortSchade';
-
-import { Text, View } from '../../components/Themed';
 import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
 
 const ReportTypeOfDamage = () => (

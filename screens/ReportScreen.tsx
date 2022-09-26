@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
 import sharedStyles from './shared.scss';
 
 import Header from '../components/Header/Header';
 import ProgressBar from '../components/ProgressBar/ProgressBar';
 import ButtonIncident from '../components/ButtonIncident/ButtonIncident';
-import { Text, View } from '../components/Themed';
 
 import ReportCategory from './report/ReportCategory';
 import ReportLocation from './report/ReportLocation';

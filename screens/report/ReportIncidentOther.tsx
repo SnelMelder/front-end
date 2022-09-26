@@ -1,9 +1,8 @@
-import React from 'react';
+import { Text, View } from 'react-native';
+
 import sharedStyles from '../shared.scss';
 import styles from './ReportIncidentOther.scss';
 import InputBox from '../../components/InputBox/InputBox';
-
-import { Text, View } from '../../components/Themed';
 import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
 
 const ReportIncidentOther = () => (

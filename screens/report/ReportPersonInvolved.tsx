@@ -1,7 +1,6 @@
-import React from 'react';
-import styles from '../shared.scss';
+import { Text, View } from 'react-native';
 
-import { Text, View } from '../../components/Themed';
+import styles from '../shared.scss';
 import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
 import InputBox from '../../components/InputBox/InputBox';
 

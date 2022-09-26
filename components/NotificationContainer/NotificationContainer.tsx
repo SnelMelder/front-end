@@ -1,10 +1,9 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import { Text, View } from 'react-native';
 import styles from './notificationcontainer.scss';
 
-import { Text, View } from '../Themed';
-
-const NotificationContainer = props => {
+const NotificationContainer = (props) => {
   const { title, message } = props;
   return (
     <View style={styles.notificationContainer}>
