@@ -1,4 +1,3 @@
-import React from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import styles from './homescreen.scss';

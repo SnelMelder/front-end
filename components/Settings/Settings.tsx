@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { View, Text, Switch, TouchableOpacity } from 'react-native';
-import { AuthContext } from '../../store/AuthContext';
+import { AuthContext } from '../../auth/AuthContext';
 
 import Divider from '../Divider';
 import ArrowIcon from './ArrowIcon';

@@ -3,7 +3,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import useCachedResources from './hooks/useCachedResources';
 import Navigation from './navigation';
-import AuthContextProvider from './store/AuthContext';
+import AuthContextProvider from './auth/AuthContext';
 
 const App = () => {
   const isLoadingComplete = useCachedResources();

@@ -10,7 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { Pressable } from 'react-native';
 import { useContext } from 'react';
-import { AuthContext } from '../store/AuthContext';
+import { AuthContext } from '../auth/AuthContext';
 import ReportScreen from '../screens/ReportScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import HomeScreen from '../screens/HomeScreen';

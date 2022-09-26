@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { AuthContext } from '../../store/AuthContext';
+import { AuthContext } from '../../auth/AuthContext';
 
 import PrimaryButton from '../ui/PrimaryButton';
 
