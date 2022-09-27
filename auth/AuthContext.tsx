@@ -3,6 +3,8 @@ import * as WebBrowser from 'expo-web-browser';
 import React, { createContext, useMemo, useCallback, useState, useEffect } from 'react';
 import { clientId, discovery, redirectUri } from './authConfig';
 import useAutoExchange from './tokenExchange';
+import { saveTokenConfig, retrieveTokenConfig } from './tokenStorage';
+import TokenUnavailableError from './TokenUnavailableError';
 
 interface IAuthContext {
   getAccessToken: () => Promise<string>;
@@ -31,7 +33,7 @@ interface Props {
 WebBrowser.maybeCompleteAuthSession(); // This is needed for users to be able to dismiss the web pop-up
 
 const AuthContextProvider = ({ children }: Props) => {
-  const [token, setToken] = useState<TokenResponse | null>(null);
+  const [tokenConfig, setTokenConfig] = useState<TokenResponse | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const [authRequest, authResponse, promptAsync] = useAuthRequest(authRequestConfig, discovery);
@@ -42,42 +44,56 @@ const AuthContextProvider = ({ children }: Props) => {
   );
 
   useEffect(() => {
-    setToken(tokenResponse);
-  }, [tokenResponse]);
-
-  useEffect(() => {
-    if (token === null) {
+    if (tokenConfig === null) {
       setIsAuthenticated(false);
     } else {
       setIsAuthenticated(true);
     }
-  }, [token]);
+  }, [tokenConfig]);
 
-  const refreshToken = useCallback(async () => {
-    token?.refreshAsync({ clientId }, discovery);
-  }, [token]);
+  useEffect(() => {
+    if (tokenResponse !== null) {
+      setTokenConfig(tokenResponse);
+      saveTokenConfig(tokenResponse);
+    }
+  }, [tokenResponse]);
+
+  useEffect(() => {
+    retrieveTokenConfig().then((config) => {
+      setTokenConfig(config);
+    });
+  }, []);
+
+  const refreshTheTokens = useCallback(async () => {
+    if (tokenConfig === null) return;
+
+    const response = new TokenResponse(tokenConfig);
+
+    await response.refreshAsync({ clientId }, discovery);
+
+    setTokenConfig(response);
+    saveTokenConfig(response);
+  }, [tokenConfig]);
 
   const getAccessToken = useCallback(async () => {
-    if (token === null) {
-      throw new Error('Access token requested while signed out');
+    if (tokenConfig === null) throw new TokenUnavailableError();
+
+    // TODO: Reset this back
+    if (true) {
+      await refreshTheTokens();
     }
 
-    if (token.shouldRefresh()) {
-      await refreshToken();
-    }
-
-    return token.accessToken;
-  }, [token, refreshToken]);
-
-  const logout = useCallback(async () => {
-    WebBrowser.openAuthSessionAsync(`${discovery.endSessionEndpoint}?client_id=${clientId}`, redirectUri);
-    setToken(null);
-    setIsAuthenticated(false);
-  }, [setIsAuthenticated]);
+    return tokenConfig.accessToken;
+  }, [tokenConfig, refreshTheTokens]);
 
   const login = useCallback(async () => {
     promptAsync({ useProxy: true });
   }, [promptAsync]);
+
+  const logout = useCallback(async () => {
+    WebBrowser.openAuthSessionAsync(discovery.endSessionEndpoint, redirectUri);
+    setTokenConfig(null);
+  }, []);
 
   const value = useMemo(
     () => ({ login, logout, getAccessToken, isAuthenticated }),
