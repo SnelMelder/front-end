@@ -1,18 +1,22 @@
-import { TokenResponseConfig } from 'expo-auth-session';
+import { TokenResponse } from 'expo-auth-session';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const tokenConfigKey = 'tokenConfig'; // key used in storage of token configuration
+const key = 'tokens'; // key used in storage of token configuration
 
-export const saveTokenConfig = async (tokenConfig: TokenResponseConfig) => {
-  AsyncStorage.setItem(tokenConfigKey, JSON.stringify(tokenConfig));
+export const saveTokens = async (tokens: TokenResponse) => {
+  AsyncStorage.setItem(key, JSON.stringify(tokens));
 };
 
-export const retrieveTokenConfig = async () => {
-  const tokenConfigString = await AsyncStorage.getItem(tokenConfigKey);
+export const retrieveTokens = async () => {
+  const tokensString = await AsyncStorage.getItem(key);
 
-  if (tokenConfigString === null) {
+  if (tokensString === null) {
     return null;
   }
 
-  return JSON.parse(tokenConfigString);
+  return new TokenResponse(JSON.parse(tokensString));
+};
+
+export const deleteTokens = async () => {
+  AsyncStorage.removeItem(key);
 };

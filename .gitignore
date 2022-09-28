@@ -1,4 +1,5 @@
 node_modules/
+authConfig.ts
 .expo/
 dist/
 npm-debug.*

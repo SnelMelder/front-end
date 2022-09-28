@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
-import { TokenResponse, AccessTokenRequestConfig, exchangeCodeAsync } from 'expo-auth-session';
+import { AccessTokenRequestConfig, exchangeCodeAsync, AuthRequest, AuthRequestPromptOptions } from 'expo-auth-session';
 import { discovery, clientId, redirectUri } from './authConfig';
 
-const getAccessTokenRequestConfig = (code: string, codeVerifier: string): AccessTokenRequestConfig => {
+const authRequestPromptOptions: AuthRequestPromptOptions = { useProxy: true };
+
+const getTokenRequestConfig = (code: string, codeVerifier: string): AccessTokenRequestConfig => {
   return {
     clientId,
     code,
@@ -13,28 +14,26 @@ const getAccessTokenRequestConfig = (code: string, codeVerifier: string): Access
   };
 };
 
-const useAutoExchange = (code?: string, codeVerifier?: string) => {
-  const [tokenResponse, setTokenResponse] = useState<TokenResponse | null>(null);
+const getCodeRequest = () => {
+  return new AuthRequest({
+    clientId,
+    scopes: ['openid', 'profile', 'email', 'offline_access'],
+    redirectUri,
+  });
+};
 
-  useEffect(() => {
-    if (!code || !codeVerifier) {
-      setTokenResponse(null);
-      return;
-    }
+const promptAuthentication = async () => {
+  const codeRequest = getCodeRequest();
+  const codeResponse = await codeRequest.promptAsync(discovery, authRequestPromptOptions);
 
-    const config = getAccessTokenRequestConfig(code, codeVerifier);
+  if (codeResponse.type !== 'success') {
+    return null;
+  }
 
-    exchangeCodeAsync(config, discovery)
-      .then((response) => {
-        setTokenResponse(response);
-      })
-      .catch((exchangeError) => {
-        // TODO: do something with the error
-        console.error(exchangeError);
-      });
-  }, [code, codeVerifier]);
+  const tokenRequestConfig = getTokenRequestConfig(codeResponse.params.code, codeRequest.codeVerifier as string);
+  const tokenResponse = await exchangeCodeAsync(tokenRequestConfig, discovery);
 
   return tokenResponse;
 };
 
-export default useAutoExchange;
+export default promptAuthentication;

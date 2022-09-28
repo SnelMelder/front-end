@@ -1,10 +1,10 @@
-import { useAuthRequest, TokenResponse } from 'expo-auth-session';
+import { TokenResponse } from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 import React, { createContext, useMemo, useCallback, useState, useEffect } from 'react';
 import { clientId, discovery, redirectUri } from './authConfig';
-import useAutoExchange from './tokenExchange';
-import { saveTokenConfig, retrieveTokenConfig } from './tokenStorage';
+import * as Storage from './tokenStorage';
 import TokenUnavailableError from './TokenUnavailableError';
+import promptAuthentication from './tokenExchange';
 
 interface IAuthContext {
   getAccessToken: () => Promise<string>;
@@ -20,12 +20,6 @@ export const AuthContext = createContext<IAuthContext>({
   logout: () => undefined,
 });
 
-const authRequestConfig = {
-  clientId,
-  scopes: ['openid', 'profile', 'email', 'offline_access'],
-  redirectUri,
-};
-
 interface Props {
   children: React.ReactNode;
 }
@@ -33,65 +27,47 @@ interface Props {
 WebBrowser.maybeCompleteAuthSession(); // This is needed for users to be able to dismiss the web pop-up
 
 const AuthContextProvider = ({ children }: Props) => {
-  const [tokenConfig, setTokenConfig] = useState<TokenResponse | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [tokens, setTokens] = useState<TokenResponse | null>(null);
 
-  const [authRequest, authResponse, promptAsync] = useAuthRequest(authRequestConfig, discovery);
-
-  const tokenResponse = useAutoExchange(
-    authResponse?.type === 'success' ? authResponse.params.code : undefined,
-    authRequest?.codeVerifier
-  );
+  const isAuthenticated = tokens !== null;
 
   useEffect(() => {
-    if (tokenConfig === null) {
-      setIsAuthenticated(false);
-    } else {
-      setIsAuthenticated(true);
-    }
-  }, [tokenConfig]);
-
-  useEffect(() => {
-    if (tokenResponse !== null) {
-      setTokenConfig(tokenResponse);
-      saveTokenConfig(tokenResponse);
-    }
-  }, [tokenResponse]);
-
-  useEffect(() => {
-    retrieveTokenConfig().then((config) => {
-      setTokenConfig(config);
+    Storage.retrieveTokens().then((config) => {
+      setTokens(config);
     });
   }, []);
 
   const refreshTheTokens = useCallback(async () => {
-    if (tokenConfig === null) return;
+    if (tokens === null) throw new TokenUnavailableError();
 
-    const response = new TokenResponse(tokenConfig);
+    await tokens.refreshAsync({ clientId }, discovery);
 
-    await response.refreshAsync({ clientId }, discovery);
-
-    setTokenConfig(response);
-    saveTokenConfig(response);
-  }, [tokenConfig]);
+    Storage.saveTokens(tokens);
+  }, [tokens]);
 
   const getAccessToken = useCallback(async () => {
-    if (tokenConfig === null) throw new TokenUnavailableError();
+    if (tokens === null) throw new TokenUnavailableError();
 
-    if (tokenConfig.shouldRefresh()) {
+    if (tokens.shouldRefresh()) {
       await refreshTheTokens();
     }
 
-    return tokenConfig.accessToken;
-  }, [tokenConfig, refreshTheTokens]);
+    return tokens.accessToken;
+  }, [tokens, refreshTheTokens]);
 
   const login = useCallback(async () => {
-    promptAsync({ useProxy: true });
-  }, [promptAsync]);
+    const response = await promptAuthentication();
+
+    if (response !== null) {
+      setTokens(response);
+      Storage.saveTokens(response);
+    }
+  }, []);
 
   const logout = useCallback(async () => {
     WebBrowser.openAuthSessionAsync(discovery.endSessionEndpoint, redirectUri);
-    setTokenConfig(null);
+    setTokens(null);
+    Storage.deleteTokens();
   }, []);
 
   const value = useMemo(
