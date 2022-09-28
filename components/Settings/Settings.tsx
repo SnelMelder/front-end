@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, Switch, TouchableOpacity } from 'react-native';
+import { AuthContext } from '../../auth/AuthContext';
 
 import Divider from '../Divider';
 import ArrowIcon from './ArrowIcon';
 import styles from './Settings.scss';
 
 const Settings = () => {
+  const { logout } = useContext(AuthContext);
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-  const logOut = () => {
-    // pass
-  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Instellingen</Text>
@@ -43,7 +43,7 @@ const Settings = () => {
       </Text>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={logOut} style={[styles.logoutButton]}>
+        <TouchableOpacity onPress={logout} style={[styles.logoutButton]}>
           <Text style={styles.textButton}>Uitloggen</Text>
         </TouchableOpacity>
       </View>

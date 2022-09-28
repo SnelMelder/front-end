@@ -1,30 +1,20 @@
-import React from 'react';
-import { Image, ScrollView } from 'react-native';
-import { faLocation, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { Image, ScrollView, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import styles from './homescreen.scss';
 import sharedStyles from './shared.scss';
 
-import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
 import ButtonPlusBigGreen from '../components/ButtonPlusBigGreen/ButtonPlus';
 
 import NotificationContainer from '../components/NotificationContainer/NotificationContainer';
-import Divider from '../components/Divider';
 
-const HomeScreen = ({ navigation }: RootTabScreenProps<'TabHome'>) => {
-  const navigate = () => navigation.navigate('Modal');
-  // const navigate = () => {
-  //     navigation.navigate('Root', { screen: 'TabReport' });
-  // };
-
+const HomeScreen = () => {
   return (
     <>
       <Image style={sharedStyles.logo} source={require('../assets/images/SnelMelder_Home_Logo.png')} />
       <View style={styles.container}>
         <Text style={styles.title}>Melding op uw locatie</Text>
         <View style={styles.locationContainer}>
-          <FontAwesomeIcon icon={faLocationDot} size={20} />
+          <Ionicons name="location" size={20} />
           <Text style={styles.subtitle}> Fontys hogescholen Strijp-t TQ4</Text>
         </View>
         <ScrollView>
@@ -34,7 +24,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabHome'>) => {
           />
 
           <View style={{ paddingBottom: 120 }}>
-            <ButtonPlusBigGreen handle={navigate} />
+            <ButtonPlusBigGreen />
           </View>
         </ScrollView>
       </View>

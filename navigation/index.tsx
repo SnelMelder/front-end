@@ -5,38 +5,31 @@
  */
 import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
-
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import ModalScreen from '../screens/ModalScreen';
-import NotFoundScreen from '../screens/NotFoundScreen';
+import { Pressable } from 'react-native';
+import { useContext } from 'react';
+import { AuthContext } from '../auth/AuthContext';
 import ReportScreen from '../screens/ReportScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
-import LinkingConfiguration from './LinkingConfiguration';
 import HomeScreen from '../screens/HomeScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import { FALSE } from 'sass';
+import LoginScreen from '../screens/LoginScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
-const TabBarIcon = (props: { name: React.ComponentProps<typeof FontAwesome>['name']; color: string }) => {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
-};
+const TabBarIcon = (props: { name: React.ComponentProps<typeof FontAwesome>['name']; color: string }) => (
+  <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />
+);
 
 const BottomTabNavigator = () => {
-  const colorScheme = useColorScheme();
-
   return (
     <BottomTab.Navigator
       initialRouteName="TabHome"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
         tabBarShowLabel: false,
       }}
     >
@@ -47,7 +40,6 @@ const BottomTabNavigator = () => {
           title: 'Hoofdscherm',
           headerShown: false,
           tabBarShowLabel: false,
-          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
       />
@@ -71,7 +63,7 @@ const BottomTabNavigator = () => {
                 opacity: pressed ? 0.5 : 1,
               })}
             >
-              <FontAwesome name="info-circle" size={25} color={Colors[colorScheme].text} style={{ marginRight: 15 }} />
+              <FontAwesome name="info-circle" size={25} style={{ marginRight: 15 }} />
             </Pressable>
           ),
         })}
@@ -100,22 +92,20 @@ const BottomTabNavigator = () => {
   );
 };
 
-const RootNavigator = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
-    </Stack.Navigator>
-  );
-};
+const Navigation = () => {
+  const { isAuthenticated } = useContext(AuthContext);
 
-const Navigation = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
   return (
-    <NavigationContainer linking={LinkingConfiguration} theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <RootNavigator />
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {isAuthenticated ? (
+          // User is signed in
+          <Stack.Screen name="Root" component={BottomTabNavigator} />
+        ) : (
+          // User is not signed in
+          <Stack.Screen name="Login" component={LoginScreen} />
+        )}
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

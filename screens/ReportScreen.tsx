@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
 import sharedStyles from './shared.scss';
 
 import Header from '../components/Header/Header';
 import ProgressBar from '../components/ProgressBar/ProgressBar';
 import ButtonIncident from '../components/ButtonIncident/ButtonIncident';
-import { Text, View } from '../components/Themed';
 
 import ReportCategory from './report/ReportCategory';
-import ReportIncidentOther from './report/ReportIncidentOther';
 import ReportLocation from './report/ReportLocation';
 import ReportDateTime from './report/ReportDateTime';
 import ReportPersonInvolved from './report/ReportPersonInvolved';
@@ -23,7 +21,6 @@ import { RootTabScreenProps } from '../types';
 
 const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [visibleHidden, setVisibleHidden] = useState(Boolean);
   const maxSteps = 10;
   const stepSize = 1 / maxSteps;
 
@@ -42,7 +39,7 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
   function getVisibility() {
     if (currentStep < 0.8) {
       return {
-        display: 'initial',
+        display: 'flex',
       };
     }
     return {
@@ -59,7 +56,7 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
       currentStep === 0.8
     ) {
       return {
-        display: 'initial',
+        display: 'flex',
       };
     }
     return {
@@ -73,7 +70,7 @@ const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
 
   function renderStepDisplay(step: number) {
     const rStep = Math.round(step * 10) / 10;
-    const progressBar = <ProgressBar maxSteps={maxSteps} currentStep={currentStep} />;
+    const progressBar = <ProgressBar currentStep={currentStep} />;
 
     if (rStep === 0.0) {
       return (

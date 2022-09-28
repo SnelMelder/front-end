@@ -10,7 +10,6 @@
 .submitSummaryButton {
   padding: 15px;
   background-color: #8acd67;
-  border-radius: 10px;
   width: 170px;
   align-items: center;
   margin-left: 20px;
@@ -24,7 +23,6 @@
 }
 
 .summaryTextUnderline {
-  text-decoration: underline;
   padding-left: 35px;
 }
 
@@ -41,14 +39,12 @@
 .summaryBigPicture {
   align-self: center;
   width: 80%;
-  border-radius: 15px;
   padding-bottom: 10px;
 }
 
 .summarySmallPicture {
   width: 56px;
   height: 56px;
-  border-radius: 15px;
   margin-left: 10px;
   margin-right: 10px;
 }

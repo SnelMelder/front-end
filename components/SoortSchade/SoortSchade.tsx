@@ -1,6 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
-import { StyleSheet, Text, View, Pressable, Image, ImageBackground, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+
+import { Text, View, Pressable, Image, ImageBackground } from 'react-native';
+
+import styles from '../SoortIncident/SoortIncident.scss';
 
 const Vinkje = require('../../assets/images/soort-incident/GSM_Vinkje.png');
 
@@ -10,25 +12,21 @@ const InwendigImg = require('../../assets/images/soort-schade/Inwendig_Letsel_Ic
 const UitwendigImg = require('../../assets/images/soort-schade/Uitwendig_Letsel_Icon.png');
 const GeenImg = require('../../assets/images/soort-schade/Geen_Schade_Letsel_Icon.png');
 
-import styles from '../SoortIncident/SoortIncident.scss';
-
-{
-  /*
-    https://docs.expo.dev/versions/latest/sdk/checkbox/
-    terminal: yarn start
-
-    colors:
-    - #FFAD8A / rgba(255, 173, 138, 0.65) (red/orange)
-    - #FFD473 / rgba(255, 212, 115, 0.65) (yellow)
-    - #83DCDA / rgba(131, 220, 218, 0.65) (blue)
-    - #B8EEBF / rgba(184, 238, 191, 0.65) (green)
-    - #C691D6 / rgba(198, 145, 214, 0.65) (purple)
-
-    - #52BB1D (check green)
-*/
+interface MyCheckboxProps {
+  checked: boolean;
+  onChange: (arg0: boolean) => void;
+  buttonStyle?: Record<string, unknown>;
+  activeButtonStyle?: Record<string, unknown>;
+  inactiveButtonStyle?: Record<string, unknown>;
 }
 
-function MyCheckbox({ checked, onChange, buttonStyle = {}, activeButtonStyle = {}, inactiveButtonStyle = {} }) {
+const MyCheckbox = ({
+  checked,
+  onChange,
+  buttonStyle = {},
+  activeButtonStyle = {},
+  inactiveButtonStyle = {},
+}: MyCheckboxProps) => {
   function onCheckmarkPress() {
     onChange(!checked);
   }
@@ -38,11 +36,9 @@ function MyCheckbox({ checked, onChange, buttonStyle = {}, activeButtonStyle = {
       {checked && <Image source={Vinkje} style={styles.vinkje} />}
     </Pressable>
   );
-}
+};
 
-export default function SoortSchade() {
-  MyCheckbox;
-
+const SoortSchade = () => {
   const [oneChecked, onOneChange] = useState(false);
   const [twoChecked, onTwoChange] = useState(false);
   const [threeChecked, onThreeChange] = useState(false);
@@ -124,4 +120,6 @@ export default function SoortSchade() {
       </View>
     </View>
   );
-}
+};
+
+export default SoortSchade;

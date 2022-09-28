@@ -28,13 +28,12 @@
       "error",
       {
         "singleQuote": true,
-        "trailingComma": "all",
-        "arrowParens": "avoid",
         "endOfLine": "auto"
       }
     ],
     "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-var-requires": 0,
+    "global-require": "off",
     "import/extensions": ["error", "never"],
     "react/prop-types": 0,
     "no-shadow": "off",
@@ -49,6 +48,8 @@
     "react/no-unstable-nested-components": "off",
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
-    "react/jsx-no-bind": "off"
+    "react/jsx-no-bind": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-console": "off"
   }
 }
