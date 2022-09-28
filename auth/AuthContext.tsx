@@ -78,8 +78,7 @@ const AuthContextProvider = ({ children }: Props) => {
   const getAccessToken = useCallback(async () => {
     if (tokenConfig === null) throw new TokenUnavailableError();
 
-    // TODO: Reset this back
-    if (true) {
+    if (tokenConfig.shouldRefresh()) {
       await refreshTheTokens();
     }
 
