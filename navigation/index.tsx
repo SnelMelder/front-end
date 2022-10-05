@@ -5,7 +5,7 @@
  */
 import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { Pressable } from 'react-native';
@@ -17,6 +17,16 @@ import HomeScreen from '../screens/HomeScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import LoginScreen from '../screens/LoginScreen';
+import COLORS from '../constants/Colors';
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: COLORS.primary500,
+    background: COLORS.white,
+  },
+};
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
@@ -96,7 +106,7 @@ const Navigation = () => {
   const { isAuthenticated } = useContext(AuthContext);
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {isAuthenticated ? (
           // User is signed in
