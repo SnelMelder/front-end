@@ -24,6 +24,20 @@ export type RootTabParamList = {
   TabSettings: undefined;
 };
 
+export type ReportFormParamList = {
+  ReportCategory: undefined;
+  ReportIncidentOther: undefined;
+  ReportLocation: undefined;
+  ReportDateTime: undefined;
+  ReportPersonInvolved: undefined;
+  ReportAssistanceWitness: undefined;
+  ReportTypeOfDamage: undefined;
+  ReportLocationOfInjury: undefined;
+  ReportAddPicture: undefined;
+  ReportAdditionalInformation: undefined;
+  ReportSummary: undefined;
+};
+
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
   BottomTabScreenProps<RootTabParamList, Screen>,
   NativeStackScreenProps<RootStackParamList>
@@ -50,3 +64,37 @@ export type ButtonInformationProps = {
   title: string;
   text: string;
 };
+
+type Category = 'ongeval' | 'bijna ongeval' | 'gevaarlijke situatie' | 'gevaarlijke handeling' | 'overig';
+
+type TypeOfDamage =
+  | 'milieu schade'
+  | 'materiele schade'
+  | 'inwendig letsel'
+  | 'uitwendig letsel'
+  | 'geen schade/letsel';
+
+type InjuryLocation =
+  | 'hoofd'
+  | 'romp'
+  | 'rechterarm'
+  | 'rechterhand'
+  | 'linkerarm'
+  | 'linkerhand'
+  | 'rechterbeen'
+  | 'linkerbeen'
+  | 'rechtervoet'
+  | 'linkervoet';
+
+export interface ReportFormData {
+  categories: Category[];
+  otherCategoryDescription?: string;
+  locationId: string;
+  dateTime?: Date;
+  personsInvolved: '';
+  assistanceWitness: '';
+  typeOfDamage: TypeOfDamage[];
+  injuryLocation?: InjuryLocation;
+  photoURIs: string[];
+  additionalInformation: string;
+}

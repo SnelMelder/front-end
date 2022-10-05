@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
 import { View, Text, Image, Pressable, Platform, Modal, FlatList, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import styles from './ReportAddPicture.scss';
 import sharedStyles from '../shared.scss';
 import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
+import { ReportFormParamList } from '../../types';
+import PrimaryButton from '../../components/ui/PrimaryButton';
 
-const ReportAddPicture = () => {
+type Props = NativeStackScreenProps<ReportFormParamList, 'ReportAddPicture'>;
+
+const ReportAddPicture = ({ navigation }: Props) => {
   const [selectedImage, setSelectedImage] = useState<{ id: number; image: ImagePicker.ImageInfo } | undefined>();
   const [modalVisible, setModalVisible] = useState(false);
   const [list] = useState<{ id: number; image: ImagePicker.ImageInfo }[]>([]);
@@ -21,6 +27,10 @@ const ReportAddPicture = () => {
       }
     })();
   }, []);
+
+  const nextQuestionHandler = () => {
+    navigation.navigate('ReportAdditionalInformation');
+  };
 
   const openGallery = async () => {
     const image = await ImagePicker.launchImageLibraryAsync({
@@ -140,6 +150,8 @@ const ReportAddPicture = () => {
           </View>
         </View>
       </Modal>
+
+      <PrimaryButton text="Volgende" onPress={nextQuestionHandler} />
     </View>
   );
 };

@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { SafeAreaView, Text, View } from 'react-native';
-import sharedStyles from './shared.scss';
-
+import { SafeAreaView } from 'react-native';
 import Header from '../components/Header/Header';
-import ProgressBar from '../components/ProgressBar/ProgressBar';
-import ButtonIncident from '../components/ButtonIncident/ButtonIncident';
+import { RootTabScreenProps } from '../types';
+
+import ReportFormContextProvider from '../store/ReportFormContext';
 
 import ReportCategory from './report/ReportCategory';
 import ReportLocation from './report/ReportLocation';
@@ -13,164 +12,47 @@ import ReportDateTime from './report/ReportDateTime';
 import ReportPersonInvolved from './report/ReportPersonInvolved';
 import ReportAssistanceWitness from './report/ReportAssistanceWitness';
 import ReportTypeOfDamage from './report/ReportTypeOfDamage';
-// import ReportLocationOfInjury from './report/ReportLocationOfInjury';
 import ReportAddPicture from './report/ReportAddPicture';
 import ReportAdditionalInformation from './report/ReportAdditionalInformation';
 import ReportSummary from './report/ReportSummary';
-import { RootTabScreenProps } from '../types';
+import ReportIncidentOther from './report/ReportIncidentOther';
+import ReportLocationOfInjury from './report/ReportLocationOfInjury';
+
+const Stack = createNativeStackNavigator();
 
 const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const maxSteps = 10;
-  const stepSize = 1 / maxSteps;
-
-  function handleStepNext() {
-    if (currentStep + stepSize <= 1) {
-      setCurrentStep(currentStep + stepSize);
-    }
-  }
-
-  function handleStepPrevious() {
-    if (currentStep - stepSize >= 0) {
-      setCurrentStep(currentStep - stepSize);
-    }
-  }
-
-  function getVisibility() {
-    if (currentStep < 0.8) {
-      return {
-        display: 'flex',
-      };
-    }
-    return {
-      display: 'none',
-    };
-  }
-
-  function hideSkip() {
-    if (
-      currentStep === 0.3 ||
-      currentStep === 0.4 ||
-      currentStep === 0.5 ||
-      currentStep === 0.7 ||
-      currentStep === 0.8
-    ) {
-      return {
-        display: 'flex',
-      };
-    }
-    return {
-      display: 'none',
-    };
+  function previousStepHandler() {
+    // TODO: implement
   }
 
   function closeReport() {
     navigation.navigate('Root', { screen: 'TabHome' });
   }
 
-  function renderStepDisplay(step: number) {
-    const rStep = Math.round(step * 10) / 10;
-    const progressBar = <ProgressBar currentStep={currentStep} />;
-
-    if (rStep === 0.0) {
-      return (
-        <>
-          {progressBar}
-          <ReportCategory />
-        </>
-      );
-    }
-    if (rStep === 0.1) {
-      return (
-        <>
-          {progressBar}
-          <ReportLocation />
-        </>
-      );
-    }
-
-    if (rStep === 0.2) {
-      return (
-        <>
-          {progressBar}
-          <ReportDateTime />
-        </>
-      );
-    }
-
-    if (rStep === 0.3) {
-      return (
-        <>
-          {progressBar}
-          <ReportPersonInvolved />
-        </>
-      );
-    }
-
-    if (rStep === 0.4) {
-      return (
-        <>
-          {progressBar}
-          <ReportAssistanceWitness />
-        </>
-      );
-    }
-
-    if (rStep === 0.5) {
-      return (
-        <>
-          {progressBar}
-          <ReportAssistanceWitness />
-        </>
-      );
-    }
-
-    if (rStep === 0.6) {
-      return (
-        <>
-          {progressBar}
-          <ReportTypeOfDamage />
-        </>
-      );
-    }
-    if (rStep === 0.7) {
-      return (
-        <>
-          {progressBar}
-          <ReportAddPicture />
-        </>
-      );
-    }
-    if (rStep === 0.8) {
-      return (
-        <>
-          {progressBar}
-          <ReportAdditionalInformation />
-        </>
-      );
-    }
-    if (rStep === 0.9) {
-      return <ReportSummary />;
-    }
-    return <Text>Please try again</Text>;
-  }
-
   return (
     <>
       <SafeAreaView>
-        <Header handleBack={handleStepPrevious} handleClose={closeReport} />
+        <Header handleBack={previousStepHandler} handleClose={closeReport} />
       </SafeAreaView>
-      <View style={sharedStyles.container}>
-        {renderStepDisplay(currentStep)}
-        <View style={[sharedStyles.report_screen_buttons, getVisibility()]}>
-          <ButtonIncident title="Volgende" method={handleStepNext} />
-          <ButtonIncident
-            style={[sharedStyles.report_screen_button_skip, hideSkip()]}
-            title="Overslaan"
-            method={handleStepNext}
-          />
-        </View>
-      </View>
+      <ReportFormContextProvider>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="ReportCategory" component={ReportCategory} />
+          <Stack.Screen name="ReportIncidentOther" component={ReportIncidentOther} />
+          <Stack.Screen name="ReportLocation" component={ReportLocation} />
+          <Stack.Screen name="ReportDateTime" component={ReportDateTime} />
+          <Stack.Screen name="ReportPersonInvolved" component={ReportPersonInvolved} />
+          <Stack.Screen name="ReportAssistanceWitness" component={ReportAssistanceWitness} />
+          <Stack.Screen name="ReportTypeOfDamage" component={ReportTypeOfDamage} />
+          <Stack.Screen name="ReportLocationOfInjury" component={ReportLocationOfInjury} />
+          <Stack.Screen name="ReportAddPicture" component={ReportAddPicture} />
+          <Stack.Screen name="ReportAdditionalInformation" component={ReportAdditionalInformation} />
+          <Stack.Screen name="ReportSummary" component={ReportSummary} />
+        </Stack.Navigator>
+      </ReportFormContextProvider>
     </>
   );
 };

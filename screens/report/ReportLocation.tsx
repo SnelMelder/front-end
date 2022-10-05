@@ -1,13 +1,22 @@
 import { useState } from 'react';
 import { Text, View } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { Picker } from '@react-native-picker/picker';
 import sharedStyles from '../shared.scss';
 import styles from './ReportLocation.scss';
 import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
+import PrimaryButton from '../../components/ui/PrimaryButton';
+import { ReportFormParamList } from '../../types';
 
-const ReportLocation = () => {
+type Props = NativeStackScreenProps<ReportFormParamList, 'ReportLocation'>;
+
+const ReportLocation = ({ navigation }: Props) => {
   const [selectedLocation, setSelectedLocation] = useState();
+
+  const nextQuestionHandler = () => {
+    navigation.navigate('ReportDateTime');
+  };
 
   const onValueChange = (item: string) => {
     setSelectedLocation(item);
@@ -29,6 +38,7 @@ const ReportLocation = () => {
         <Picker.Item label="Strijp S" value="strijp-s" />
         <Picker.Item label="Rachelsmolen" value="rachelsmolen" />
       </Picker>
+      <PrimaryButton text="Volgende" onPress={nextQuestionHandler} />
     </View>
   );
 };

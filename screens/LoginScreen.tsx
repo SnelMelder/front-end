@@ -9,8 +9,7 @@ const LoginScreen = () => {
       <Image style={styles.logoImage} source={goevaersLogoImage} />
       <Text style={styles.headingText}>Welkom</Text>
       <Text style={styles.bodyText}>
-        Log in met je werkaccount van Goevaers. Als je nog geen account van Goevaers hebt, neem dan contact op met je
-        leidinggevende.
+        Log in met je werkaccount van Goevaers. Als je nog geen account van Goevaers hebt, neem dan contact op met ICT.
       </Text>
       <LoginButton style={styles.loginButton} />
     </View>
