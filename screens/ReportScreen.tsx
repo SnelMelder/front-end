@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
 
 import { SafeAreaView } from 'react-native';
 import Header from '../components/Header/Header';
@@ -17,43 +18,55 @@ import ReportAdditionalInformation from './report/ReportAdditionalInformation';
 import ReportSummary from './report/ReportSummary';
 import ReportIncidentOther from './report/ReportIncidentOther';
 import ReportLocationOfInjury from './report/ReportLocationOfInjury';
+import COLORS from '../constants/Colors';
 
 const Stack = createNativeStackNavigator();
 
-const ReportScreen = ({ navigation }: RootTabScreenProps<'TabReport'>) => {
-  function previousStepHandler() {
-    // TODO: implement
-  }
-
-  function closeReport() {
-    navigation.navigate('Root', { screen: 'TabHome' });
-  }
-
+const ReportScreen = () => {
   return (
-    <>
-      <SafeAreaView>
-        <Header handleBack={previousStepHandler} handleClose={closeReport} />
-      </SafeAreaView>
-      <ReportFormContextProvider>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="ReportCategory" component={ReportCategory} />
-          <Stack.Screen name="ReportIncidentOther" component={ReportIncidentOther} />
-          <Stack.Screen name="ReportLocation" component={ReportLocation} />
-          <Stack.Screen name="ReportDateTime" component={ReportDateTime} />
-          <Stack.Screen name="ReportPersonInvolved" component={ReportPersonInvolved} />
-          <Stack.Screen name="ReportAssistanceWitness" component={ReportAssistanceWitness} />
-          <Stack.Screen name="ReportTypeOfDamage" component={ReportTypeOfDamage} />
-          <Stack.Screen name="ReportLocationOfInjury" component={ReportLocationOfInjury} />
-          <Stack.Screen name="ReportAddPicture" component={ReportAddPicture} />
-          <Stack.Screen name="ReportAdditionalInformation" component={ReportAdditionalInformation} />
-          <Stack.Screen name="ReportSummary" component={ReportSummary} />
-        </Stack.Navigator>
-      </ReportFormContextProvider>
-    </>
+    <ReportFormContextProvider>
+      <Stack.Navigator
+        screenOptions={{
+          animation: 'slide_from_right',
+          headerStyle: {
+            backgroundColor: COLORS.primary500,
+          },
+          headerTintColor: COLORS.white,
+        }}
+      >
+        <Stack.Screen name="ReportCategory" component={ReportCategory} options={{ title: 'Soort incident' }} />
+        <Stack.Screen
+          name="ReportIncidentOther"
+          component={ReportIncidentOther}
+          options={{ title: 'Soort incident: Overig' }}
+        />
+        <Stack.Screen name="ReportLocation" component={ReportLocation} options={{ title: 'Locatie' }} />
+        <Stack.Screen name="ReportDateTime" component={ReportDateTime} options={{ title: 'Datum en tijd' }} />
+        <Stack.Screen
+          name="ReportPersonInvolved"
+          component={ReportPersonInvolved}
+          options={{ title: 'Betrokken personen' }}
+        />
+        <Stack.Screen
+          name="ReportAssistanceWitness"
+          component={ReportAssistanceWitness}
+          options={{ title: 'Getuigen en hulpverleners' }}
+        />
+        <Stack.Screen name="ReportTypeOfDamage" component={ReportTypeOfDamage} options={{ title: 'Soort schade' }} />
+        <Stack.Screen
+          name="ReportLocationOfInjury"
+          component={ReportLocationOfInjury}
+          options={{ title: 'Plaats verwonding' }}
+        />
+        <Stack.Screen name="ReportAddPicture" component={ReportAddPicture} options={{ title: "Foto's" }} />
+        <Stack.Screen
+          name="ReportAdditionalInformation"
+          component={ReportAdditionalInformation}
+          options={{ title: 'Overige informatie' }}
+        />
+        <Stack.Screen name="ReportSummary" component={ReportSummary} options={{ title: 'Samenvatting' }} />
+      </Stack.Navigator>
+    </ReportFormContextProvider>
   );
 };
 

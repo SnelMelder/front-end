@@ -15,7 +15,7 @@ const App = () => {
   return (
     <AuthContextProvider>
       <SafeAreaProvider>
-        <StatusBar />
+        <StatusBar style="auto" />
         <Navigation />
       </SafeAreaProvider>
     </AuthContextProvider>

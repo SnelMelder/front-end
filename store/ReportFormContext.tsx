@@ -16,7 +16,7 @@ const initialData: ReportFormData = {
 
 interface IReportFormContext {
   data: ReportFormData;
-  setData: (arg1: ReportFormData) => void;
+  setData: React.Dispatch<React.SetStateAction<ReportFormData>>;
 }
 
 export const ReportFormContext = createContext<IReportFormContext>({

@@ -5,7 +5,11 @@ import { AntDesign } from '@expo/vector-icons';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import useColorScheme from '../../hooks/useColorScheme';
 
-const ButtonPlusBigGreen = () => {
+interface Props {
+  onPress?: () => void;
+}
+
+const ButtonPlusBigGreen = ({ onPress }: Props) => {
   const colorScheme = useColorScheme();
 
   return (
@@ -13,6 +17,7 @@ const ButtonPlusBigGreen = () => {
       style={({ pressed }) => ({
         opacity: pressed ? 0.5 : 1,
       })}
+      onPress={onPress}
     >
       <AntDesign
         name="pluscircle"

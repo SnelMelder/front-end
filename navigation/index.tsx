@@ -12,7 +12,7 @@ import { Pressable } from 'react-native';
 import { useContext } from 'react';
 import { AuthContext } from '../auth/AuthContext';
 import ReportScreen from '../screens/ReportScreen';
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import { RootStackParamList, RootTabParamList } from '../types';
 import HomeScreen from '../screens/HomeScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -41,6 +41,7 @@ const BottomTabNavigator = () => {
       initialRouteName="TabHome"
       screenOptions={{
         tabBarShowLabel: false,
+        headerShown: false,
       }}
     >
       <BottomTab.Screen
@@ -48,43 +49,14 @@ const BottomTabNavigator = () => {
         component={HomeScreen}
         options={{
           title: 'Hoofdscherm',
-          headerShown: false,
-          tabBarShowLabel: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
-      />
-      <BottomTab.Screen
-        name="TabReport"
-        component={ReportScreen}
-        options={({ navigation }: RootTabScreenProps<'TabReport'>) => ({
-          title: 'Melding',
-          tabBarIcon: ({ color }) => <TabBarIcon name="plus" color={color} />,
-          headerShown: false,
-          tabBarStyle: { display: 'none' },
-          headerRight: () => (
-            <Pressable
-              // onPress={() => navigation.navigate('Modal')}
-              onPress={() =>
-                navigation.navigate('Root', {
-                  screen: 'TabSettings',
-                })
-              }
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome name="info-circle" size={25} style={{ marginRight: 15 }} />
-            </Pressable>
-          ),
-        })}
       />
       <BottomTab.Screen
         name="TabNotification"
         component={NotificationScreen}
         options={{
           title: 'Notificaties',
-          tabBarShowLabel: false,
-          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="bell" color={color} />,
         }}
       />
@@ -93,8 +65,6 @@ const BottomTabNavigator = () => {
         component={SettingsScreen}
         options={{
           title: 'Instellingen',
-          tabBarShowLabel: false,
-          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="gear" color={color} />,
         }}
       />
@@ -110,7 +80,10 @@ const Navigation = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {isAuthenticated ? (
           // User is signed in
-          <Stack.Screen name="Root" component={BottomTabNavigator} />
+          <>
+            <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen name="ReportForm" component={ReportScreen} />
+          </>
         ) : (
           // User is not signed in
           <Stack.Screen name="Login" component={LoginScreen} />

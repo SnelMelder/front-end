@@ -9,6 +9,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
+  ReportForm: undefined;
   Login: undefined;
 };
 
@@ -19,7 +20,6 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
 
 export type RootTabParamList = {
   TabHome: undefined;
-  TabReport: undefined;
   TabNotification: undefined;
   TabSettings: undefined;
 };
@@ -65,7 +65,7 @@ export type ButtonInformationProps = {
   text: string;
 };
 
-type Category = 'ongeval' | 'bijna ongeval' | 'gevaarlijke situatie' | 'gevaarlijke handeling' | 'overig';
+export type Category = 'ongeval' | 'bijna-ongeval' | 'gevaarlijke-situatie' | 'gevaarlijke-handeling' | 'overig';
 
 type TypeOfDamage =
   | 'milieu schade'

@@ -1,13 +1,20 @@
-import { Image, ScrollView, Text, View } from 'react-native';
+import { Button, Image, ScrollView, Text, View } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
+
+import { RootStackParamList } from '../types';
 import styles from './homescreen.scss';
 import sharedStyles from './shared.scss';
-
 import ButtonPlusBigGreen from '../components/ButtonPlusBigGreen/ButtonPlus';
-
 import NotificationContainer from '../components/NotificationContainer/NotificationContainer';
 
-const HomeScreen = () => {
+type Props = NativeStackScreenProps<RootStackParamList, 'ReportForm'>;
+
+const HomeScreen = ({ navigation }: Props) => {
+  const showReportForm = () => {
+    navigation.navigate('ReportForm');
+  };
+
   return (
     <>
       <Image style={sharedStyles.logo} source={require('../assets/images/SnelMelder_Home_Logo.png')} />
@@ -23,9 +30,7 @@ const HomeScreen = () => {
             message="Voeg een melding toe door op het plusje te tikken of verander uw locatie via de instellingen"
           />
 
-          <View style={{ paddingBottom: 120 }}>
-            <ButtonPlusBigGreen />
-          </View>
+          <Button title="Open report form" onPress={showReportForm} />
         </ScrollView>
       </View>
     </>

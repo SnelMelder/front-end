@@ -1,5 +1,10 @@
 const COLORS = {
-  white: '#ffffff',
+  white: '#FFFFFF',
+  orange: '#FFAD8A',
+  yellow: '#FFD473',
+  cyan: '#83DCDA',
+  green: '#B8EEBF',
+  purple: '#C691D6',
   primary100: '#B6FFF0',
   primary200: '#6CFFE2',
   primary300: '#23FFD3',
