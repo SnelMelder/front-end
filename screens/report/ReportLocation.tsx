@@ -1,45 +1,38 @@
-import { useState } from 'react';
-import { Text, View } from 'react-native';
+import { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-
-import { Picker } from '@react-native-picker/picker';
-import sharedStyles from '../shared.scss';
-import styles from './ReportLocation.scss';
-import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
 import PrimaryButton from '../../components/ui/PrimaryButton';
 import { ReportFormParamList } from '../../types';
+import { ReportFormContext } from '../../store/ReportFormContext';
+import Container from '../../components/ui/Container';
+import Question from '../../components/forms/Question';
+import Explanation from '../../components/forms/Explanation';
+import Select from '../../components/forms/Select';
+import InputContainer from '../../components/forms/InputContainer';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportLocation'>;
 
-const ReportLocation = ({ navigation }: Props) => {
-  const [selectedLocation, setSelectedLocation] = useState();
+const locations = ['Locatie A', 'Locatie B', 'Locatie C', 'Locatie D', 'Locatie E'];
 
-  const nextQuestionHandler = () => {
+const ReportLocation = ({ navigation }: Props) => {
+  const { data, setData } = useContext(ReportFormContext);
+
+  const nextQuestion = () => {
     navigation.navigate('ReportDateTime');
   };
 
-  const onValueChange = (item: string) => {
-    setSelectedLocation(item);
+  const setSelectedLocation = (selectedLocation: string) => {
+    setData((current) => ({ ...current, location: selectedLocation }));
   };
 
   return (
-    <View style={sharedStyles.container}>
-      <View style={{ flexDirection: 'row' }}>
-        <Text style={styles.title}>Locatie</Text>
-        <ButtonInformation />
-      </View>
-      <Picker
-        selectedValue={selectedLocation}
-        onValueChange={onValueChange}
-        style={{ height: 50, width: 350, marginTop: 100 }}
-      >
-        <Picker.Item label="Selecteer een locatie" value="" />
-        <Picker.Item label="Strijp TQ" value="strijp-tq" />
-        <Picker.Item label="Strijp S" value="strijp-s" />
-        <Picker.Item label="Rachelsmolen" value="rachelsmolen" />
-      </Picker>
-      <PrimaryButton text="Volgende" onPress={nextQuestionHandler} />
-    </View>
+    <Container>
+      <Question>Wat is de locatie van het incident?</Question>
+      <Explanation>Tik één locatie aan</Explanation>
+      <InputContainer>
+        <Select options={locations} onValueChange={setSelectedLocation} value={data.location} />
+      </InputContainer>
+      <PrimaryButton text="Volgende" onPress={nextQuestion} disabled={data.location === undefined} />
+    </Container>
   );
 };
 

@@ -1,37 +1,30 @@
-import { StyleSheet, View, ImageSourcePropType } from 'react-native';
-import MultiSelectOption from './MultiSelectOption';
+import { StyleSheet, View } from 'react-native';
+import { MultiSelectOptionPropType } from '../../types';
+import MultiSelectItem from './MultiSelectItem';
 
-interface AnsweringOption {
-  name: string;
-  label?: string;
-  image: ImageSourcePropType;
-  backgroundColor?: string;
-}
-
-interface Props {
-  answeringOptions: Array<AnsweringOption>;
+interface Props<T> {
+  options: Array<MultiSelectOptionPropType<T>>;
   style?: Record<string, unknown>;
-  value: Array<string>;
-  onChange: (newValue: Array<string>) => void;
+  value: Array<T>;
+  onValueChange: (newValue: Array<T>) => void;
 }
 
-const MultiSelect = ({ answeringOptions, style, value, onChange }: Props) => {
-  const selectCategoryHandler = (categoryName: string) => {
+const MultiSelect = <T extends unknown>({ style, options, value, onValueChange }: Props<T>) => {
+  const selectCategoryHandler = (categoryName: T) => {
     if (value.includes(categoryName)) {
-      const index = value.indexOf(categoryName);
-      value.splice(index, 1);
-      onChange(value);
+      const newValue = value.filter((item) => item !== categoryName);
+      onValueChange(newValue);
     } else {
-      value.push(categoryName);
-      onChange(value);
+      const newValue = [...value, categoryName];
+      onValueChange(newValue);
     }
   };
 
   return (
     <View style={[styles.container, style]}>
-      {answeringOptions.map((item) => (
-        <MultiSelectOption
-          key={item.name}
+      {options.map((item) => (
+        <MultiSelectItem
+          key={item.id}
           name={item.name}
           image={item.image}
           label={item.label}

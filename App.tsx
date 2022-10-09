@@ -1,3 +1,6 @@
+import 'intl';
+import 'intl/locale-data/jsonp/nl-NL';
+
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 

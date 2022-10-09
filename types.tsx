@@ -6,6 +6,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { ImageSourcePropType } from 'react-native';
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
@@ -89,8 +90,8 @@ type InjuryLocation =
 export interface ReportFormData {
   categories: Category[];
   otherCategoryDescription?: string;
-  locationId: string;
-  dateTime?: Date;
+  location?: string;
+  dateTime: Date;
   personsInvolved: '';
   assistanceWitness: '';
   typeOfDamage: TypeOfDamage[];
@@ -98,3 +99,11 @@ export interface ReportFormData {
   photoURIs: string[];
   additionalInformation: string;
 }
+
+export type MultiSelectOptionPropType<T> = {
+  id: number;
+  name: T;
+  label?: string;
+  image: ImageSourcePropType;
+  backgroundColor?: string;
+};

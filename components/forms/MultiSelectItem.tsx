@@ -1,17 +1,17 @@
 import { View, Text, StyleSheet, ImageSourcePropType, Image, Pressable } from 'react-native';
 
-interface Props {
-  name: string;
+interface Props<T> {
+  name: T;
   image: ImageSourcePropType;
   label?: string;
   backgroundColor?: string;
   isSelected: boolean;
-  onPress: (name: string) => void;
+  onPress: (name: T) => void;
 }
 
 const tickImage = require('../../assets/images/tick.png');
 
-const MultiSelectOption = ({ name, image, label, backgroundColor, isSelected, onPress }: Props) => {
+const MultiSelectItem = <T extends unknown>({ name, image, label, backgroundColor, isSelected, onPress }: Props<T>) => {
   const pressHandler = () => {
     onPress(name);
   };
@@ -71,4 +71,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MultiSelectOption;
+export default MultiSelectItem;

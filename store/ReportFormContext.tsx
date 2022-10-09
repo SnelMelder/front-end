@@ -4,8 +4,8 @@ import { ReportFormData } from '../types';
 const initialData: ReportFormData = {
   categories: [],
   otherCategoryDescription: '',
-  locationId: '',
-  dateTime: undefined,
+  location: undefined,
+  dateTime: new Date(Date.now()),
   personsInvolved: '',
   assistanceWitness: '',
   typeOfDamage: [],
@@ -28,7 +28,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const AuthContextProvider = ({ children }: Props) => {
+const ReportFormContextProvider = ({ children }: Props) => {
   const [data, setData] = useState(initialData);
 
   const value = useMemo(() => ({ data, setData }), [data, setData]);
@@ -36,4 +36,4 @@ const AuthContextProvider = ({ children }: Props) => {
   return <ReportFormContext.Provider value={value}>{children}</ReportFormContext.Provider>;
 };
 
-export default AuthContextProvider;
+export default ReportFormContextProvider;
