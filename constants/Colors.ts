@@ -5,6 +5,7 @@ const COLORS = {
   cyan: '#83DCDA',
   green: '#B8EEBF',
   purple: '#C691D6',
+  black: '#000000',
   primary100: '#B6FFF0',
   primary200: '#6CFFE2',
   primary300: '#23FFD3',

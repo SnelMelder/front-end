@@ -1,20 +1,39 @@
-import { Text, View } from 'react-native';
+import { useContext } from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import Container from '../../components/ui/Container';
+import Explanation from '../../components/forms/Explanation';
+import Question from '../../components/forms/Question';
+import InputContainer from '../../components/forms/InputContainer';
+import PrimaryButton from '../../components/ui/PrimaryButton';
+import TextField from '../../components/forms/TextField';
+import { ReportFormParamList } from '../../types';
+import { ReportFormContext } from '../../store/ReportFormContext';
 
-import sharedStyles from '../shared.scss';
-import styles from './ReportIncidentOther.scss';
-import InputBox from '../../components/InputBox/InputBox';
-import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
+type Props = NativeStackScreenProps<ReportFormParamList, 'ReportIncidentOther'>;
 
-const ReportIncidentOther = () => (
-  <View style={sharedStyles.container}>
-    <View style={styles.title_container}>
-      <Text style={sharedStyles.title}>Soort incident: Overig</Text>
-      <ButtonInformation title="Soort incident: Overig" text="De soort incident waar u uw probleem heeft gevonden." />
-    </View>
-    <View style={styles.inputBox}>
-      <InputBox placeholder="Typ hier uw omschrijving" />
-    </View>
-  </View>
-);
+const ReportIncidentOther = ({ navigation }: Props) => {
+  const { data, setData } = useContext(ReportFormContext);
+
+  const nextQuestion = () => {
+    navigation.navigate('ReportLocation');
+  };
+
+  const setOtherCategoryDescription = (otherCategoryDescription: string) => {
+    setData((current) => ({ ...current, otherCategoryDescription }));
+  };
+
+  const isValid = data.otherCategoryDescription.length > 0;
+
+  return (
+    <Container>
+      <Question>Wat voor overig type incident gaat het om?</Question>
+      <Explanation>Voer het soort incident in</Explanation>
+      <InputContainer>
+        <TextField onChangeText={setOtherCategoryDescription} placeholder="Soort incident..." />
+      </InputContainer>
+      <PrimaryButton onPress={nextQuestion} text="Volgende" disabled={!isValid} />
+    </Container>
+  );
+};
 
 export default ReportIncidentOther;

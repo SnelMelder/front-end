@@ -1,28 +1,38 @@
-import { Text, View } from 'react-native';
+import { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-
-import styles from '../shared.scss';
-import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
-import InputBox from '../../components/InputBox/InputBox';
 import { ReportFormParamList } from '../../types';
+import Container from '../../components/ui/Container';
 import PrimaryButton from '../../components/ui/PrimaryButton';
+import Question from '../../components/forms/Question';
+import Explanation from '../../components/forms/Explanation';
+import InputContainer from '../../components/forms/InputContainer';
+import { ReportFormContext } from '../../store/ReportFormContext';
+import TextField from '../../components/forms/TextField';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportAssistanceWitness'>;
 
 const ReportAssistanceWitness = ({ navigation }: Props) => {
-  const nextQuestionHandler = () => {
+  const { data, setData } = useContext(ReportFormContext);
+
+  const nextQuestion = () => {
     navigation.navigate('ReportTypeOfDamage');
   };
 
+  const setAssistanceWitness = (assistanceWitness: string) => {
+    setData((current) => ({ ...current, assistanceWitness }));
+  };
+
+  const buttonText = data.assistanceWitness.length > 0 ? 'Volgende' : 'Overslaan';
+
   return (
-    <View style={styles.container}>
-      <View style={styles.title_container}>
-        <Text style={styles.title}>Hulpverlening/Getuigen</Text>
-        <ButtonInformation title="Hulpverlening/Getuigen" text="De getuige waar u uw probleem heeft gevonden." />
-      </View>
-      <InputBox placeholder="Typ hier naam van betreffende Hulpverlener/Getuigen" />
-      <PrimaryButton text="Volgende" onPress={nextQuestionHandler} />
-    </View>
+    <Container>
+      <Question>Wie was getuige van het incident of heeft hulp verleend?</Question>
+      <Explanation>Vul de naam of namen in</Explanation>
+      <InputContainer>
+        <TextField placeholder="Namen van getuigen en hulpverleners..." onChangeText={setAssistanceWitness} />
+      </InputContainer>
+      <PrimaryButton text={buttonText} onPress={nextQuestion} />
+    </Container>
   );
 };
 

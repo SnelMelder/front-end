@@ -68,14 +68,14 @@ export type ButtonInformationProps = {
 
 export type Category = 'ongeval' | 'bijna-ongeval' | 'gevaarlijke-situatie' | 'gevaarlijke-handeling' | 'overig';
 
-type TypeOfDamage =
-  | 'milieu schade'
-  | 'materiele schade'
-  | 'inwendig letsel'
-  | 'uitwendig letsel'
-  | 'geen schade/letsel';
+export type TypeOfDamage =
+  | 'milieu-schade'
+  | 'materiele-schade'
+  | 'inwendig-letsel'
+  | 'uitwendig-letsel'
+  | 'geen-schade-letsel';
 
-type InjuryLocation =
+export type InjuryLocation =
   | 'hoofd'
   | 'romp'
   | 'rechterarm'
@@ -85,17 +85,18 @@ type InjuryLocation =
   | 'rechterbeen'
   | 'linkerbeen'
   | 'rechtervoet'
-  | 'linkervoet';
+  | 'linkervoet'
+  | 'nek';
 
 export interface ReportFormData {
   categories: Category[];
-  otherCategoryDescription?: string;
+  otherCategoryDescription: string;
   location?: string;
   dateTime: Date;
-  personsInvolved: '';
-  assistanceWitness: '';
+  personInvolved: string;
+  assistanceWitness: string;
   typeOfDamage: TypeOfDamage[];
-  injuryLocation?: InjuryLocation;
+  injuryLocation: InjuryLocation[];
   photoURIs: string[];
   additionalInformation: string;
 }

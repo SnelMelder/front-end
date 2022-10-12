@@ -6,10 +6,10 @@ const initialData: ReportFormData = {
   otherCategoryDescription: '',
   location: undefined,
   dateTime: new Date(Date.now()),
-  personsInvolved: '',
+  personInvolved: '',
   assistanceWitness: '',
   typeOfDamage: [],
-  injuryLocation: undefined,
+  injuryLocation: [],
   photoURIs: [],
   additionalInformation: '',
 };

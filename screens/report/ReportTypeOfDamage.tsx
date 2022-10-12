@@ -1,30 +1,107 @@
-import { Text, View } from 'react-native';
+import { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StyleSheet } from 'react-native';
 
-import styles from '../shared.scss';
-import SoortSchade from '../../components/SoortSchade/SoortSchade';
-import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
-import { ReportFormParamList } from '../../types';
+import { ReportFormParamList, MultiSelectOptionPropType, TypeOfDamage } from '../../types';
 import PrimaryButton from '../../components/ui/PrimaryButton';
+import Container from '../../components/ui/Container';
+import Question from '../../components/forms/Question';
+import Explanation from '../../components/forms/Explanation';
+import MultiSelect from '../../components/forms/MultiSelect';
+import { ReportFormContext } from '../../store/ReportFormContext';
+import InputContainer from '../../components/forms/InputContainer';
+import COLORS from '../../constants/Colors';
+
+const MilieuImg = require('../../assets/images/soort-schade/Milieu_Schade_Icon.png');
+const MaterieleImg = require('../../assets/images/soort-schade/Materiele_Schade_Icon.png');
+const InwendigImg = require('../../assets/images/soort-schade/Inwendig_Letsel_Icon.png');
+const UitwendigImg = require('../../assets/images/soort-schade/Uitwendig_Letsel_Icon.png');
+const GeenImg = require('../../assets/images/soort-schade/Geen_Schade_Letsel_Icon.png');
+
+const options: MultiSelectOptionPropType<TypeOfDamage>[] = [
+  {
+    id: Math.random(),
+    name: 'milieu-schade',
+    image: MilieuImg,
+    label: 'Milieuschade',
+    backgroundColor: COLORS.green,
+  },
+  {
+    id: Math.random(),
+    name: 'materiele-schade',
+    image: MaterieleImg,
+    label: 'Materiële schade',
+    backgroundColor: COLORS.cyan,
+  },
+  {
+    id: Math.random(),
+    name: 'inwendig-letsel',
+    image: InwendigImg,
+    label: 'Inwendig letsel',
+    backgroundColor: COLORS.yellow,
+  },
+  {
+    id: Math.random(),
+    name: 'uitwendig-letsel',
+    image: UitwendigImg,
+    label: 'Uitwendig letsel',
+    backgroundColor: COLORS.orange,
+  },
+  {
+    id: Math.random(),
+    name: 'geen-schade-letsel',
+    image: GeenImg,
+    label: 'Geen schade/letsel',
+    backgroundColor: COLORS.purple,
+  },
+];
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportTypeOfDamage'>;
 
 const ReportTypeOfDamage = ({ navigation }: Props) => {
-  const nextQuestionHandler = () => {
-    // TODO: Navigate to correct screen based on answer
-    navigation.navigate('ReportAddPicture');
+  const { data, setData } = useContext(ReportFormContext);
+
+  const nextQuestion = () => {
+    if (data.typeOfDamage.includes('inwendig-letsel') || data.typeOfDamage.includes('uitwendig-letsel')) {
+      navigation.navigate('ReportLocationOfInjury');
+    } else {
+      navigation.navigate('ReportAddPicture');
+    }
   };
 
+  const setSelectedDamageTypes = (selectedTypesOfDamage: TypeOfDamage[]) => {
+    let typeOfDamage = selectedTypesOfDamage;
+
+    /** You cannot have 'no damage' and some sort of damage at the same time, we handle that here */
+    if (typeOfDamage.includes('geen-schade-letsel')) {
+      if (typeOfDamage[typeOfDamage.length - 1] === 'geen-schade-letsel') {
+        typeOfDamage = ['geen-schade-letsel'];
+      } else {
+        typeOfDamage = selectedTypesOfDamage.filter((item) => item !== 'geen-schade-letsel');
+      }
+    }
+
+    setData((current) => ({ ...current, typeOfDamage }));
+  };
+
+  const isValid = data.typeOfDamage.length > 0;
+
   return (
-    <View style={styles.container}>
-      <View style={styles.title_container}>
-        <Text style={styles.title}>Soort schade</Text>
-        <ButtonInformation title="Soort schade" text="De soort schade waar u uw probleem heeft gevonden." />
-      </View>
-      <SoortSchade />
-      <PrimaryButton text="Volgende" onPress={nextQuestionHandler} />
-    </View>
+    <Container>
+      <Question>Wat voor soort schade is er ontstaan?</Question>
+      <Explanation>Je kunt meerdere antwoorden selecteren</Explanation>
+      <InputContainer style={styles.inputContainer}>
+        <MultiSelect options={options} onValueChange={setSelectedDamageTypes} value={data.typeOfDamage} />
+      </InputContainer>
+      <PrimaryButton text="Volgende" onPress={nextQuestion} disabled={!isValid} />
+    </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  inputContainer: {
+    maxWidth: '70%',
+  },
+});
 
 export default ReportTypeOfDamage;
