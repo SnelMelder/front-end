@@ -21,35 +21,35 @@ const GeenImg = require('../../assets/images/soort-schade/Geen_Schade_Letsel_Ico
 const options: MultiSelectOptionPropType<TypeOfDamage>[] = [
   {
     id: Math.random(),
-    name: 'milieu-schade',
+    name: 'Milieu schade',
     image: MilieuImg,
     label: 'Milieuschade',
     backgroundColor: COLORS.green,
   },
   {
     id: Math.random(),
-    name: 'materiele-schade',
+    name: 'Materiële schade',
     image: MaterieleImg,
     label: 'Materiële schade',
     backgroundColor: COLORS.cyan,
   },
   {
     id: Math.random(),
-    name: 'inwendig-letsel',
+    name: 'Inwendig letsel',
     image: InwendigImg,
     label: 'Inwendig letsel',
     backgroundColor: COLORS.yellow,
   },
   {
     id: Math.random(),
-    name: 'uitwendig-letsel',
+    name: 'Uitwendig letsel',
     image: UitwendigImg,
     label: 'Uitwendig letsel',
     backgroundColor: COLORS.orange,
   },
   {
     id: Math.random(),
-    name: 'geen-schade-letsel',
+    name: 'Geen schade/letsel',
     image: GeenImg,
     label: 'Geen schade/letsel',
     backgroundColor: COLORS.purple,
@@ -62,7 +62,7 @@ const ReportTypeOfDamage = ({ navigation }: Props) => {
   const { data, setData } = useContext(ReportFormContext);
 
   const nextQuestion = () => {
-    if (data.typeOfDamage.includes('inwendig-letsel') || data.typeOfDamage.includes('uitwendig-letsel')) {
+    if (data.typeOfDamage.includes('Inwendig letsel') || data.typeOfDamage.includes('Uitwendig letsel')) {
       navigation.navigate('ReportLocationOfInjury');
     } else {
       navigation.navigate('ReportAddPicture');
@@ -73,11 +73,11 @@ const ReportTypeOfDamage = ({ navigation }: Props) => {
     let typeOfDamage = selectedTypesOfDamage;
 
     /** You cannot have 'no damage' and some sort of damage at the same time, we handle that here */
-    if (typeOfDamage.includes('geen-schade-letsel')) {
-      if (typeOfDamage[typeOfDamage.length - 1] === 'geen-schade-letsel') {
-        typeOfDamage = ['geen-schade-letsel'];
+    if (typeOfDamage.includes('Geen schade/letsel')) {
+      if (typeOfDamage[typeOfDamage.length - 1] === 'Geen schade/letsel') {
+        typeOfDamage = ['Geen schade/letsel'];
       } else {
-        typeOfDamage = selectedTypesOfDamage.filter((item) => item !== 'geen-schade-letsel');
+        typeOfDamage = selectedTypesOfDamage.filter((item) => item !== 'Geen schade/letsel');
       }
     }
 

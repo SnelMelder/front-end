@@ -7,6 +7,7 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ImageSourcePropType } from 'react-native';
+import { ImageInfo } from 'expo-image-picker';
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
@@ -26,6 +27,7 @@ export type RootTabParamList = {
 };
 
 export type ReportFormParamList = {
+  Root: undefined;
   ReportCategory: undefined;
   ReportIncidentOther: undefined;
   ReportLocation: undefined;
@@ -37,6 +39,8 @@ export type ReportFormParamList = {
   ReportAddPicture: undefined;
   ReportAdditionalInformation: undefined;
   ReportSummary: undefined;
+  SendingScreen: undefined;
+  SuccessScreen: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
@@ -66,27 +70,27 @@ export type ButtonInformationProps = {
   text: string;
 };
 
-export type Category = 'ongeval' | 'bijna-ongeval' | 'gevaarlijke-situatie' | 'gevaarlijke-handeling' | 'overig';
+export type Category = 'Ongeval' | 'Bijna ongeval' | 'Gevaarlijke situatie' | 'Gevaarlijke handeling' | 'Overig';
 
 export type TypeOfDamage =
-  | 'milieu-schade'
-  | 'materiele-schade'
-  | 'inwendig-letsel'
-  | 'uitwendig-letsel'
-  | 'geen-schade-letsel';
+  | 'Milieu schade'
+  | 'Materiële schade'
+  | 'Inwendig letsel'
+  | 'Uitwendig letsel'
+  | 'Geen schade/letsel';
 
 export type InjuryLocation =
-  | 'hoofd'
-  | 'romp'
-  | 'rechterarm'
-  | 'rechterhand'
-  | 'linkerarm'
-  | 'linkerhand'
-  | 'rechterbeen'
-  | 'linkerbeen'
-  | 'rechtervoet'
-  | 'linkervoet'
-  | 'nek';
+  | 'Hoofd'
+  | 'Romp'
+  | 'Rechterarm'
+  | 'Rechterhand'
+  | 'Linkerarm'
+  | 'Linkerhand'
+  | 'Rechterbeen'
+  | 'Linkerbeen'
+  | 'Rechtervoet'
+  | 'Linkervoet'
+  | 'Nek';
 
 export interface ReportFormData {
   categories: Category[];
@@ -97,8 +101,9 @@ export interface ReportFormData {
   assistanceWitness: string;
   typeOfDamage: TypeOfDamage[];
   injuryLocation: InjuryLocation[];
-  photoURIs: string[];
+  images: ImageInfo[];
   additionalInformation: string;
+  anonymous: boolean;
 }
 
 export type MultiSelectOptionPropType<T> = {

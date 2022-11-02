@@ -1,9 +1,4 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
-
-import { SafeAreaView } from 'react-native';
-import Header from '../components/Header/Header';
-import { RootTabScreenProps } from '../types';
 
 import ReportFormContextProvider from '../store/ReportFormContext';
 
@@ -19,6 +14,8 @@ import ReportSummary from './report/ReportSummary';
 import ReportIncidentOther from './report/ReportIncidentOther';
 import ReportLocationOfInjury from './report/ReportLocationOfInjury';
 import COLORS from '../constants/Colors';
+import SendingScreen from './report/SendingScreen';
+import SuccessScreen from './report/SuccessScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -65,6 +62,16 @@ const ReportScreen = () => {
           options={{ title: 'Overige informatie' }}
         />
         <Stack.Screen name="ReportSummary" component={ReportSummary} options={{ title: 'Samenvatting' }} />
+        <Stack.Screen
+          name="SendingScreen"
+          component={SendingScreen}
+          options={{ headerShown: false, animation: 'none' }}
+        />
+        <Stack.Screen
+          name="SuccessScreen"
+          component={SuccessScreen}
+          options={{ headerShown: false, animation: 'none' }}
+        />
       </Stack.Navigator>
     </ReportFormContextProvider>
   );

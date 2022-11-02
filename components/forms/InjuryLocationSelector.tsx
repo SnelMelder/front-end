@@ -30,65 +30,65 @@ const InjuryLocationSelector = ({ value, onValueChange }: Props) => {
   return (
     <View style={styles.container}>
       <Svg viewBox="0 0 458.5 719">
-        <Path onPress={() => selectInjuryLocationHandler('nek')} fill={getFillColor('nek')} d="M190 163h78v59h-78z" />
+        <Path onPress={() => selectInjuryLocationHandler('Nek')} fill={getFillColor('Nek')} d="M190 163h78v59h-78z" />
         <Circle
-          onPress={() => selectInjuryLocationHandler('hoofd')}
-          fill={getFillColor('hoofd')}
+          onPress={() => selectInjuryLocationHandler('Hoofd')}
+          fill={getFillColor('Hoofd')}
           cx={229}
           cy={89}
           r={89}
         />
         <Path
-          onPress={() => selectInjuryLocationHandler('rechterbeen')}
-          fill={getFillColor('rechterbeen')}
+          onPress={() => selectInjuryLocationHandler('Rechterbeen')}
+          fill={getFillColor('Rechterbeen')}
           d="M140 490h75v191h-75z"
         />
         <Circle
-          onPress={() => selectInjuryLocationHandler('rechtervoet')}
-          fill={getFillColor('rechtervoet')}
+          onPress={() => selectInjuryLocationHandler('Rechtervoet')}
+          fill={getFillColor('Rechtervoet')}
           cx={177.5}
           cy={680.5}
           r={37.5}
         />
         <Path
-          onPress={() => selectInjuryLocationHandler('linkerbeen')}
-          fill={getFillColor('linkerbeen')}
+          onPress={() => selectInjuryLocationHandler('Linkerbeen')}
+          fill={getFillColor('Linkerbeen')}
           d="M243 490h75v191h-75z"
         />
         <Circle
-          onPress={() => selectInjuryLocationHandler('linkervoet')}
-          fill={getFillColor('linkervoet')}
+          onPress={() => selectInjuryLocationHandler('Linkervoet')}
+          fill={getFillColor('Linkervoet')}
           cx={280.5}
           cy={681.5}
           r={37.5}
         />
         <Path
-          onPress={() => selectInjuryLocationHandler('rechterarm')}
-          fill={getFillColor('rechterarm')}
+          onPress={() => selectInjuryLocationHandler('Rechterarm')}
+          fill={getFillColor('Rechterarm')}
           d="m140.259 221.706 53.033 53.033L64.018 404.012 10.985 350.98z"
         />
         <Circle
-          onPress={() => selectInjuryLocationHandler('rechterhand')}
-          fill={getFillColor('rechterhand')}
+          onPress={() => selectInjuryLocationHandler('Rechterhand')}
+          fill={getFillColor('Rechterhand')}
           cx={37.5}
           cy={377.5}
           r={37.5}
         />
         <Path
-          onPress={() => selectInjuryLocationHandler('linkerarm')}
-          fill={getFillColor('linkerarm')}
+          onPress={() => selectInjuryLocationHandler('Linkerarm')}
+          fill={getFillColor('Linkerarm')}
           d="m264.703 274.744 53.033-53.033L447.01 350.985l-53.033 53.033z"
         />
         <Circle
-          onPress={() => selectInjuryLocationHandler('linkerhand')}
-          fill={getFillColor('linkerhand')}
+          onPress={() => selectInjuryLocationHandler('Linkerhand')}
+          fill={getFillColor('Linkerhand')}
           cx={421}
           cy={377}
           r={37.5}
         />
         <Path
-          onPress={() => selectInjuryLocationHandler('romp')}
-          fill={getFillColor('romp')}
+          onPress={() => selectInjuryLocationHandler('Romp')}
+          fill={getFillColor('Romp')}
           d="M140 222h178v268H140z"
         />
       </Svg>

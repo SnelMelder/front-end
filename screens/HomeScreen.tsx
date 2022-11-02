@@ -1,6 +1,7 @@
 import { Button, Image, ScrollView, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
+import { FAB } from 'react-native-paper';
 
 import { RootStackParamList } from '../types';
 import styles from './homescreen.scss';
@@ -29,9 +30,8 @@ const HomeScreen = ({ navigation }: Props) => {
             title="Geen melding"
             message="Voeg een melding toe door op het plusje te tikken of verander uw locatie via de instellingen"
           />
-
-          <Button title="Open report form" onPress={showReportForm} />
         </ScrollView>
+        <FAB onPress={showReportForm} icon="plus" label="Nieuwe melding" />
       </View>
     </>
   );

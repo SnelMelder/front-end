@@ -15,6 +15,7 @@ const COLORS = {
   primary700: '#005645',
   primary800: '#00392E',
   primary900: '#001D17',
+  onPrimary: 'white',
 };
 
 export default COLORS;

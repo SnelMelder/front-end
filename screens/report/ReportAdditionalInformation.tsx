@@ -1,31 +1,38 @@
-import { Text, View } from 'react-native';
+import { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import styles from '../shared.scss';
-
-import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
-import InputBox from '../../components/InputBox/InputBox';
+import { ReportFormContext } from '../../store/ReportFormContext';
 import PrimaryButton from '../../components/ui/PrimaryButton';
 import { ReportFormParamList } from '../../types';
+import Question from '../../components/forms/Question';
+import Explanation from '../../components/forms/Explanation';
+import Container from '../../components/ui/Container';
+import TextField from '../../components/forms/TextField';
+import InputContainer from '../../components/forms/InputContainer';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportAdditionalInformation'>;
 
 const ReportAdditionalInformation = ({ navigation }: Props) => {
-  const nextQuestionHandler = () => {
+  const { data, setData } = useContext(ReportFormContext);
+
+  const nextQuestion = () => {
     navigation.navigate('ReportSummary');
   };
 
+  const setAdditionalInformation = (additionalInformation: string) => {
+    setData((current) => ({ ...current, additionalInformation }));
+  };
+
+  const buttonText = data.additionalInformation.length > 0 ? 'Volgende' : 'Overslaan';
+
   return (
-    <View style={styles.container}>
-      <View style={styles.title_container}>
-        <Text style={styles.title}>Aanvullende informatie</Text>
-        <ButtonInformation
-          title="Aanvullende informatie"
-          text="De aanvullende informatie omtrent het gevonden probleem."
-        />
-      </View>
-      <InputBox placeholder="Typ hier uw aanvullende informatie" />
-      <PrimaryButton text="Volgende" onPress={nextQuestionHandler} />
-    </View>
+    <Container>
+      <Question>Wil je nog iets anders kwijt over deze melding?</Question>
+      <Explanation>Je kan hier nog aanvullende informatie geven. Dit is niet verplicht.</Explanation>
+      <InputContainer>
+        <TextField placeholder="Aanvullende informatie..." multiline onChangeText={setAdditionalInformation} />
+      </InputContainer>
+      <PrimaryButton text={buttonText} onPress={nextQuestion} />
+    </Container>
   );
 };
 

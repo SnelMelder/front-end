@@ -20,35 +20,35 @@ const othersImage = require('../../assets/images/soort-incident/soort_incident_o
 const answeringOptions: MultiSelectOptionPropType<Category>[] = [
   {
     id: Math.random(),
-    name: 'ongeval',
+    name: 'Ongeval',
     label: 'Ongeval',
     image: accidentImage,
     backgroundColor: COLORS.orange,
   },
   {
     id: Math.random(),
-    name: 'bijna-ongeval',
+    name: 'Bijna ongeval',
     label: 'Bijna ongeval',
     image: almostAccidentImage,
     backgroundColor: COLORS.yellow,
   },
   {
     id: Math.random(),
-    name: 'gevaarlijke-situatie',
+    name: 'Gevaarlijke situatie',
     label: 'Gevaarlijke situatie',
     image: dangerousSituationImage,
     backgroundColor: COLORS.cyan,
   },
   {
     id: Math.random(),
-    name: 'gevaarlijke-handeling',
+    name: 'Gevaarlijke handeling',
     label: 'Gevaarlijke handeling',
     image: dangerousActionImage,
     backgroundColor: COLORS.green,
   },
   {
     id: Math.random(),
-    name: 'overig',
+    name: 'Overig',
     label: 'Overig',
     image: othersImage,
     backgroundColor: COLORS.purple,
@@ -65,7 +65,7 @@ const ReportCategory = ({ navigation }: Props) => {
   };
 
   const nextQuestion = () => {
-    if (data.categories.includes('overig')) {
+    if (data.categories.includes('Overig')) {
       navigation.navigate('ReportIncidentOther');
     } else {
       navigation.navigate('ReportLocation');
