@@ -1,15 +1,11 @@
 import { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import PrimaryButton from '../../components/ui/PrimaryButton';
 import { ReportFormParamList, Category, MultiSelectOptionPropType } from '../../types';
 import MultiSelect from '../../components/forms/MultiSelect';
 import COLORS from '../../constants/Colors';
 import { ReportFormContext } from '../../store/ReportFormContext';
-import Container from '../../components/ui/Container';
-import Question from '../../components/forms/Question';
-import Explanation from '../../components/forms/Explanation';
-import InputContainer from '../../components/forms/InputContainer';
+import FormQuestion from '../../components/forms/FormQuestion';
 
 const accidentImage = require('../../assets/images/soort-incident/soort_incident_ongeval.png');
 const almostAccidentImage = require('../../assets/images/soort-incident/soort_incident_bijna_ongeval.png');
@@ -73,19 +69,24 @@ const ReportCategory = ({ navigation }: Props) => {
   };
 
   return (
-    <Container>
-      <Question>Wat voor soort incident gaat het om?</Question>
-      <Explanation>Tik één of meerdere opties aan</Explanation>
-      <InputContainer style={styles.answerContainer}>
-        <MultiSelect options={answeringOptions} value={data.categories} onValueChange={setCategories} />
-      </InputContainer>
-      <PrimaryButton text="Volgende" onPress={nextQuestion} disabled={data.categories.length === 0} />
-    </Container>
+    <FormQuestion
+      question="Wat voor soort incident gaat het om?"
+      explanation="Tik één of meerdere opties aan"
+      onNextQuestion={nextQuestion}
+      canSubmit={data.categories.length > 0}
+    >
+      <MultiSelect
+        style={styles.multiSelect}
+        options={answeringOptions}
+        value={data.categories}
+        onValueChange={setCategories}
+      />
+    </FormQuestion>
   );
 };
 
 const styles = StyleSheet.create({
-  answerContainer: {
+  multiSelect: {
     maxWidth: '70%',
   },
 });

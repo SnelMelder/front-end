@@ -1,13 +1,9 @@
 import { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ReportFormParamList } from '../../types';
-import Container from '../../components/ui/Container';
-import PrimaryButton from '../../components/ui/PrimaryButton';
-import Question from '../../components/forms/Question';
-import Explanation from '../../components/forms/Explanation';
-import InputContainer from '../../components/forms/InputContainer';
 import { ReportFormContext } from '../../store/ReportFormContext';
 import TextField from '../../components/forms/TextField';
+import FormQuestion from '../../components/forms/FormQuestion';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportAssistanceWitness'>;
 
@@ -22,17 +18,16 @@ const ReportAssistanceWitness = ({ navigation }: Props) => {
     setData((current) => ({ ...current, assistanceWitness }));
   };
 
-  const buttonText = data.assistanceWitness.length > 0 ? 'Volgende' : 'Overslaan';
-
   return (
-    <Container>
-      <Question>Wie was getuige van het incident of heeft hulp verleend?</Question>
-      <Explanation>Vul de naam of namen in</Explanation>
-      <InputContainer>
-        <TextField placeholder="Namen van getuigen en hulpverleners..." onChangeText={setAssistanceWitness} />
-      </InputContainer>
-      <PrimaryButton text={buttonText} onPress={nextQuestion} />
-    </Container>
+    <FormQuestion
+      question="Wie was getuige van het incident of heeft hulp verleend?"
+      explanation="Vul de naam of namen in"
+      onNextQuestion={nextQuestion}
+      canSubmit={data.assistanceWitness.length > 0}
+      canSkip
+    >
+      <TextField placeholder="Namen van getuigen en hulpverleners..." onChangeText={setAssistanceWitness} />
+    </FormQuestion>
   );
 };
 

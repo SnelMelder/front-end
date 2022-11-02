@@ -9,6 +9,7 @@ import Explanation from '../../components/forms/Explanation';
 import PicturePicker from '../../components/forms/PicturePicker';
 import { ReportFormContext } from '../../store/ReportFormContext';
 import InputContainer from '../../components/forms/InputContainer';
+import FormQuestion from '../../components/forms/FormQuestion';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportAddPicture'>;
 
@@ -24,14 +25,15 @@ const ReportAddPicture = ({ navigation }: Props) => {
   };
 
   return (
-    <Container>
-      <Question>Voeg een foto toe</Question>
-      <Explanation>Dit is niet verplicht</Explanation>
-      <InputContainer>
-        <PicturePicker value={data.images} onValueChange={setImages} />
-      </InputContainer>
-      <PrimaryButton text="Volgende" onPress={nextQuestion} />
-    </Container>
+    <FormQuestion
+      question="Voeg een foto toe"
+      explanation="Dit is niet verplicht"
+      onNextQuestion={nextQuestion}
+      canSubmit={data.images.length > 0}
+      canSkip
+    >
+      <PicturePicker value={data.images} onValueChange={setImages} />
+    </FormQuestion>
   );
 };
 

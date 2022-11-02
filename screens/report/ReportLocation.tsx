@@ -1,13 +1,9 @@
 import { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import PrimaryButton from '../../components/ui/PrimaryButton';
 import { ReportFormParamList } from '../../types';
 import { ReportFormContext } from '../../store/ReportFormContext';
-import Container from '../../components/ui/Container';
-import Question from '../../components/forms/Question';
-import Explanation from '../../components/forms/Explanation';
 import Select from '../../components/forms/Select';
-import InputContainer from '../../components/forms/InputContainer';
+import FormQuestion from '../../components/forms/FormQuestion';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportLocation'>;
 
@@ -25,14 +21,14 @@ const ReportLocation = ({ navigation }: Props) => {
   };
 
   return (
-    <Container>
-      <Question>Wat is de locatie van het incident?</Question>
-      <Explanation>Tik één locatie aan</Explanation>
-      <InputContainer>
-        <Select options={locations} onValueChange={setSelectedLocation} value={data.location} />
-      </InputContainer>
-      <PrimaryButton text="Volgende" onPress={nextQuestion} disabled={data.location === undefined} />
-    </Container>
+    <FormQuestion
+      question="Wat is de locatie van het incident?"
+      explanation="Tik één locatie aan"
+      canSubmit={data.location !== undefined}
+      onNextQuestion={nextQuestion}
+    >
+      <Select options={locations} onValueChange={setSelectedLocation} value={data.location} />
+    </FormQuestion>
   );
 };
 

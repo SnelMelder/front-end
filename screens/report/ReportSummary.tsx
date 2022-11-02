@@ -7,6 +7,7 @@ import Container from '../../components/ui/Container';
 import ImageCard from '../../components/ui/ImageCard';
 import SummaryItem from '../../components/forms/SummaryItem';
 import PrimaryButton from '../../components/ui/PrimaryButton';
+import { Button } from 'react-native-paper';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportSummary'>;
 
@@ -44,7 +45,9 @@ const ReportSummary = ({ navigation }: Props) => {
   return (
     <ScrollView>
       <Container>
-        <PrimaryButton onPress={submit} text="Melding versturen" />
+        <Button mode="contained" onPress={submit}>
+          Melding versturen
+        </Button>
       </Container>
 
       {data.images.length > 0 && (

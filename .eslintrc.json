@@ -51,6 +51,7 @@
     "react/jsx-no-bind": "off",
     "react/react-in-jsx-scope": "off",
     "no-console": "off",
-    "@typescript-eslint/no-unnecessary-type-constraint": "off"
+    "@typescript-eslint/no-unnecessary-type-constraint": "off",
+    "react/style-prop-object": "off"
   }
 }

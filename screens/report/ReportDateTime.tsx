@@ -8,6 +8,7 @@ import Explanation from '../../components/forms/Explanation';
 import InputContainer from '../../components/forms/InputContainer';
 import { ReportFormContext } from '../../store/ReportFormContext';
 import DateTimePicker from '../../components/forms/DateTimePicker';
+import FormQuestion from '../../components/forms/FormQuestion';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportDateTime'>;
 
@@ -30,14 +31,14 @@ const ReportDateTime = ({ navigation }: Props) => {
   };
 
   return (
-    <Container>
-      <Question>Wanneer heeft het incident plaatsgevonden?</Question>
-      <Explanation>Vul datum en tijd in</Explanation>
-      <InputContainer>
-        <DateTimePicker value={data.dateTime} onChange={setSelectedDate} maxDate={new Date(Date.now())} />
-      </InputContainer>
-      <PrimaryButton text="Volgende" onPress={nextQuestionHandler} />
-    </Container>
+    <FormQuestion
+      question="Wanneer heeft het incident plaatsgevonden?"
+      explanation="Vul datum en tijd in"
+      canSubmit
+      onNextQuestion={nextQuestionHandler}
+    >
+      <DateTimePicker value={data.dateTime} onChange={setSelectedDate} maxDate={new Date(Date.now())} />
+    </FormQuestion>
   );
 };
 

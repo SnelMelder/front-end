@@ -1,16 +1,26 @@
-import React from 'react';
-import { Image, View } from 'react-native';
-import styles from './shared.scss';
+import { useContext } from 'react';
+import { Image, StyleSheet } from 'react-native';
+import { Button } from 'react-native-paper';
+import { AuthContext } from '../auth/AuthContext';
+import Container from '../components/ui/Container';
 
-import Settings from '../components/Settings/Settings';
+const SettingsScreen = () => {
+  const { logout } = useContext(AuthContext);
 
-const SettingsScreen = () => (
-  <>
-    <Image style={styles.logo} source={require('../assets/images/SnelMelder_Home_Logo.png')} />
-    <View style={styles.container}>
-      <Settings />
-    </View>
-  </>
-);
+  return (
+    <>
+      <Image style={styles.logo} source={require('../assets/images/SnelMelder_Home_Logo.png')} />
+      <Container>
+        <Button onPress={logout}>Uitloggen</Button>
+      </Container>
+    </>
+  );
+};
+
+const styles = StyleSheet.create({
+  logo: {
+    width: '100%',
+  },
+});
 
 export default SettingsScreen;

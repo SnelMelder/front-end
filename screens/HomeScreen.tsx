@@ -1,13 +1,9 @@
-import { Button, Image, ScrollView, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
 import { FAB } from 'react-native-paper';
-
 import { RootStackParamList } from '../types';
-import styles from './homescreen.scss';
-import sharedStyles from './shared.scss';
-import ButtonPlusBigGreen from '../components/ButtonPlusBigGreen/ButtonPlus';
-import NotificationContainer from '../components/NotificationContainer/NotificationContainer';
+import LogoHeader from '../components/LogoHeader';
+import Container from '../components/ui/Container';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ReportForm'>;
 
@@ -18,22 +14,20 @@ const HomeScreen = ({ navigation }: Props) => {
 
   return (
     <>
-      <Image style={sharedStyles.logo} source={require('../assets/images/SnelMelder_Home_Logo.png')} />
-      <View style={styles.container}>
-        <Text style={styles.title}>Melding op uw locatie</Text>
-        <View style={styles.locationContainer}>
-          <Ionicons name="location" size={20} />
-          <Text style={styles.subtitle}> Fontys hogescholen Strijp-t TQ4</Text>
-        </View>
-        <ScrollView>
-          <NotificationContainer
-            title="Geen melding"
-            message="Voeg een melding toe door op het plusje te tikken of verander uw locatie via de instellingen"
-          />
-        </ScrollView>
-        <FAB onPress={showReportForm} icon="plus" label="Nieuwe melding" />
-      </View>
+      <LogoHeader />
+      <Container>
+        <FAB style={styles.fab} onPress={showReportForm} icon="plus" label="Nieuwe melding" />
+      </Container>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    bottom: 16,
+    right: 16,
+  },
+});
+
 export default HomeScreen;

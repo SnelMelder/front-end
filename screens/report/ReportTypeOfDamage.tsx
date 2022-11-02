@@ -3,14 +3,10 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StyleSheet } from 'react-native';
 
 import { ReportFormParamList, MultiSelectOptionPropType, TypeOfDamage } from '../../types';
-import PrimaryButton from '../../components/ui/PrimaryButton';
-import Container from '../../components/ui/Container';
-import Question from '../../components/forms/Question';
-import Explanation from '../../components/forms/Explanation';
 import MultiSelect from '../../components/forms/MultiSelect';
 import { ReportFormContext } from '../../store/ReportFormContext';
-import InputContainer from '../../components/forms/InputContainer';
 import COLORS from '../../constants/Colors';
+import FormQuestion from '../../components/forms/FormQuestion';
 
 const MilieuImg = require('../../assets/images/soort-schade/Milieu_Schade_Icon.png');
 const MaterieleImg = require('../../assets/images/soort-schade/Materiele_Schade_Icon.png');
@@ -87,19 +83,24 @@ const ReportTypeOfDamage = ({ navigation }: Props) => {
   const isValid = data.typeOfDamage.length > 0;
 
   return (
-    <Container>
-      <Question>Wat voor soort schade is er ontstaan?</Question>
-      <Explanation>Je kunt meerdere antwoorden selecteren</Explanation>
-      <InputContainer style={styles.inputContainer}>
-        <MultiSelect options={options} onValueChange={setSelectedDamageTypes} value={data.typeOfDamage} />
-      </InputContainer>
-      <PrimaryButton text="Volgende" onPress={nextQuestion} disabled={!isValid} />
-    </Container>
+    <FormQuestion
+      question="Wat voor soort schade is er ontstaan?"
+      explanation="Je kunt meerdere antwoorden selecteren"
+      onNextQuestion={nextQuestion}
+      canSubmit={isValid}
+    >
+      <MultiSelect
+        style={styles.multiSelect}
+        options={options}
+        onValueChange={setSelectedDamageTypes}
+        value={data.typeOfDamage}
+      />
+    </FormQuestion>
   );
 };
 
 const styles = StyleSheet.create({
-  inputContainer: {
+  multiSelect: {
     maxWidth: '70%',
   },
 });

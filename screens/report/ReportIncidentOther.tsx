@@ -1,13 +1,9 @@
 import { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Container from '../../components/ui/Container';
-import Explanation from '../../components/forms/Explanation';
-import Question from '../../components/forms/Question';
-import InputContainer from '../../components/forms/InputContainer';
-import PrimaryButton from '../../components/ui/PrimaryButton';
 import TextField from '../../components/forms/TextField';
 import { ReportFormParamList } from '../../types';
 import { ReportFormContext } from '../../store/ReportFormContext';
+import FormQuestion from '../../components/forms/FormQuestion';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportIncidentOther'>;
 
@@ -25,14 +21,14 @@ const ReportIncidentOther = ({ navigation }: Props) => {
   const isValid = data.otherCategoryDescription.length > 0;
 
   return (
-    <Container>
-      <Question>Wat voor overig type incident gaat het om?</Question>
-      <Explanation>Voer het soort incident in</Explanation>
-      <InputContainer>
-        <TextField onChangeText={setOtherCategoryDescription} placeholder="Soort incident..." />
-      </InputContainer>
-      <PrimaryButton onPress={nextQuestion} text="Volgende" disabled={!isValid} />
-    </Container>
+    <FormQuestion
+      question="Wat voor overig type incident gaat het om?"
+      explanation="Voer het soort incident in"
+      canSubmit={isValid}
+      onNextQuestion={nextQuestion}
+    >
+      <TextField onChangeText={setOtherCategoryDescription} placeholder="Soort incident..." />
+    </FormQuestion>
   );
 };
 
