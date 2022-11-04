@@ -1,13 +1,12 @@
 import { useContext, useEffect } from 'react';
 import { ScrollView, StyleSheet, FlatList } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Button } from 'react-native-paper';
 import { ReportFormParamList } from '../../types';
 import { ReportFormContext } from '../../store/ReportFormContext';
 import Container from '../../components/ui/Container';
 import ImageCard from '../../components/ui/ImageCard';
 import SummaryItem from '../../components/forms/SummaryItem';
-import PrimaryButton from '../../components/ui/PrimaryButton';
-import { Button } from 'react-native-paper';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportSummary'>;
 
