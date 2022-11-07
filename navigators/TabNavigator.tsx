@@ -6,7 +6,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 const BottomTab = createMaterialBottomTabNavigator();
 
 const TabNavigator = () => (
-  <BottomTab.Navigator initialRouteName="TabHome">
+  <BottomTab.Navigator>
     <BottomTab.Screen
       name="TabHome"
       component={HomeScreen}

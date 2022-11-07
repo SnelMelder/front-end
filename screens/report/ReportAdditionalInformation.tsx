@@ -18,8 +18,6 @@ const ReportAdditionalInformation = ({ navigation }: Props) => {
     setData((current) => ({ ...current, additionalInformation }));
   };
 
-  const buttonText = data.additionalInformation.length > 0 ? 'Volgende' : 'Overslaan';
-
   return (
     <FormQuestion
       question="Wil je nog iets anders kwijt over deze melding?"
