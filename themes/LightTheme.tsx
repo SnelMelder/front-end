@@ -1,6 +1,8 @@
 import { MD3LightTheme as PaperTheme } from 'react-native-paper';
 import { DefaultTheme as NavigationTheme } from '@react-navigation/native';
 
+// Generate at: https://callstack.github.io/react-native-paper/theming.html
+
 const LightTheme = {
   ...PaperTheme,
   ...NavigationTheme,
