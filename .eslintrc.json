@@ -52,6 +52,7 @@
     "react/react-in-jsx-scope": "off",
     "no-console": "off",
     "@typescript-eslint/no-unnecessary-type-constraint": "off",
-    "react/style-prop-object": "off"
+    "react/style-prop-object": "off",
+    "lines-between-class-members": "off"
   }
 }
