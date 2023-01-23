@@ -63,7 +63,7 @@ If you want to set this up yourselves:
 
 1. Create a file named authConfig.ts in the auth folder.
 2. Copy the contents of the authConfig.example.ts file over to this file.
-3. Add a single page application to your Microsoft developer tenant, following Microsoft instructions
+3. Add this application to your Microsoft developer tenant, following Microsoft instructions
 4. Fill in the details in your authConfig.ts file
 
 ## Live preview on iPhone
