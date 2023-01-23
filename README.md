@@ -46,12 +46,25 @@ This app is built in React Native using the Expo CLI.
 
 ## Getting started
 
+### Running the project
+
 ```bash
 git clone https://github.com/SnelMelder/front-end.git
 sudo npm install -g expo-cli
 npm install
 npm start
 ```
+
+### Configuring authentication with Azure AD
+
+A Microsoft developer tenant has been set up for this project. You can use this if you want to. Please refer to Jard for the details.
+
+If you want to set this up yourselves:
+
+1. Create a file named authConfig.ts in the auth folder.
+2. Copy the contents of the authConfig.example.ts file over to this file.
+3. Add a single page application to your Microsoft developer tenant, following Microsoft instructions
+4. Fill in the details in your authConfig.ts file
 
 ## Live preview on iPhone
 
