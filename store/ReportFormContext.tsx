@@ -50,13 +50,13 @@ const ReportFormContextProvider = ({ children }: Props) => {
 
       axios
         .post(apiUrl, {
-          user: '634fcafdd3b2ad8a0b31069c', // TODO: use some actual user ID here, preferably the AD user ID
+          oid: '238fa98b-5798-4a6d-9bb9-6045569004cf', // TODO: use some actual user ID here, preferably the AD user ID
           anonymous: data.anonymous,
           dateTime: data.dateTime,
           environmentalDamage: data.typeOfDamage.includes('Milieu schade'),
           materialDamage: data.typeOfDamage.includes('Materiële schade'),
           personInvolved: data.personInvolved,
-          projectLocation: '634fcafdd3b2ad8a0b31069e', // TODO: use an actual project location, get them from the API
+          projectLocation: '639833a82bb65e7c6302d725', // TODO: use an actual project location, get them from the API
           additionalInformation: data.additionalInformation,
           witness: data.assistanceWitness,
           injurySite: ['head'], // TODO: fix injury types in backend
