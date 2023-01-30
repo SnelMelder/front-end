@@ -17,7 +17,7 @@ const getTokenRequestConfig = (code: string, codeVerifier: string): AccessTokenR
 const getCodeRequest = () => {
   return new AuthRequest({
     clientId,
-    scopes: ['api://d9b7bd67-1432-4657-9329-d94b7b35e50e/SMBE'],
+    scopes: ['api://d9b7bd67-1432-4657-9329-d94b7b35e50e/SMBE', 'offline_access'],
     redirectUri,
   });
 };
@@ -33,6 +33,7 @@ const promptAuthentication = async () => {
   const tokenRequestConfig = getTokenRequestConfig(codeResponse.params.code, codeRequest.codeVerifier as string);
   const tokenResponse = await exchangeCodeAsync(tokenRequestConfig, discovery);
 
+  console.log(tokenResponse);
   return tokenResponse;
 };
 
