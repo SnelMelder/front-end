@@ -17,7 +17,7 @@ const getTokenRequestConfig = (code: string, codeVerifier: string): AccessTokenR
 const getCodeRequest = () => {
   return new AuthRequest({
     clientId,
-    scopes: ['openid', 'profile', 'email', 'offline_access'],
+    scopes: ['api://d9b7bd67-1432-4657-9329-d94b7b35e50e/SMBE'],
     redirectUri,
   });
 };
