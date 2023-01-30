@@ -53,6 +53,7 @@
     "no-console": "off",
     "@typescript-eslint/no-unnecessary-type-constraint": "off",
     "react/style-prop-object": "off",
-    "lines-between-class-members": "off"
+    "lines-between-class-members": "off",
+    "no-underscore-dangle": "off"
   }
 }

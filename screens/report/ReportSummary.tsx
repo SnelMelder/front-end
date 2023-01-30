@@ -23,7 +23,7 @@ const ReportSummary = ({ navigation }: Props) => {
     .map((item) => (item === 'Overig' ? `Overig: ${data.otherCategoryDescription}` : item))
     .join(', ');
 
-  const locationString = data.location || '';
+  const locationString = data.location?.name || '';
   const dateTimeString = Intl.DateTimeFormat('nl-NL', {
     day: 'numeric',
     month: 'long',

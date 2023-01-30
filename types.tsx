@@ -8,6 +8,7 @@ import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/n
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ImageSourcePropType } from 'react-native';
 import { ImageInfo } from 'expo-image-picker';
+import Location from './models/Location';
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
@@ -95,7 +96,7 @@ export type InjuryLocation =
 export interface ReportFormData {
   categories: Category[];
   otherCategoryDescription: string;
-  location?: string;
+  location?: Location;
   dateTime: Date;
   personInvolved: string;
   assistanceWitness: string;
