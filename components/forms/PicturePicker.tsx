@@ -11,11 +11,13 @@ interface Props {
 }
 
 const imageLibraryOptions = {
+  base64: true,
   mediaTypes: MediaTypeOptions.Images,
   allowsMultipleSelection: false,
 };
 
 const cameraOptions = {
+  base64: true,
   mediaTypes: MediaTypeOptions.Images,
 };
 

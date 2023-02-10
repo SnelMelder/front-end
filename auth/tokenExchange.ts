@@ -1,5 +1,5 @@
 import { AccessTokenRequestConfig, exchangeCodeAsync, AuthRequest, AuthRequestPromptOptions } from 'expo-auth-session';
-import { discovery, clientId, redirectUri } from './authConfig';
+import { discovery, clientId, redirectUri, scopes } from './authConfig';
 
 const authRequestPromptOptions: AuthRequestPromptOptions = { useProxy: true };
 
@@ -17,7 +17,7 @@ const getTokenRequestConfig = (code: string, codeVerifier: string): AccessTokenR
 const getCodeRequest = () => {
   return new AuthRequest({
     clientId,
-    scopes: ['api://d9b7bd67-1432-4657-9329-d94b7b35e50e/SMBE', 'offline_access'],
+    scopes,
     redirectUri,
   });
 };

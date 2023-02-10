@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { ImageInfo } from 'expo-image-picker';
 import React, { createContext, useMemo, useState, useContext } from 'react';
+import { manipulateAsync, ImageResult } from 'expo-image-manipulator';
 import { AuthContext } from '../auth/AuthContext';
-import DamageType from '../models/DamageType';
 import { Category, InjuryLocation, ReportFormData, TypeOfDamage } from '../types';
+import apiBaseUrl from '../env';
 
 const initialData: ReportFormData = {
   categories: [],
@@ -46,14 +48,20 @@ const ReportFormContextProvider = ({ children }: Props) => {
 
   const { getAccessToken } = useContext(AuthContext);
 
-  const apiUrl = 'https://snelmelder-backend-local.loca.lt/reports'; // TODO: Move to some env file
+  const url = `${apiBaseUrl}/reports`; // TODO: Move to some env file
 
   const submit = useMemo(
     () => () => {
       setStatus('sending');
 
+      let accessToken = '';
+
       getAccessToken()
         .then((token) => {
+          accessToken = token;
+          return getPictures(data);
+        })
+        .then((pictures) => {
           const payload = {
             projectLocation: getLocationId(data),
             dateTime: getDateTimeOfIncident(data),
@@ -65,14 +73,14 @@ const ReportFormContextProvider = ({ children }: Props) => {
             incidentTypeAdditionalInfo: getOtherCategoryDescription(data),
             damageTypes: getTypesOfDamage(data),
             injurySite: getLocationsOfInjuryOnBody(data),
-            pictureList: getPictures(data),
+            pictureList: pictures,
           };
 
           console.log(payload);
 
-          return axios.post(apiUrl, payload, {
+          return axios.post(url, payload, {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           });
         })
@@ -89,7 +97,7 @@ const ReportFormContextProvider = ({ children }: Props) => {
           }
         });
     },
-    [data, apiUrl, getAccessToken]
+    [data, url, getAccessToken]
   );
 
   const reset = useMemo(
@@ -188,8 +196,17 @@ function injuryLocationToDto(injuryLocation: InjuryLocation) {
   }
 }
 
-function getPictures(data: ReportFormData) {
-  return [];
+async function getPictures(data: ReportFormData) {
+  return Promise.all(data.images.map(async (image) => (await cropAndCompress(image)).base64));
+}
+
+async function cropAndCompress(image: ImageInfo): Promise<ImageResult> {
+  const manipulatedImage = await manipulateAsync(image.uri, [{ resize: { height: 800 } }], {
+    base64: true,
+    compress: 0.5,
+  });
+
+  return manipulatedImage;
 }
 
 function getIncidentCategories(data: ReportFormData) {

@@ -9,6 +9,7 @@ import { ReportFormContext } from '../../store/ReportFormContext';
 import FormQuestion from '../../components/forms/FormQuestion';
 import Location from '../../models/Location';
 import { AuthContext } from '../../auth/AuthContext';
+import apiBaseUrl from '../../env';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportLocation'>;
 
@@ -23,9 +24,14 @@ const ReportLocation = ({ navigation }: Props) => {
   const { getAccessToken } = useContext(AuthContext);
 
   useEffect(() => {
+    const url = `${apiBaseUrl}/locations`;
+    console.log(url);
+
     getAccessToken()
       .then((token) => {
-        return axios.get('https://snelmelder-backend-local.loca.lt/locations', {
+        console.log(token);
+
+        return axios.get(url, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -36,7 +42,14 @@ const ReportLocation = ({ navigation }: Props) => {
         const receivedLocations = responseData.map((item) => new Location(item._id, item.name));
         setLocations(receivedLocations);
       })
-      .catch((e) => console.log(e));
+      .catch((error) => {
+        console.log(error);
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      });
   }, [getAccessToken]);
 
   const nextQuestion = () => {
