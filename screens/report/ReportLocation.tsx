@@ -1,36 +1,95 @@
-import { useState } from 'react';
-import { Text, View } from 'react-native';
+import { useContext, useState, useEffect } from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RadioButton, ActivityIndicator } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
+import axios from 'axios';
+import Container from '../../components/ui/Container';
+import { ReportFormParamList } from '../../types';
+import { ReportFormContext } from '../../store/ReportFormContext';
+import FormQuestion from '../../components/forms/FormQuestion';
+import Location from '../../models/Location';
+import { AuthContext } from '../../auth/AuthContext';
+import apiBaseUrl from '../../env';
 
-import { Picker } from '@react-native-picker/picker';
-import sharedStyles from '../shared.scss';
-import styles from './ReportLocation.scss';
-import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
+type Props = NativeStackScreenProps<ReportFormParamList, 'ReportLocation'>;
 
-const ReportLocation = () => {
-  const [selectedLocation, setSelectedLocation] = useState();
+interface LocationReadDto {
+  _id: string;
+  name: string;
+}
 
-  const onValueChange = (item: string) => {
-    setSelectedLocation(item);
+const ReportLocation = ({ navigation }: Props) => {
+  const { data, setData } = useContext(ReportFormContext);
+  const [locations, setLocations] = useState<Location[] | null>(null);
+  const { getAccessToken } = useContext(AuthContext);
+
+  useEffect(() => {
+    const url = `${apiBaseUrl}/locations`;
+    console.log(url);
+
+    getAccessToken()
+      .then((token) => {
+        console.log(token);
+
+        return axios.get(url, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      })
+      .then((response) => {
+        const responseData = response.data as LocationReadDto[];
+        const receivedLocations = responseData.map((item) => new Location(item._id, item.name));
+        setLocations(receivedLocations);
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      });
+  }, [getAccessToken]);
+
+  const nextQuestion = () => {
+    navigation.navigate('ReportDateTime');
   };
 
+  const setSelectedLocation = (selectedLocationId: string) => {
+    const selectedLocation = locations?.find((item) => item.id === selectedLocationId);
+    setData((current) => ({ ...current, location: selectedLocation }));
+  };
+
+  if (!locations) {
+    return (
+      <Container style={styles.container}>
+        <ActivityIndicator size="large" />
+      </Container>
+    );
+  }
+
   return (
-    <View style={sharedStyles.container}>
-      <View style={{ flexDirection: 'row' }}>
-        <Text style={styles.title}>Locatie</Text>
-        <ButtonInformation />
-      </View>
-      <Picker
-        selectedValue={selectedLocation}
-        onValueChange={onValueChange}
-        style={{ height: 50, width: 350, marginTop: 100 }}
-      >
-        <Picker.Item label="Selecteer een locatie" value="" />
-        <Picker.Item label="Strijp TQ" value="strijp-tq" />
-        <Picker.Item label="Strijp S" value="strijp-s" />
-        <Picker.Item label="Rachelsmolen" value="rachelsmolen" />
-      </Picker>
-    </View>
+    <FormQuestion
+      question="Wat is de locatie van het incident?"
+      explanation="Tik één locatie aan"
+      canSubmit={data.location !== undefined}
+      onNextQuestion={nextQuestion}
+    >
+      <RadioButton.Group onValueChange={(value) => setSelectedLocation(value)} value={data.location?.id || ''}>
+        {locations.map((location) => (
+          <RadioButton.Item key={location.id} label={location.name} value={location.id} />
+        ))}
+      </RadioButton.Group>
+    </FormQuestion>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default ReportLocation;

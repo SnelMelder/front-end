@@ -1,5 +1,5 @@
 import { AccessTokenRequestConfig, exchangeCodeAsync, AuthRequest, AuthRequestPromptOptions } from 'expo-auth-session';
-import { discovery, clientId, redirectUri } from './authConfig';
+import { discovery, clientId, redirectUri, scopes } from './authConfig';
 
 const authRequestPromptOptions: AuthRequestPromptOptions = { useProxy: true };
 
@@ -17,7 +17,7 @@ const getTokenRequestConfig = (code: string, codeVerifier: string): AccessTokenR
 const getCodeRequest = () => {
   return new AuthRequest({
     clientId,
-    scopes: ['openid', 'profile', 'email', 'offline_access'],
+    scopes,
     redirectUri,
   });
 };
@@ -33,6 +33,7 @@ const promptAuthentication = async () => {
   const tokenRequestConfig = getTokenRequestConfig(codeResponse.params.code, codeRequest.codeVerifier as string);
   const tokenResponse = await exchangeCodeAsync(tokenRequestConfig, discovery);
 
+  console.log(tokenResponse);
   return tokenResponse;
 };
 

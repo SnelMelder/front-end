@@ -1,23 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import 'intl';
+import 'intl/locale-data/jsonp/nl-NL';
 
-import useCachedResources from './hooks/useCachedResources';
-import Navigation from './navigation';
+import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import RootNavigator from './navigators/RootNavigator';
 import AuthContextProvider from './auth/AuthContext';
+import LightTheme from './themes/LightTheme';
 
 const App = () => {
-  const isLoadingComplete = useCachedResources();
-
-  if (!isLoadingComplete) {
-    return null;
-  }
-
   return (
     <AuthContextProvider>
-      <SafeAreaProvider>
-        <StatusBar />
-        <Navigation />
-      </SafeAreaProvider>
+      <PaperProvider theme={LightTheme}>
+        <SafeAreaProvider>
+          <StatusBar style="auto" />
+          <NavigationContainer theme={LightTheme}>
+            <RootNavigator />
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </PaperProvider>
     </AuthContextProvider>
   );
 };
