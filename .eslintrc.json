@@ -50,6 +50,10 @@
     "react/require-default-props": "off",
     "react/jsx-no-bind": "off",
     "react/react-in-jsx-scope": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "@typescript-eslint/no-unnecessary-type-constraint": "off",
+    "react/style-prop-object": "off",
+    "lines-between-class-members": "off",
+    "no-underscore-dangle": "off"
   }
 }

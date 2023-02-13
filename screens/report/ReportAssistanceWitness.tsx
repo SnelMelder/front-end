@@ -1,17 +1,34 @@
-import { Text, View } from 'react-native';
+import { useContext } from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { ReportFormParamList } from '../../types';
+import { ReportFormContext } from '../../store/ReportFormContext';
+import TextField from '../../components/forms/TextField';
+import FormQuestion from '../../components/forms/FormQuestion';
 
-import styles from '../shared.scss';
-import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
-import InputBox from '../../components/InputBox/InputBox';
+type Props = NativeStackScreenProps<ReportFormParamList, 'ReportAssistanceWitness'>;
 
-const ReportAssistanceWitness = () => (
-  <View style={styles.container}>
-    <View style={styles.title_container}>
-      <Text style={styles.title}>Hulpverlening/Getuigen</Text>
-      <ButtonInformation title="Hulpverlening/Getuigen" text="De getuige waar u uw probleem heeft gevonden." />
-    </View>
-    <InputBox placeholder="Typ hier naam van betreffende Hulpverlener/Getuigen" />
-  </View>
-);
+const ReportAssistanceWitness = ({ navigation }: Props) => {
+  const { data, setData } = useContext(ReportFormContext);
+
+  const nextQuestion = () => {
+    navigation.navigate('ReportTypeOfDamage');
+  };
+
+  const setAssistanceWitness = (assistanceWitness: string) => {
+    setData((current) => ({ ...current, assistanceWitness }));
+  };
+
+  return (
+    <FormQuestion
+      question="Wie was getuige van het incident of heeft hulp verleend?"
+      explanation="Vul de naam of namen in"
+      onNextQuestion={nextQuestion}
+      canSubmit={data.assistanceWitness.length > 0}
+      canSkip
+    >
+      <TextField placeholder="Namen van getuigen en hulpverleners..." onChangeText={setAssistanceWitness} />
+    </FormQuestion>
+  );
+};
 
 export default ReportAssistanceWitness;

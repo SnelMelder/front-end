@@ -1,7 +1,7 @@
 import { TokenResponse } from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 import React, { createContext, useMemo, useCallback, useState, useEffect } from 'react';
-import { clientId, discovery, redirectUri } from './authConfig';
+import { clientId, discovery, redirectUri, scopes } from './authConfig';
 import * as Storage from './tokenStorage';
 import TokenUnavailableError from './TokenUnavailableError';
 import promptAuthentication from './tokenExchange';
@@ -40,7 +40,7 @@ const AuthContextProvider = ({ children }: Props) => {
   const refreshTheTokens = useCallback(async () => {
     if (tokens === null) throw new TokenUnavailableError();
 
-    await tokens.refreshAsync({ clientId }, discovery);
+    await tokens.refreshAsync({ clientId, scopes }, discovery);
 
     Storage.saveTokens(tokens);
   }, [tokens]);

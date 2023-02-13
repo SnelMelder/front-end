@@ -1,18 +1,23 @@
+import { useContext } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import LoginButton from '../components/auth/LoginButton';
+import { Button } from 'react-native-paper';
+import { AuthContext } from '../auth/AuthContext';
 
 const goevaersLogoImage = require('../assets/images/goevaers_logo.png');
 
 const LoginScreen = () => {
+  const { login } = useContext(AuthContext);
+
   return (
     <View style={styles.rootContainer}>
       <Image style={styles.logoImage} source={goevaersLogoImage} />
       <Text style={styles.headingText}>Welkom</Text>
       <Text style={styles.bodyText}>
-        Log in met je werkaccount van Goevaers. Als je nog geen account van Goevaers hebt, neem dan contact op met je
-        leidinggevende.
+        Log in met je werkaccount van Goevaers. Als je nog geen account van Goevaers hebt, neem dan contact op met ICT.
       </Text>
-      <LoginButton style={styles.loginButton} />
+      <Button style={styles.button} mode="contained" onPress={login}>
+        Inloggen
+      </Button>
     </View>
   );
 };
@@ -37,7 +42,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginBottom: 32,
   },
-  loginButton: {
+  button: {
     width: '80%',
     marginTop: 32,
   },

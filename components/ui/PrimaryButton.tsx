@@ -5,12 +5,19 @@ interface Props {
   text: string;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
+  disabled?: boolean;
 }
 
-const PrimaryButton = ({ text, style, onPress }: Props) => {
+const PrimaryButton = ({ text, style, onPress, disabled }: Props) => {
+  const handlePress = () => {
+    if (!disabled && onPress) {
+      onPress();
+    }
+  };
+
   return (
-    <View style={[styles.rootContainer, style]}>
-      <Pressable android_ripple={{ color: COLORS.primary400 }} onPress={onPress}>
+    <View style={[styles.rootContainer, disabled && styles.rootContainerDisabled, style]}>
+      <Pressable android_ripple={{ color: disabled ? undefined : COLORS.primary400 }} onPress={handlePress}>
         <View style={styles.innerContainer}>
           <Text style={styles.text}>{text}</Text>
         </View>
@@ -24,6 +31,9 @@ const styles = StyleSheet.create({
     borderRadius: 200,
     backgroundColor: COLORS.primary500,
     overflow: 'hidden',
+  },
+  rootContainerDisabled: {
+    backgroundColor: '#cdcdcd',
   },
   innerContainer: {
     paddingVertical: 16,

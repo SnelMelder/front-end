@@ -1,17 +1,34 @@
-import { Text, View } from 'react-native';
+import { useContext } from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { ReportFormParamList } from '../../types';
+import TextField from '../../components/forms/TextField';
+import { ReportFormContext } from '../../store/ReportFormContext';
+import FormQuestion from '../../components/forms/FormQuestion';
 
-import styles from '../shared.scss';
-import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
-import InputBox from '../../components/InputBox/InputBox';
+type Props = NativeStackScreenProps<ReportFormParamList, 'ReportPersonInvolved'>;
 
-const ReportPersonInvolved = () => (
-  <View style={styles.container}>
-    <View style={styles.title_container}>
-      <Text style={styles.title}>Naam betrokkene</Text>
-      <ButtonInformation title="Naam betrokkene" text="De naam van de persoon die uw probleem heeft gevonden." />
-    </View>
-    <InputBox placeholder="Typ hier naam betrokkene" />
-  </View>
-);
+const ReportPersonInvolved = ({ navigation }: Props) => {
+  const { data, setData } = useContext(ReportFormContext);
+
+  const nextQuestion = () => {
+    navigation.navigate('ReportAssistanceWitness');
+  };
+
+  const setPersonInvolved = (personInvolved: string) => {
+    setData((current) => ({ ...current, personInvolved }));
+  };
+
+  return (
+    <FormQuestion
+      question="Wie is er bij het incident betrokken?"
+      explanation="Je kunt deze vraag overslaan"
+      onNextQuestion={nextQuestion}
+      canSubmit={data.personInvolved.length > 0}
+      canSkip
+    >
+      <TextField onChangeText={setPersonInvolved} placeholder="Betrokken persoon/personen..." />
+    </FormQuestion>
+  );
+};
 
 export default ReportPersonInvolved;

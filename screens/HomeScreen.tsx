@@ -1,34 +1,58 @@
-import { Image, ScrollView, Text, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import styles from './homescreen.scss';
-import sharedStyles from './shared.scss';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StyleSheet, View, ScrollView } from 'react-native';
+import { FAB, Text } from 'react-native-paper';
+import { RootStackParamList } from '../types';
+import LogoHeader from '../components/LogoHeader';
+import Container from '../components/ui/Container';
+import FaqItem from '../components/ui/FaqItem';
 
-import ButtonPlusBigGreen from '../components/ButtonPlusBigGreen/ButtonPlus';
+type Props = NativeStackScreenProps<RootStackParamList, 'ReportForm'>;
 
-import NotificationContainer from '../components/NotificationContainer/NotificationContainer';
+const HomeScreen = ({ navigation }: Props) => {
+  const showReportForm = () => {
+    navigation.navigate('ReportForm');
+  };
 
-const HomeScreen = () => {
   return (
     <>
-      <Image style={sharedStyles.logo} source={require('../assets/images/SnelMelder_Home_Logo.png')} />
-      <View style={styles.container}>
-        <Text style={styles.title}>Melding op uw locatie</Text>
-        <View style={styles.locationContainer}>
-          <Ionicons name="location" size={20} />
-          <Text style={styles.subtitle}> Fontys hogescholen Strijp-t TQ4</Text>
-        </View>
-        <ScrollView>
-          <NotificationContainer
-            title="Geen melding"
-            message="Voeg een melding toe door op het plusje te tikken of verander uw locatie via de instellingen"
-          />
-
-          <View style={{ paddingBottom: 120 }}>
-            <ButtonPlusBigGreen />
+      <LogoHeader />
+      <ScrollView>
+        <Container>
+          <Text variant="headlineSmall">Welkom bij Snelmelder</Text>
+          <Text variant="bodyMedium">
+            Gebeurt er een ongeluk, of zie je een gevaarlijke situatie? Meld dit dan. Samen zorgen we voor een veilige
+            werkomgeving.
+          </Text>
+          <View style={styles.faq}>
+            <FaqItem
+              question="Hoe maak ik een melding?"
+              answer="Je kunt een melding maken door op de knop met de tekst 'Nieuwe melding' te klikken, die rechtsonderin het scherm staat."
+            />
+            <FaqItem
+              question="Wat gebeurt er met mijn melding?"
+              answer="Bij het maken van een melding selecteer je een locatie. Als je je melding afrond, dan wordt de melding eerst verstuurd naar de uitvoerder van deze locatie. Hij of zij kan dan nog een opmerking toevoegen. Vervolgens wordt de melding verstuurd naar een verzamelaar die alle meldingen verzamelt en verwerkt."
+            />
+            <FaqItem
+              question="Kan ik ook anoniem iets melden?"
+              answer="Ja. Aan het einde van het formulier kan je er voor kiezen om je melding anoniem te versturen."
+            />
           </View>
-        </ScrollView>
-      </View>
+        </Container>
+      </ScrollView>
+      <FAB style={styles.fab} onPress={showReportForm} icon="plus" label="Nieuwe melding" />
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    bottom: 16,
+    right: 16,
+  },
+  faq: {
+    marginVertical: 16,
+  },
+});
+
 export default HomeScreen;

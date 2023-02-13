@@ -1,15 +1,34 @@
-import { Text, View } from 'react-native';
+import { useContext } from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-import styles from '../shared.scss';
-import ButtonInformation from '../../components/ButtonInformation/ButtonInformation';
+import { ReportFormContext } from '../../store/ReportFormContext';
+import { InjuryLocation, ReportFormParamList } from '../../types';
+import InjuryLocationSelector from '../../components/forms/InjuryLocationSelector';
+import FormQuestion from '../../components/forms/FormQuestion';
 
-const ReportLocationOfInjury = () => (
-  <View style={styles.container}>
-    <View style={styles.title_container}>
-      <Text style={styles.title}>Plaats van het letsel</Text>
-      <ButtonInformation title="Plaats van het letsel" text="De plaats waar u uw probleem heeft gevonden." />
-    </View>
-  </View>
-);
+type Props = NativeStackScreenProps<ReportFormParamList, 'ReportLocationOfInjury'>;
+
+const ReportLocationOfInjury = ({ navigation }: Props) => {
+  const { data, setData } = useContext(ReportFormContext);
+
+  const nextQuestion = () => {
+    navigation.navigate('ReportAddPicture');
+  };
+
+  const setInjuryLocations = (injuryLocation: InjuryLocation[]) => {
+    setData((current) => ({ ...current, injuryLocation }));
+  };
+
+  return (
+    <FormQuestion
+      question="Wat is de plaats van het letsel?"
+      explanation="Tik aan op onderstaande tekening"
+      onNextQuestion={nextQuestion}
+      canSubmit={data.injuryLocation.length > 0}
+    >
+      <InjuryLocationSelector value={data.injuryLocation} onValueChange={setInjuryLocations} />
+    </FormQuestion>
+  );
+};
 
 export default ReportLocationOfInjury;
