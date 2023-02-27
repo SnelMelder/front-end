@@ -10,4 +10,4 @@ export const discovery = {
   endSessionEndpoint: `https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/logout?client_id=${clientId}`,
 };
 
-export const scopes = ['api://d9b7bd67-1432-4657-9329-d94b7b35e50e/SMBE', 'offline_access'];
+export const scopes = ['api://snelmelder/locations:read', 'api://snelmelder/reports:create', 'offline_access'];
