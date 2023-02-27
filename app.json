@@ -15,7 +15,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -23,18 +25,27 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "nl.gevavastgoed.snelmelder"
     },
     "androidNavigationBar": {
-     "backgroundColor": "#E6F2EC",
-     "barStyle": "dark-content"
-   },
+      "backgroundColor": "#E6F2EC",
+      "barStyle": "dark-content"
+    },
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": ["js", "jsx", "scss", "sass"]
+      "sourceExts": [
+        "js",
+        "jsx",
+        "scss",
+        "sass"
+      ]
     },
     "plugins": [
       [
@@ -43,6 +54,12 @@
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "cb95404e-81ca-45bd-bf8f-9083f2fab0ed"
+      }
+    },
+    "owner": "jardvanroest"
   }
 }
