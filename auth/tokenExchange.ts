@@ -1,8 +1,6 @@
 import { AccessTokenRequestConfig, exchangeCodeAsync, AuthRequest, AuthRequestPromptOptions } from 'expo-auth-session';
 import { discovery, clientId, redirectUri, scopes } from './authConfig';
 
-const authRequestPromptOptions: AuthRequestPromptOptions = { useProxy: true };
-
 const getTokenRequestConfig = (code: string, codeVerifier: string): AccessTokenRequestConfig => {
   return {
     clientId,
@@ -24,7 +22,7 @@ const getCodeRequest = () => {
 
 const promptAuthentication = async () => {
   const codeRequest = getCodeRequest();
-  const codeResponse = await codeRequest.promptAsync(discovery, authRequestPromptOptions);
+  const codeResponse = await codeRequest.promptAsync(discovery);
 
   if (codeResponse.type !== 'success') {
     return null;
