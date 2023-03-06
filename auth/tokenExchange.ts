@@ -31,7 +31,7 @@ const promptAuthentication = async () => {
   const tokenRequestConfig = getTokenRequestConfig(codeResponse.params.code, codeRequest.codeVerifier as string);
   const tokenResponse = await exchangeCodeAsync(tokenRequestConfig, discovery);
 
-  console.log(tokenResponse);
+  //console.log(tokenResponse);
   return tokenResponse;
 };
 

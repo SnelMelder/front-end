@@ -6,13 +6,15 @@ interface Props {
   onPress?: () => unknown;
 }
 
-const ImageCard = ({ style, imageSource, onPress }: Props) => (
-  <View style={[styles.container, style]}>
-    <Pressable style={styles.pressable} onPress={onPress}>
-      {imageSource && <ImageBackground style={styles.image} source={imageSource} resizeMode="cover" />}
-    </Pressable>
-  </View>
-);
+const ImageCard = ({ style, imageSource, onPress }: Props) => { 
+
+  return (
+    <View style={[styles.container, style]}>
+      <Pressable style={styles.pressable} onPress={onPress}>
+        {imageSource && <ImageBackground style={styles.image} source={imageSource} resizeMode="cover" />}
+      </Pressable>
+    </View>);
+  };
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ImageInfo } from 'expo-image-picker';
+import { ImageInfo, ImagePickerAsset } from 'expo-image-picker';
 import React, { createContext, useMemo, useState, useContext } from 'react';
 import { manipulateAsync, ImageResult } from 'expo-image-manipulator';
 import { AuthContext } from '../auth/AuthContext';
@@ -76,7 +76,7 @@ const ReportFormContextProvider = ({ children }: Props) => {
             pictureList: pictures,
           };
 
-          console.log(payload);
+         // console.log(payload);
 
           return axios.post(url, payload, {
             headers: {
@@ -200,7 +200,7 @@ async function getPictures(data: ReportFormData) {
   return Promise.all(data.images.map(async (image) => (await cropAndCompress(image)).base64));
 }
 
-async function cropAndCompress(image: ImageInfo): Promise<ImageResult> {
+async function cropAndCompress(image: ImagePickerAsset): Promise<ImageResult> {
   const manipulatedImage = await manipulateAsync(image.uri, [{ resize: { height: 800 } }], {
     base64: true,
     compress: 0.5,

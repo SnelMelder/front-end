@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { View, Pressable, StyleSheet } from 'react-native';
 import { ImageInfo, launchImageLibraryAsync, MediaTypeOptions, launchCameraAsync } from 'expo-image-picker';
+import { ImagePickerAsset } from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
 import ImageImportTypeModal from './ImageImportTypeModal';
 import ImageCard from '../ui/ImageCard';
 
 interface Props {
-  value: ImageInfo[];
-  onValueChange: (images: ImageInfo[]) => void;
+  value: ImagePickerAsset[];
+  onValueChange: (images: ImagePickerAsset[]) => void;
 }
 
 const imageLibraryOptions = {
@@ -24,14 +25,17 @@ const cameraOptions = {
 const PicturePicker = ({ value, onValueChange }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const addImage = (image: ImageInfo) => {
-    if (!value.some((item) => item.uri === image.uri)) {
+  const addImage = (image: ImagePickerAsset) => {        
+    if (!value.some((item) => item.uri === image.uri) && [image, ...value].length <=5) {
       // image is not yet added
       onValueChange([...value, image]);
     }
+    else{
+      console.log('too many images')
+    }
   };
 
-  const removeImage = (image: ImageInfo) => {
+  const removeImage = (image: ImagePickerAsset) => {
     onValueChange(value.filter((item) => item !== image));
   };
 
@@ -42,7 +46,7 @@ const PicturePicker = ({ value, onValueChange }: Props) => {
   const pickFromGallery = async () => {
     const image = await launchImageLibraryAsync(imageLibraryOptions);
 
-    if (!image.cancelled) addImage(image);
+    if (!image.canceled) addImage(image.assets[0]);
 
     setModalVisible(false);
   };
@@ -50,12 +54,12 @@ const PicturePicker = ({ value, onValueChange }: Props) => {
   const takePicture = async () => {
     const image = await launchCameraAsync(cameraOptions);
 
-    if (!image.cancelled) addImage(image);
+    if (!image.canceled) addImage(image.assets[0]);
 
     setModalVisible(false);
   };
 
-  const setAsMainImage = (image: ImageInfo) => {
+  const setAsMainImage = (image: ImagePickerAsset) => {    
     onValueChange([image, ...value.filter((item) => item !== image)]);
   };
 

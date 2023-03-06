@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { ImageInfo } from 'expo-image-picker';
+import { ImagePickerAsset } from 'expo-image-picker';
 import { ReportFormParamList } from '../../types';
 import PrimaryButton from '../../components/ui/PrimaryButton';
 import Container from '../../components/ui/Container';
@@ -20,7 +21,7 @@ const ReportAddPicture = ({ navigation }: Props) => {
     navigation.navigate('ReportAdditionalInformation');
   };
 
-  const setImages = (images: ImageInfo[]) => {
+  const setImages = (images: ImagePickerAsset[]) => {
     setData((current) => ({ ...current, images }));
   };
 
@@ -28,6 +29,7 @@ const ReportAddPicture = ({ navigation }: Props) => {
     <FormQuestion
       question="Voeg een foto toe"
       explanation="Dit is niet verplicht"
+      additionalInfo="U kan maximaal 5 foto's toevoegen"
       onNextQuestion={nextQuestion}
       canSubmit={data.images.length > 0}
       canSkip

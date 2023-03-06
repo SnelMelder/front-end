@@ -25,11 +25,11 @@ const ReportLocation = ({ navigation }: Props) => {
 
   useEffect(() => {
     const url = `${apiBaseUrl}/locations`;
-    console.log(url);
+    //console.log(url);
 
     getAccessToken()
       .then((token) => {
-        console.log(token);
+        //console.log(token);
 
         return axios.get(url, {
           headers: {
