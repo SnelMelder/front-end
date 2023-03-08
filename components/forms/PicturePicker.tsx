@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import ImageImportTypeModal from './ImageImportTypeModal';
 import ImageCard from '../ui/ImageCard';
 
+
 interface Props {
   value: ImagePickerAsset[];
   onValueChange: (images: ImagePickerAsset[]) => void;
@@ -67,6 +68,10 @@ const PicturePicker = ({ value, onValueChange }: Props) => {
     <View style={styles.rootContainer}>
       <View style={styles.topContainer}>
         <ImageCard style={styles.mainImage} imageSource={value.length > 0 ? value[0] : undefined} />
+        {value.length > 0 &&(<Pressable onPress={() => removeImage(value[0])} style={styles.binButton}>
+          <Ionicons name="ios-remove-circle" size={45}/>
+        </Pressable>)}                  
+        
       </View>
 
       <View style={styles.bottomContainer}>
@@ -148,6 +153,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  binButton: {
+    backgroundColor: '#e16161',
+    borderRadius: 7,
+    width: 60,
+    height: 60,
+    bottom: 16,
+    right: 16,
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
 export default PicturePicker;

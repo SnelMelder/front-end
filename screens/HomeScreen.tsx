@@ -6,6 +6,7 @@ import LogoHeader from '../components/LogoHeader';
 import Container from '../components/ui/Container';
 import FaqItem from '../components/ui/FaqItem';
 
+
 type Props = NativeStackScreenProps<RootStackParamList, 'ReportForm'>;
 
 const HomeScreen = ({ navigation }: Props) => {

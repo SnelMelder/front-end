@@ -11,8 +11,9 @@ const ImageCard = ({ style, imageSource, onPress }: Props) => {
   return (
     <View style={[styles.container, style]}>
       <Pressable style={styles.pressable} onPress={onPress}>
-        {imageSource && <ImageBackground style={styles.image} source={imageSource} resizeMode="cover" />}
+        {imageSource && <ImageBackground style={styles.image} source={imageSource} resizeMode="cover" />}               
       </Pressable>
+      
     </View>);
   };
 
