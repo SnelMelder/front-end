@@ -1,14 +1,9 @@
 import { useContext, useEffect, useCallback } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import PrimaryButton from '../../components/ui/PrimaryButton';
 import { ReportFormParamList } from '../../types';
-import Container from '../../components/ui/Container';
-import Question from '../../components/forms/Question';
-import Explanation from '../../components/forms/Explanation';
-import InputContainer from '../../components/forms/InputContainer';
 import { ReportFormContext } from '../../store/ReportFormContext';
-import DateTimePicker from '../../components/forms/DateTimePicker';
 import FormQuestion from '../../components/forms/FormQuestion';
+import UniversalDateTimePicker from '../../components/forms/UniversalDateTimePicker';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportDateTime'>;
 
@@ -37,7 +32,7 @@ const ReportDateTime = ({ navigation }: Props) => {
       canSubmit
       onNextQuestion={nextQuestionHandler}
     >
-      <DateTimePicker value={data.dateTime} onChange={setSelectedDate} maxDate={new Date(Date.now())} />
+      <UniversalDateTimePicker onChange={setSelectedDate} />
     </FormQuestion>
   );
 };
