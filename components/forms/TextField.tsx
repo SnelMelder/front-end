@@ -3,7 +3,7 @@ import { TextInput, StyleSheet, View, TextInputProps } from 'react-native';
 const TextField = (props: TextInputProps) => {
   return (
     <View style={styles.container}>
-      <TextInput {...props} />
+      <TextInput multiline numberOfLines={3} maxLength={5000} {...props} />
     </View>
   );
 };

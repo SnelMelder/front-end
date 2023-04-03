@@ -1,1 +1,1 @@
-export default 'https://d17a-145-93-41-92.eu.ngrok.io'; // back-end base url over ngrok
+export default 'https://b692-80-56-254-245.eu.ngrok.io'; // back-end base url over ngrok
