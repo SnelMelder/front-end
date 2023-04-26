@@ -26,7 +26,7 @@ const ReportAdditionalInformation = ({ navigation }: Props) => {
       canSkip
       canSubmit={data.additionalInformation.length > 0}
     >
-      <TextField placeholder="Aanvullende informatie..." multiline onChangeText={setAdditionalInformation} />
+      <TextField placeholder="Aanvullende informatie..." onChangeText={setAdditionalInformation} />
     </FormQuestion>
   );
 };

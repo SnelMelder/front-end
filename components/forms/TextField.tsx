@@ -1,9 +1,13 @@
-import { TextInput, StyleSheet, View, TextInputProps } from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import { TextInput, TextInputProps } from 'react-native-paper';
+
 
 const TextField = (props: TextInputProps) => {
   return (
     <View style={styles.container}>
-      <TextInput multiline numberOfLines={3} maxLength={5000} {...props} />
+      {/* Without the minHeight attribute, multiline will not work on iOS devices. This is a known issue with React-native-paper
+      This is also an issue in React native core */}
+      <TextInput {...props} multiline={true} numberOfLines={10} mode='outlined' style={{minHeight:225}}/>
     </View>
   );
 };
