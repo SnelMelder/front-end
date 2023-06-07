@@ -1,17 +1,21 @@
 import { useContext, useEffect } from 'react';
-import { ScrollView, StyleSheet, FlatList } from 'react-native';
+import { ScrollView, StyleSheet, FlatList, Switch, Text } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Button } from 'react-native-paper';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { ReportFormParamList } from '../../types';
 import { ReportFormContext } from '../../store/ReportFormContext';
 import Container from '../../components/ui/Container';
 import ImageCard from '../../components/ui/ImageCard';
 import SummaryItem from '../../components/forms/SummaryItem';
+import React from 'react';
 
 type Props = NativeStackScreenProps<ReportFormParamList, 'ReportSummary'>;
 
 const ReportSummary = ({ navigation }: Props) => {
   const { data, submit, status } = useContext(ReportFormContext);
+  const [isEnabled, setIsEnabled] = React.useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   useEffect(() => {
     if (status === 'sending') {
@@ -19,10 +23,13 @@ const ReportSummary = ({ navigation }: Props) => {
     }
   }, [status, navigation]);
 
+  data.anonymous = isEnabled;
+  // const isAnonymous = data.anonymous;
   const categoryString = data.categories
     .map((item) => (item === 'Overig' ? `Overig: ${data.otherCategoryDescription}` : item))
     .join(', ');
 
+  
   const locationString = data.location?.name || '';
   const dateTimeString = Intl.DateTimeFormat('nl-NL', {
     day: 'numeric',
@@ -47,6 +54,16 @@ const ReportSummary = ({ navigation }: Props) => {
         <Button mode="contained" onPress={submit}>
           Melding versturen
         </Button>
+      </Container>
+      <Container style={styles.toggleSwitch}>
+        <Switch
+        trackColor={{false: '#767577', true: '#B2D2A4'}}
+        thumbColor={isEnabled ? '#1A4314' : '#f4f3f4'}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={toggleSwitch}
+        value={isEnabled}                
+      />
+      <Text>Anoniem melden?</Text>
       </Container>
 
       {data.images.length > 0 && (
@@ -108,6 +125,15 @@ const ReportSummary = ({ navigation }: Props) => {
 };
 
 const styles = StyleSheet.create({
+  toggleSwitch: {
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    marginLeft: '5%',
+    transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }]
+    
+  },
   imageList: {
     marginTop: 4,
   },
@@ -115,7 +141,8 @@ const styles = StyleSheet.create({
     height: 200,
     width: 250,
     marginRight: 16,
-  },
+  }
+  
 });
 
 export default ReportSummary;
