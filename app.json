@@ -2,7 +2,7 @@
   "expo": {
     "name": "SnelMelder",
     "slug": "SnelMelder",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "nl.gevavastgoed.snelmelder",
@@ -24,9 +24,6 @@
       "bundleIdentifier": "nl.gevavastgoed.snelmelder"
     },
     "android": {
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ],
       "package": "nl.gevavastgoed.snelmelder"
     },
     "androidNavigationBar": {
@@ -56,7 +53,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "7d79f0b8-1512-4951-8244-545e85eb2264"
+        "projectId": "cb95404e-81ca-45bd-bf8f-9083f2fab0ed"
       }
     },
     "owner": "jardvanroest",
