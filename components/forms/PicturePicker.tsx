@@ -1,11 +1,17 @@
 import { useState } from 'react';
-import { View, Pressable, StyleSheet } from 'react-native';
-import { ImageInfo, launchImageLibraryAsync, MediaTypeOptions, launchCameraAsync } from 'expo-image-picker';
-import { ImagePickerAsset } from 'expo-image-picker';
+import { View, Pressable, StyleSheet, Platform } from 'react-native';
+import {
+  launchImageLibraryAsync,
+  MediaTypeOptions,
+  launchCameraAsync,
+  getCameraPermissionsAsync,
+  ImagePickerAsset,
+  useCameraPermissions,
+  requestCameraPermissionsAsync,
+} from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
 import ImageImportTypeModal from './ImageImportTypeModal';
 import ImageCard from '../ui/ImageCard';
-
 
 interface Props {
   value: ImagePickerAsset[];
@@ -26,13 +32,12 @@ const cameraOptions = {
 const PicturePicker = ({ value, onValueChange }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const addImage = (image: ImagePickerAsset) => {        
-    if (!value.some((item) => item.uri === image.uri) && [image, ...value].length <=5) {
+  const addImage = (image: ImagePickerAsset) => {
+    if (!value.some((item) => item.uri === image.uri) && [image, ...value].length <= 5) {
       // image is not yet added
       onValueChange([...value, image]);
-    }
-    else{
-      console.log('too many images')
+    } else {
+      console.log('too many images');
     }
   };
 
@@ -53,6 +58,9 @@ const PicturePicker = ({ value, onValueChange }: Props) => {
   };
 
   const takePicture = async () => {
+    const result = await requestCameraPermissionsAsync();
+    console.log(result.status);
+
     const image = await launchCameraAsync(cameraOptions);
 
     if (!image.canceled) addImage(image.assets[0]);
@@ -60,7 +68,7 @@ const PicturePicker = ({ value, onValueChange }: Props) => {
     setModalVisible(false);
   };
 
-  const setAsMainImage = (image: ImagePickerAsset) => {    
+  const setAsMainImage = (image: ImagePickerAsset) => {
     onValueChange([image, ...value.filter((item) => item !== image)]);
   };
 
@@ -68,10 +76,11 @@ const PicturePicker = ({ value, onValueChange }: Props) => {
     <View style={styles.rootContainer}>
       <View style={styles.topContainer}>
         <ImageCard style={styles.mainImage} imageSource={value.length > 0 ? value[0] : undefined} />
-        {value.length > 0 &&(<Pressable onPress={() => removeImage(value[0])} style={styles.binButton}>
-          <Ionicons name="ios-remove-circle" size={45}/>
-        </Pressable>)}                  
-        
+        {value.length > 0 && (
+          <Pressable onPress={() => removeImage(value[0])} style={styles.binButton}>
+            <Ionicons name="ios-remove-circle" size={45} />
+          </Pressable>
+        )}
       </View>
 
       <View style={styles.bottomContainer}>
@@ -162,8 +171,8 @@ const styles = StyleSheet.create({
     right: 16,
     position: 'absolute',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });
 
 export default PicturePicker;

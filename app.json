@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "snelmelder",
-    "slug": "snelmelder",
-    "version": "1.0.0",
+    "name": "SnelMelder",
+    "slug": "SnelMelder",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "nl.gevavastgoed.snelmelder",
@@ -13,22 +13,17 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/cb95404e-81ca-45bd-bf8f-9083f2fab0ed"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "nl.gevavastgoed.snelmelder"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ],
       "package": "nl.gevavastgoed.snelmelder"
     },
     "androidNavigationBar": {
@@ -51,15 +46,19 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "The app accesses your photos to let you share them with your friends."
+          "photosPermission": "SnelMelder toestaan om je gallerij te openen, zodat foto's kunnen worden toegevoegd bij je melding.",
+          "cameraPermission": "Snelmelder toestaan om je camera te openen, zodat foto's kunnen worden toegevoegd aan je melding"
         }
       ]
     ],
     "extra": {
       "eas": {
-        "projectId": "7d79f0b8-1512-4951-8244-545e85eb2264"
+        "projectId": "cb95404e-81ca-45bd-bf8f-9083f2fab0ed"
       }
     },
-    "owner": "karupin"
+    "owner": "jardvanroest",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }
