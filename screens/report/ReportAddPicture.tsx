@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { ImageInfo } from 'expo-image-picker';
 import { ImagePickerAsset } from 'expo-image-picker';
 import { ReportFormParamList } from '../../types';
 import PrimaryButton from '../../components/ui/PrimaryButton';

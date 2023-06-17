@@ -36,7 +36,7 @@ const MultiSelectItem = <T extends unknown>({ name, image, label, backgroundColo
 
 const styles = StyleSheet.create({
   container: {
-    width: '45%',
+    width: '40%',
     marginBottom: '10%',
   },
   iconContainer: {

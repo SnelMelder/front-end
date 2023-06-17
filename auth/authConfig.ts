@@ -1,13 +1,13 @@
 import { makeRedirectUri } from 'expo-auth-session';
 import Constants from 'expo-constants';
 
-const TENANT_ID = 'cdeed8c9-dd14-4981-8012-90cf0b210955';
+const TENANT_ID = '81187212-6cd2-41cc-9dde-0ce71a9cc1ef';
 
 export const redirectUri = makeRedirectUri({
   scheme: Constants.manifest?.scheme,
   path: 'auth',
 });
-export const clientId = '91db0c11-5d65-4a69-948e-8bc1e90194a7';
+export const clientId = '6f0320e2-a945-4c4e-811b-469ce101feb8';
 export const discovery = {
   authorizationEndpoint: `https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize`,
   tokenEndpoint: `https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token`,
