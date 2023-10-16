@@ -16,5 +16,12 @@
       "channel": "production",
       "autoIncrement": true
     }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "companyName": "Salute-Consulting B.V."
+      }
+    }
   }
 }
